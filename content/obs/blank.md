@@ -1,6 +1,6 @@
 ---
-title: "OBS Background"
-layout: "obs_bg"
+title: "OBS Blank Background"
+layout: "obs_blank"
 sitemap:
   disable: true
 _build:

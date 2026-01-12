@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "concurrently --kill-others \"npm run css:watch\" \"hugo server\"",
     "build": "npm run css:build && hugo --minify",
-    "css:watch": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --watch",
-    "css:build": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify"
+    "css:watch": "tailwindcss -i ./assets/css/main.css -o ./assets/css/compiled.css --watch",
+    "css:build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/compiled.css --minify",
+    "render-panels": "node scripts/render-panels.js"
   },
   "devDependencies": {
     "tailwindcss": "^4.1.0",
     "@tailwindcss/cli": "^4.1.0",
-    "concurrently": "^9.1.0"
+    "concurrently": "^9.1.0",
+    "puppeteer": "^22.0.0"
   },
   "dependencies": {
     "alpinejs": "^3.14.0"

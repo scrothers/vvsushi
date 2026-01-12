@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Shoutout Alert</title>
+  {{ $css := resources.Get "css/main.css" | css.TailwindCSS }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent !important;
+    }
+
+    .alert-container {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Megaphone */
+    .megaphone {
+      font-size: 80px;
+      opacity: 0;
+      transform: translateX(-100px) rotate(-20deg);
+      animation: megaphone-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards;
+    }
+
+    @keyframes megaphone-in {
+      0% {
+        opacity: 0;
+        transform: translateX(-100px) rotate(-20deg);
+      }
+      60% {
+        transform: translateX(10px) rotate(5deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+      }
+    }
+
+    /* Sound waves */
+    .sound-waves {
+      position: absolute;
+      left: calc(50% + 50px);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .wave {
+      position: absolute;
+      width: 30px;
+      height: 60px;
+      border: 4px solid transparent;
+      border-right-color: #9146FF;
+      border-radius: 0 50% 50% 0;
+      opacity: 0;
+      animation: wave-pulse 1s ease-out infinite;
+    }
+
+    .wave:nth-child(1) { animation-delay: 0.6s; }
+    .wave:nth-child(2) { left: 15px; width: 40px; height: 80px; animation-delay: 0.8s; }
+    .wave:nth-child(3) { left: 35px; width: 50px; height: 100px; animation-delay: 1.0s; }
+
+    @keyframes wave-pulse {
+      0% { opacity: 0; transform: translateY(-50%) scale(0.8); }
+      30% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-50%) scale(1.2); }
+    }
+
+    /* Shoutout card */
+    .shoutout-card {
+      background: linear-gradient(135deg, #9146FF 0%, #ff1493 100%);
+      padding: 25px 50px;
+      border-radius: 20px;
+      margin-top: 30px;
+      text-align: center;
+      border: 4px solid #fff;
+      box-shadow: 0 15px 50px rgba(145, 70, 255, 0.4);
+      opacity: 0;
+      transform: scale(0) rotate(-5deg);
+      animation: card-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s forwards;
+    }
+
+    @keyframes card-pop {
+      0% { opacity: 0; transform: scale(0) rotate(-5deg); }
+      70% { transform: scale(1.05) rotate(2deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    .shoutout-label {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+
+    .shoutout-name {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      margin-bottom: 10px;
+    }
+
+    .shoutout-message {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 400px;
+    }
+
+    /* Go check them out button style */
+    .shoutout-cta {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 25px;
+      background: #fff;
+      color: #9146FF;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: translateY(10px);
+      animation: cta-appear 0.4s ease-out 1.2s forwards;
+    }
+
+    @keyframes cta-appear {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hearts floating */
+    .floating-heart {
+      position: fixed;
+      font-size: 28px;
+      opacity: 0;
+      animation: heart-float 2s ease-out forwards;
+    }
+
+    @keyframes heart-float {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+      }
+      20% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-150px) scale(0.6);
+      }
+    }
+
+    /* Sparkle bursts */
+    .sparkle {
+      position: fixed;
+      font-size: 24px;
+      opacity: 0;
+      animation: sparkle-burst 1s ease-out forwards;
+    }
+
+    @keyframes sparkle-burst {
+      0% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1.3); }
+      100% { opacity: 0; transform: scale(0.8); }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      opacity: 0;
+      animation: confetti-pop 2s ease-out forwards;
+    }
+
+    @keyframes confetti-pop {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(0);
+      }
+      10% {
+        transform: translateY(-50px) rotate(90deg) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg) scale(0.5);
+      }
+    }
+
+    /* Fade out */
+    @keyframes fade-out {
+      to { opacity: 0; }
+    }
+
+    .alert-container.fade-out {
+      animation: fade-out 0.5s ease-out forwards;
+    }
+  </style>
+</head>
+<body>
+  <div class="alert-container">
+    <!-- Megaphone with sound waves -->
+    <div style="position: relative;">
+      <div class="megaphone">📢</div>
+      <div class="sound-waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>
+    </div>
+
+    <!-- Shoutout card -->
+    <div class="shoutout-card">
+      <div class="shoutout-label">Shoutout to</div>
+      <div class="shoutout-name" id="streamer-name">StreamerName</div>
+      <div class="shoutout-message" id="message">Go check them out!</div>
+      <div class="shoutout-cta">twitch.tv/<span id="channel-link">streamername</span></div>
+    </div>
+
+    <!-- Floating hearts -->
+    <div class="floating-heart" style="left: 10%; bottom: 30%; animation-delay: 1.0s;">💜</div>
+    <div class="floating-heart" style="left: 25%; bottom: 25%; animation-delay: 1.2s;">💖</div>
+    <div class="floating-heart" style="left: 40%; bottom: 35%; animation-delay: 1.1s;">💜</div>
+    <div class="floating-heart" style="right: 40%; bottom: 30%; animation-delay: 1.3s;">💖</div>
+    <div class="floating-heart" style="right: 25%; bottom: 25%; animation-delay: 1.15s;">💜</div>
+    <div class="floating-heart" style="right: 10%; bottom: 35%; animation-delay: 1.25s;">💖</div>
+
+    <!-- Sparkles -->
+    <div class="sparkle" style="top: 15%; left: 15%; animation-delay: 0.9s;">✨</div>
+    <div class="sparkle" style="top: 20%; right: 20%; animation-delay: 1.0s;">⭐</div>
+    <div class="sparkle" style="top: 60%; left: 10%; animation-delay: 1.1s;">✨</div>
+    <div class="sparkle" style="top: 65%; right: 15%; animation-delay: 1.2s;">🌟</div>
+
+    <!-- Confetti -->
+    <div class="confetti" style="left: 10%; top: 40%; background: #9146FF; animation-delay: 0.8s;"></div>
+    <div class="confetti" style="left: 20%; top: 35%; background: #ff1493; animation-delay: 0.9s;"></div>
+    <div class="confetti" style="left: 30%; top: 45%; background: #FFD700; animation-delay: 1.0s;"></div>
+    <div class="confetti" style="right: 30%; top: 40%; background: #9146FF; animation-delay: 0.85s;"></div>
+    <div class="confetti" style="right: 20%; top: 35%; background: #ff1493; animation-delay: 0.95s;"></div>
+    <div class="confetti" style="right: 10%; top: 45%; background: #FFD700; animation-delay: 1.05s;"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    // Streamer name
+    const name = params.get('name') || 'Awesome Streamer';
+    document.getElementById('streamer-name').textContent = name;
+    document.getElementById('channel-link').textContent = name.toLowerCase().replace(/\s+/g, '');
+
+    // Custom message (optional)
+    const message = params.get('message');
+    if (message) {
+      document.getElementById('message').textContent = message;
+    }
+
+    // Fade out after duration
+    const duration = parseInt(params.get('duration')) || 6;
+    if (duration > 0) {
+      setTimeout(() => {
+        document.querySelector('.alert-container').classList.add('fade-out');
+      }, duration * 1000);
+    }
+  </script>
+</body>
+</html>

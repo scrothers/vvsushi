@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Alert Tester - vvSushii</title>
+  {{ $css := resources.Get "css/main.css" | css.TailwindCSS }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #9146FF 0%, #ff1493 100%);
+      padding: 30px 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .page-title {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .main-layout {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Control Panel */
+    .control-panel {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-height: calc(100vh - 200px);
+      overflow-y: auto;
+    }
+
+    .panel-title {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #9146FF;
+    }
+
+    .alert-selector {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .alert-btn {
+      padding: 12px 10px;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .alert-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .alert-btn.active {
+      background: linear-gradient(135deg, #9146FF 0%, #ff1493 100%);
+      border-color: transparent;
+    }
+
+    .alert-btn .emoji {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+
+    .form-section {
+      margin-bottom: 20px;
+    }
+
+    .form-section h3 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #9146FF;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .form-group input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .form-group select option {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    .trigger-btn {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #9146FF 0%, #ff1493 100%);
+      color: #fff;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .trigger-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(145, 70, 255, 0.4);
+    }
+
+    .trigger-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Preview Panel */
+    .preview-panel {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .preview-header {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .preview-title {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      color: #9146FF;
+    }
+
+    .preview-url {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 5px 10px;
+      border-radius: 5px;
+      max-width: 400px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .preview-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background:
+        linear-gradient(45deg, #222 25%, transparent 25%),
+        linear-gradient(-45deg, #222 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #222 75%),
+        linear-gradient(-45deg, transparent 75%, #222 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      background-color: #1a1a1a;
+    }
+
+    .preview-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .preview-controls {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px 20px;
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .preview-control-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .preview-control-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Quick test buttons */
+    .quick-tests {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .quick-tests h3 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .quick-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .quick-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <h1 class="page-title">Alert Tester</h1>
+    <p class="page-subtitle">Test and preview alert animations</p>
+  </header>
+
+  <div class="container">
+    <nav class="nav-links">
+      <a href="/obs/alerts/" class="nav-link">Alerts</a>
+      <a href="/obs/scenes/" class="nav-link">Scenes</a>
+      <a href="/obs/frame/" class="nav-link">Frame</a>
+      <a href="/obs/test/" class="nav-link" style="border-color: #9146FF;">Tester</a>
+    </nav>
+
+    <div class="main-layout">
+      <!-- Control Panel -->
+      <div class="control-panel">
+        <div class="panel-title">Select Alert Type</div>
+
+        <div class="alert-selector">
+          <button class="alert-btn active" data-alert="sub" onclick="selectAlert('sub')">
+            <span class="emoji">📸</span>
+            Subscriber
+          </button>
+          <button class="alert-btn" data-alert="raid" onclick="selectAlert('raid')">
+            <span class="emoji">⚔️</span>
+            Raid
+          </button>
+          <button class="alert-btn" data-alert="bits" onclick="selectAlert('bits')">
+            <span class="emoji">💎</span>
+            Bits
+          </button>
+          <button class="alert-btn" data-alert="giftsub" onclick="selectAlert('giftsub')">
+            <span class="emoji">🎁</span>
+            Gift Subs
+          </button>
+          <button class="alert-btn" data-alert="hypetrain" onclick="selectAlert('hypetrain')">
+            <span class="emoji">🚂</span>
+            Hype Train
+          </button>
+          <button class="alert-btn" data-alert="redeem" onclick="selectAlert('redeem')">
+            <span class="emoji">💜</span>
+            Redeem
+          </button>
+          <button class="alert-btn" data-alert="shoutout" onclick="selectAlert('shoutout')">
+            <span class="emoji">📢</span>
+            Shoutout
+          </button>
+        </div>
+
+        <!-- Subscriber Form -->
+        <div id="form-sub" class="form-section">
+          <h3>Subscriber Settings</h3>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="sub-name" placeholder="CoolViewer123" value="TestSubscriber">
+          </div>
+          <div class="form-group">
+            <label>Label</label>
+            <input type="text" id="sub-label" placeholder="New Subscriber!" value="New Subscriber!">
+          </div>
+          <div class="form-group">
+            <label>Duration (seconds)</label>
+            <input type="number" id="sub-duration" value="5" min="0" max="30">
+          </div>
+        </div>
+
+        <!-- Raid Form -->
+        <div id="form-raid" class="form-section hidden">
+          <h3>Raid Settings</h3>
+          <div class="form-group">
+            <label>Raider Name</label>
+            <input type="text" id="raid-name" placeholder="StreamerName" value="CoolRaider">
+          </div>
+          <div class="form-group">
+            <label>Viewer Count</label>
+            <input type="number" id="raid-viewers" value="150" min="1">
+          </div>
+          <div class="form-group">
+            <label>Duration (seconds)</label>
+            <input type="number" id="raid-duration" value="6" min="0" max="30">
+          </div>
+        </div>
+
+        <!-- Bits Form -->
+        <div id="form-bits" class="form-section hidden">
+          <h3>Bits Settings</h3>
+          <div class="form-group">
+            <label>Cheerer Name</label>
+            <input type="text" id="bits-name" placeholder="GenerousFan" value="BigCheerer">
+          </div>
+          <div class="form-group">
+            <label>Bits Amount</label>
+            <input type="number" id="bits-amount" value="500" min="1">
+          </div>
+          <div class="form-group">
+            <label>Duration (seconds)</label>
+            <input type="number" id="bits-duration" value="5" min="0" max="30">
+          </div>
+        </div>
+
+        <!-- Gift Sub Form -->
+        <div id="form-giftsub" class="form-section hidden">
+          <h3>Gift Sub Settings</h3>
+          <div class="form-group">
+            <label>Gifter Name</label>
+            <input type="text" id="giftsub-name" placeholder="GiftBomber" value="GenerousGifter">
+          </div>
+          <div class="form-group">
+            <label>Gift Count</label>
+            <input type="number" id="giftsub-count" value="5" min="1">
+          </div>
+          <div class="form-group">
+            <label>Duration (seconds)</label>
+            <input type="number" id="giftsub-duration" value="6" min="0" max="30">
+          </div>
+        </div>
+
+        <!-- Hype Train Form -->
+        <div id="form-hypetrain" class="form-section hidden">
+          <h3>Hype Train Settings</h3>
+          <div class="form-group">
+            <label>Level</label>
+            <input type="number" id="hypetrain-level" value="3" min="1" max="5">
+          </div>
+          <div class="form-group">
+            <label>Progress (%)</label>
+            <input type="number" id="hypetrain-progress" value="75" min="0" max="100">
+          </div>
+          <div class="form-group">
+            <label>Duration (seconds)</label>
+            <input type="number" id="hypetrain-duration" value="8" min="0" max="30">
+          </div>
+        </div>
+
+        <!-- Redeem Form -->
+        <div id="form-redeem" class="form-section hidden">
+          <h3>Redemption Settings</h3>
+          <div class="form-group">
+            <label>Redeemer Name</label>
+            <input type="text" id="redeem-name" placeholder="Viewer" value="LuckyViewer">
+          </div>
+          <div class="form-group">
+            <label>Reward Name</label>
+            <input type="text" id="redeem-reward" placeholder="Highlight Message" value="Highlight My Message">
+          </div>
+          <div class="form-group">
+            <label>Cost (optional)</label>
+            <input type="number" id="redeem-cost" value="500" min="0">
+          </div>
+          <div class="form-group">
+            <label>Duration (seconds)</label>
+            <input type="number" id="redeem-duration" value="5" min="0" max="30">
+          </div>
+        </div>
+
+        <!-- Shoutout Form -->
+        <div id="form-shoutout" class="form-section hidden">
+          <h3>Shoutout Settings</h3>
+          <div class="form-group">
+            <label>Streamer Name</label>
+            <input type="text" id="shoutout-name" placeholder="AwesomeStreamer" value="CoolStreamer">
+          </div>
+          <div class="form-group">
+            <label>Message (optional)</label>
+            <input type="text" id="shoutout-message" placeholder="Go check them out!" value="Amazing content creator!">
+          </div>
+          <div class="form-group">
+            <label>Duration (seconds)</label>
+            <input type="number" id="shoutout-duration" value="6" min="0" max="30">
+          </div>
+        </div>
+
+        <button class="trigger-btn" onclick="triggerAlert()">
+          Trigger Alert
+        </button>
+
+        <div class="quick-tests">
+          <h3>Quick Tests</h3>
+          <button class="quick-btn" onclick="quickTest('sub', {name: 'QuickSub', label: 'New Subscriber!', duration: 5})">
+            Quick Sub Alert
+          </button>
+          <button class="quick-btn" onclick="quickTest('raid', {name: 'BigRaider', viewers: 500, duration: 6})">
+            Quick Raid (500 viewers)
+          </button>
+          <button class="quick-btn" onclick="quickTest('bits', {name: 'Whale', amount: 10000, duration: 5})">
+            Quick Bits (10,000)
+          </button>
+          <button class="quick-btn" onclick="quickTest('giftsub', {name: 'GiftGod', count: 50, duration: 6})">
+            Quick Gift Bomb (50)
+          </button>
+          <button class="quick-btn" onclick="quickTest('hypetrain', {level: 5, progress: 95, duration: 8})">
+            Quick Hype Train Lvl 5
+          </button>
+        </div>
+      </div>
+
+      <!-- Preview Panel -->
+      <div class="preview-panel">
+        <div class="preview-header">
+          <span class="preview-title">Preview</span>
+          <span class="preview-url" id="preview-url">No alert loaded</span>
+        </div>
+        <div class="preview-frame">
+          <iframe id="preview-iframe" src="about:blank"></iframe>
+        </div>
+        <div class="preview-controls">
+          <button class="preview-control-btn" onclick="replayAlert()">Replay</button>
+          <button class="preview-control-btn" onclick="clearPreview()">Clear</button>
+          <button class="preview-control-btn" onclick="openInNewTab()">Open in New Tab</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentAlert = 'sub';
+    let lastUrl = '';
+
+    const alertRoutes = {
+      sub: '/obs/alert-sub/',
+      raid: '/obs/alert-raid/',
+      bits: '/obs/alert-bits/',
+      giftsub: '/obs/alert-giftsub/',
+      hypetrain: '/obs/alert-hypetrain/',
+      redeem: '/obs/alert-redeem/',
+      shoutout: '/obs/alert-shoutout/'
+    };
+
+    function selectAlert(type) {
+      currentAlert = type;
+
+      // Update button states
+      document.querySelectorAll('.alert-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.alert === type);
+      });
+
+      // Show/hide forms
+      document.querySelectorAll('.form-section').forEach(form => {
+        form.classList.add('hidden');
+      });
+      document.getElementById('form-' + type).classList.remove('hidden');
+    }
+
+    function getAlertParams() {
+      const params = {};
+
+      switch (currentAlert) {
+        case 'sub':
+          params.name = document.getElementById('sub-name').value;
+          params.label = document.getElementById('sub-label').value;
+          params.duration = document.getElementById('sub-duration').value;
+          break;
+        case 'raid':
+          params.name = document.getElementById('raid-name').value;
+          params.viewers = document.getElementById('raid-viewers').value;
+          params.duration = document.getElementById('raid-duration').value;
+          break;
+        case 'bits':
+          params.name = document.getElementById('bits-name').value;
+          params.amount = document.getElementById('bits-amount').value;
+          params.duration = document.getElementById('bits-duration').value;
+          break;
+        case 'giftsub':
+          params.name = document.getElementById('giftsub-name').value;
+          params.count = document.getElementById('giftsub-count').value;
+          params.duration = document.getElementById('giftsub-duration').value;
+          break;
+        case 'hypetrain':
+          params.level = document.getElementById('hypetrain-level').value;
+          params.progress = document.getElementById('hypetrain-progress').value;
+          params.duration = document.getElementById('hypetrain-duration').value;
+          break;
+        case 'redeem':
+          params.name = document.getElementById('redeem-name').value;
+          params.reward = document.getElementById('redeem-reward').value;
+          const cost = document.getElementById('redeem-cost').value;
+          if (cost && cost !== '0') params.cost = cost;
+          params.duration = document.getElementById('redeem-duration').value;
+          break;
+        case 'shoutout':
+          params.name = document.getElementById('shoutout-name').value;
+          const message = document.getElementById('shoutout-message').value;
+          if (message) params.message = message;
+          params.duration = document.getElementById('shoutout-duration').value;
+          break;
+      }
+
+      return params;
+    }
+
+    function buildUrl(alertType, params) {
+      const url = new URL(window.location.origin + alertRoutes[alertType]);
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== undefined && value !== null && value !== '') {
+          url.searchParams.set(key, value);
+        }
+      });
+      return url.toString();
+    }
+
+    function triggerAlert() {
+      const params = getAlertParams();
+      lastUrl = buildUrl(currentAlert, params);
+
+      document.getElementById('preview-iframe').src = lastUrl;
+      document.getElementById('preview-url').textContent = lastUrl.replace(window.location.origin, '');
+    }
+
+    function quickTest(alertType, params) {
+      selectAlert(alertType);
+      lastUrl = buildUrl(alertType, params);
+
+      document.getElementById('preview-iframe').src = lastUrl;
+      document.getElementById('preview-url').textContent = lastUrl.replace(window.location.origin, '');
+    }
+
+    function replayAlert() {
+      if (lastUrl) {
+        const iframe = document.getElementById('preview-iframe');
+        iframe.src = 'about:blank';
+        setTimeout(() => {
+          iframe.src = lastUrl;
+        }, 100);
+      }
+    }
+
+    function clearPreview() {
+      document.getElementById('preview-iframe').src = 'about:blank';
+      document.getElementById('preview-url').textContent = 'No alert loaded';
+      lastUrl = '';
+    }
+
+    function openInNewTab() {
+      if (lastUrl) {
+        window.open(lastUrl, '_blank');
+      }
+    }
+  </script>
+</body>
+</html>

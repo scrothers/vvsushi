@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>OBS Scene Overlays - vvSushii</title>
+  {{ $css := resources.Get "css/main.css" | css.TailwindCSS }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #e8e0f0 0%, #f0e8f8 50%, #e0f0f8 100%);
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #9146FF 0%, #ff1493 100%);
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    .page-title {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .nav-link {
+      background: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      color: #9146FF;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(145, 70, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(145, 70, 255, 0.3);
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, #9146FF 0%, #ff1493 100%);
+      color: white;
+    }
+
+    .intro-box {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 40px rgba(145, 70, 255, 0.1);
+    }
+
+    .intro-box h2 {
+      font-family: 'Quicksand', sans-serif;
+      color: #9146FF;
+      margin-bottom: 15px;
+    }
+
+    .intro-box p {
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .intro-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-box code {
+      background: #f0e8f8;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      color: #9146FF;
+    }
+
+    .section-title {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #9146FF;
+    }
+
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .scene-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(145, 70, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(145, 70, 255, 0.2);
+    }
+
+    .scene-preview {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      background: #1a1a2e;
+    }
+
+    .scene-preview iframe {
+      width: 177.78%;
+      height: 177.78%;
+      border: none;
+      transform: scale(0.5625);
+      transform-origin: top left;
+      pointer-events: none;
+    }
+
+    .scene-content {
+      padding: 25px;
+    }
+
+    .scene-title {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .scene-description {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .scene-route {
+      background: linear-gradient(135deg, #f0e8f8 0%, #e8f0f8 100%);
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #9146FF;
+      margin-bottom: 15px;
+    }
+
+    .scene-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .feature-tag {
+      background: #f0e8f8;
+      color: #9146FF;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .scene-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #9146FF 0%, #ff1493 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(145, 70, 255, 0.4);
+    }
+
+    .btn-secondary {
+      background: #f0e8f8;
+      color: #9146FF;
+    }
+
+    .btn-secondary:hover {
+      background: #e8e0f0;
+    }
+
+    /* Frame overlay special card */
+    .frame-card {
+      background: linear-gradient(135deg, #9146FF 0%, #ff1493 100%);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 50px;
+      color: white;
+    }
+
+    .frame-card h2 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
+    .frame-card p {
+      opacity: 0.95;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .frame-card .scene-route {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .params-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .param-item {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 12px 15px;
+      border-radius: 10px;
+    }
+
+    .param-name {
+      font-family: monospace;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .param-values {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .frame-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .frame-actions .btn {
+      flex: none;
+      background: white;
+      color: #9146FF;
+    }
+
+    .frame-actions .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .scene-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-title {
+        font-size: 1.8rem;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .params-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .frame-actions {
+        flex-direction: column;
+      }
+
+      .frame-actions .btn {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <h1 class="page-title">OBS Scene Overlays</h1>
+    <p class="page-subtitle">Full-screen overlays for different stream states</p>
+  </header>
+
+  <div class="container">
+    <nav class="nav-links">
+      <a href="/obs/alerts/" class="nav-link">Alerts</a>
+      <a href="/obs/scenes/" class="nav-link active">Scenes</a>
+      <a href="/obs/frame/" class="nav-link">Frame Overlay</a>
+      <a href="/obs/test/" class="nav-link">Tester</a>
+    </nav>
+
+    <div class="intro-box">
+      <h2>How to Use</h2>
+      <p>
+        Scene overlays are full-screen Browser Sources in OBS. Create a new scene for each stream state,
+        add a Browser Source with the URL, and set dimensions to match your canvas (1920x1080 recommended).
+      </p>
+      <p>
+        Most scenes have animated backgrounds, floating elements, and themed visuals. They're designed to
+        completely fill the screen during breaks, starting, or ending sequences.
+      </p>
+    </div>
+
+    <!-- Frame Overlay (Special) -->
+    <div class="frame-card">
+      <h2>Frame Overlay (Gameplay)</h2>
+      <p>
+        A transparent polaroid-style frame that sits on top of your gameplay. Features optional webcam frame,
+        social buttons, REC indicator, and corner decorations. The game shows through the transparent center.
+      </p>
+      <div class="scene-route">/obs/frame/</div>
+
+      <div class="params-grid">
+        <div class="param-item">
+          <div class="param-name">webcam</div>
+          <div class="param-values">br, bl, tr, tl, none</div>
+        </div>
+        <div class="param-item">
+          <div class="param-name">ratio</div>
+          <div class="param-values">16:9, 3:2</div>
+        </div>
+        <div class="param-item">
+          <div class="param-name">size</div>
+          <div class="param-values">sm, md, lg</div>
+        </div>
+        <div class="param-item">
+          <div class="param-name">socials</div>
+          <div class="param-values">true, false</div>
+        </div>
+        <div class="param-item">
+          <div class="param-name">rec</div>
+          <div class="param-values">true, false</div>
+        </div>
+        <div class="param-item">
+          <div class="param-name">emotes</div>
+          <div class="param-values">corners, true, none</div>
+        </div>
+      </div>
+
+      <div class="frame-actions">
+        <a href="/obs/frame/" target="_blank" class="btn">Basic Frame</a>
+        <a href="/obs/frame/?webcam=br" target="_blank" class="btn">+ Webcam BR</a>
+        <a href="/obs/frame/?webcam=br&size=lg&ratio=3:2" target="_blank" class="btn">+ Large 3:2</a>
+        <a href="/obs/frame/?webcam=br&socials=true&rec=true&emotes=corners" target="_blank" class="btn">Full Setup</a>
+        <a href="/obs/frame/?socials=false&rec=false" target="_blank" class="btn">Minimal</a>
+      </div>
+    </div>
+
+    <h2 class="section-title">Stream State Scenes</h2>
+
+    <div class="scene-grid">
+      <!-- Starting Soon -->
+      <div class="scene-card">
+        <div class="scene-preview">
+          <iframe src="/obs/starting_soon/" loading="lazy"></iframe>
+        </div>
+        <div class="scene-content">
+          <h3 class="scene-title">Starting Soon</h3>
+          <p class="scene-description">Animated countdown vibe with floating clouds, hearts, and sparkles. Perfect for pre-stream warmup.</p>
+          <div class="scene-route">/obs/starting_soon/</div>
+          <div class="scene-features">
+            <span class="feature-tag">Animated Background</span>
+            <span class="feature-tag">Floating Elements</span>
+            <span class="feature-tag">Cloud Theme</span>
+          </div>
+          <div class="scene-actions">
+            <a href="/obs/starting_soon/" target="_blank" class="btn btn-primary">Open Full Screen</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Just Chatting -->
+      <div class="scene-card">
+        <div class="scene-preview">
+          <iframe src="/obs/just_chatting/" loading="lazy"></iframe>
+        </div>
+        <div class="scene-content">
+          <h3 class="scene-title">Just Chatting</h3>
+          <p class="scene-description">Large polaroid webcam frame with tape decoration, corner brackets, and floating stickers.</p>
+          <div class="scene-route">/obs/just_chatting/</div>
+          <div class="scene-features">
+            <span class="feature-tag">Polaroid Frame</span>
+            <span class="feature-tag">Webcam Focus</span>
+            <span class="feature-tag">Cute Stickers</span>
+          </div>
+          <div class="scene-actions">
+            <a href="/obs/just_chatting/" target="_blank" class="btn btn-primary">Open Full Screen</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRB -->
+      <div class="scene-card">
+        <div class="scene-preview">
+          <iframe src="/obs/brb/" loading="lazy"></iframe>
+        </div>
+        <div class="scene-content">
+          <h3 class="scene-title">Be Right Back</h3>
+          <p class="scene-description">Cozy sleepy theme with dreamy animations. Let viewers know you'll return soon.</p>
+          <div class="scene-route">/obs/brb/</div>
+          <div class="scene-features">
+            <span class="feature-tag">Sleepy Theme</span>
+            <span class="feature-tag">Soft Animations</span>
+            <span class="feature-tag">Dreamy Vibes</span>
+          </div>
+          <div class="scene-actions">
+            <a href="/obs/brb/" target="_blank" class="btn btn-primary">Open Full Screen</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ending -->
+      <div class="scene-card">
+        <div class="scene-preview">
+          <iframe src="/obs/ending/" loading="lazy"></iframe>
+        </div>
+        <div class="scene-content">
+          <h3 class="scene-title">Stream Ending</h3>
+          <p class="scene-description">Farewell screen with thank you message and social links. Perfect for stream outro.</p>
+          <div class="scene-route">/obs/ending/</div>
+          <div class="scene-features">
+            <span class="feature-tag">Thank You Message</span>
+            <span class="feature-tag">Social Links</span>
+            <span class="feature-tag">Outro Vibes</span>
+          </div>
+          <div class="scene-actions">
+            <a href="/obs/ending/" target="_blank" class="btn btn-primary">Open Full Screen</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Offline -->
+      <div class="scene-card">
+        <div class="scene-preview">
+          <iframe src="/obs/offline/" loading="lazy"></iframe>
+        </div>
+        <div class="scene-content">
+          <h3 class="scene-title">Offline</h3>
+          <p class="scene-description">Night sky theme with stars and moon. Displayed when stream is not live.</p>
+          <div class="scene-route">/obs/offline/</div>
+          <div class="scene-features">
+            <span class="feature-tag">Night Theme</span>
+            <span class="feature-tag">Stars & Moon</span>
+            <span class="feature-tag">Calm Atmosphere</span>
+          </div>
+          <div class="scene-actions">
+            <a href="/obs/offline/" target="_blank" class="btn btn-primary">Open Full Screen</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blank -->
+      <div class="scene-card">
+        <div class="scene-preview">
+          <iframe src="/obs/blank/" loading="lazy"></iframe>
+        </div>
+        <div class="scene-content">
+          <h3 class="scene-title">Blank (Background Only)</h3>
+          <p class="scene-description">Just the animated background with clouds, stars, and hearts. No text or UI elements.</p>
+          <div class="scene-route">/obs/blank/</div>
+          <div class="scene-features">
+            <span class="feature-tag">Background Only</span>
+            <span class="feature-tag">Floating Elements</span>
+            <span class="feature-tag">Versatile</span>
+          </div>
+          <div class="scene-actions">
+            <a href="/obs/blank/" target="_blank" class="btn btn-primary">Open Full Screen</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ad Break -->
+      <div class="scene-card">
+        <div class="scene-preview">
+          <iframe src="/obs/ad_break/" loading="lazy"></iframe>
+        </div>
+        <div class="scene-content">
+          <h3 class="scene-title">Ad Break</h3>
+          <p class="scene-description">TV-themed screen with countdown timer for commercial breaks. Shows progress bar and remaining time.</p>
+          <div class="scene-route">/obs/ad_break/?duration=30</div>
+          <div class="scene-features">
+            <span class="feature-tag">Countdown Timer</span>
+            <span class="feature-tag">Progress Bar</span>
+            <span class="feature-tag">TV Theme</span>
+          </div>
+          <div class="scene-actions">
+            <a href="/obs/ad_break/" target="_blank" class="btn btn-primary">Open Full Screen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-box">
+      <h2>OBS Setup Tips</h2>
+      <p>
+        <strong>Browser Source Settings:</strong><br>
+        - Width: 1920 (or your canvas width)<br>
+        - Height: 1080 (or your canvas height)<br>
+        - FPS: 60 (for smooth animations)<br>
+        - Custom CSS: Leave empty<br>
+        - Shutdown source when not visible: Recommended for performance
+      </p>
+      <p>
+        <strong>For Portrait/TikTok (9:16):</strong><br>
+        - Width: 1080<br>
+        - Height: 1920<br>
+        - The frame overlay automatically adjusts layout for portrait mode
+      </p>
+    </div>
+  </div>
+</body>
+</html>

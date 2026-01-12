@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Hype Train Alert</title>
+  {{ $css := resources.Get "css/main.css" | css.TailwindCSS }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent !important;
+    }
+
+    .alert-container {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Train track */
+    .train-track {
+      position: fixed;
+      bottom: 30%;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, transparent 0%, #4a4a4a 10%, #4a4a4a 90%, transparent 100%);
+      opacity: 0;
+      animation: track-appear 0.3s ease-out 0.2s forwards;
+    }
+
+    .train-track::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: repeating-linear-gradient(
+        90deg,
+        #8B4513 0px,
+        #8B4513 20px,
+        transparent 20px,
+        transparent 40px
+      );
+    }
+
+    @keyframes track-appear {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Train */
+    .hype-train {
+      position: fixed;
+      bottom: calc(30% + 8px);
+      display: flex;
+      align-items: flex-end;
+      transform: translateX(-100%);
+      animation: train-arrive 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
+    }
+
+    @keyframes train-arrive {
+      0% { transform: translateX(-100%); }
+      70% { transform: translateX(calc(50vw - 150px + 20px)); }
+      85% { transform: translateX(calc(50vw - 150px - 10px)); }
+      100% { transform: translateX(calc(50vw - 150px)); }
+    }
+
+    /* Locomotive */
+    .locomotive {
+      width: 120px;
+      height: 80px;
+      background: linear-gradient(135deg, #9146FF 0%, #ff1493 100%);
+      border-radius: 10px 20px 5px 5px;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(145, 70, 255, 0.5);
+      border: 3px solid #fff;
+    }
+
+    .locomotive::before {
+      content: '🚂';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+    }
+
+    /* Smokestack */
+    .smokestack {
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      width: 20px;
+      height: 30px;
+      background: #333;
+      border-radius: 5px 5px 0 0;
+    }
+
+    /* Steam puffs */
+    .steam {
+      position: absolute;
+      top: -50px;
+      left: 15px;
+      font-size: 24px;
+      opacity: 0;
+      animation: steam-puff 1s ease-out infinite;
+    }
+
+    .steam:nth-child(2) { animation-delay: 0.3s; left: 25px; }
+    .steam:nth-child(3) { animation-delay: 0.6s; left: 35px; }
+
+    @keyframes steam-puff {
+      0% { opacity: 0; transform: translateY(0) scale(0.5); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-40px) scale(1.5); }
+    }
+
+    /* Wheels */
+    .wheel {
+      position: absolute;
+      bottom: -10px;
+      width: 25px;
+      height: 25px;
+      background: #333;
+      border-radius: 50%;
+      border: 3px solid #666;
+      animation: wheel-spin 0.5s linear infinite;
+    }
+
+    .wheel::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60%;
+      height: 3px;
+      background: #999;
+      transform: translate(-50%, -50%);
+    }
+
+    .wheel:nth-child(1) { left: 15px; }
+    .wheel:nth-child(2) { left: 50px; }
+    .wheel:nth-child(3) { right: 15px; }
+
+    @keyframes wheel-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Train cars */
+    .train-car {
+      width: 80px;
+      height: 60px;
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      border-radius: 8px;
+      margin-left: -10px;
+      position: relative;
+      box-shadow: 0 6px 20px rgba(255, 165, 0, 0.4);
+      border: 3px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .train-car .wheel {
+      width: 18px;
+      height: 18px;
+      bottom: -8px;
+    }
+
+    .train-car .wheel:nth-child(1) { left: 10px; }
+    .train-car .wheel:nth-child(2) { right: 10px; left: auto; }
+
+    /* Level badge */
+    .level-badge {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      background: linear-gradient(135deg, #9146FF 0%, #ff1493 100%);
+      padding: 20px 50px;
+      border-radius: 20px;
+      border: 4px solid #fff;
+      box-shadow: 0 10px 40px rgba(145, 70, 255, 0.6);
+      text-align: center;
+      animation: badge-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.3s forwards;
+    }
+
+    @keyframes badge-pop {
+      0% { transform: translateX(-50%) scale(0) rotate(-10deg); }
+      70% { transform: translateX(-50%) scale(1.1) rotate(3deg); }
+      100% { transform: translateX(-50%) scale(1) rotate(0deg); }
+    }
+
+    .level-title {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .level-number {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      line-height: 1;
+    }
+
+    .level-label {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: #FFD700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Progress bar */
+    .progress-container {
+      position: fixed;
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      opacity: 0;
+      animation: progress-appear 0.5s ease-out 1.5s forwards;
+    }
+
+    @keyframes progress-appear {
+      from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    .progress-bar {
+      height: 20px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid #fff;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #FFD700 0%, #ff1493 100%);
+      border-radius: 8px;
+      width: 0%;
+      animation: fill-progress 1s ease-out 1.8s forwards;
+    }
+
+    @keyframes fill-progress {
+      to { width: var(--progress, 50%); }
+    }
+
+    .progress-text {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      margin-top: 8px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Sparkles */
+    .sparkle {
+      position: fixed;
+      font-size: 24px;
+      opacity: 0;
+      animation: sparkle-burst 1s ease-out forwards;
+    }
+
+    @keyframes sparkle-burst {
+      0% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1.3); }
+      100% { opacity: 0; transform: scale(0.8); }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      opacity: 0;
+      animation: confetti-fall 2.5s ease-out forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% { opacity: 1; transform: translateY(-20px) rotate(0deg); }
+      100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+    }
+
+    /* Fade out */
+    @keyframes fade-out {
+      to { opacity: 0; }
+    }
+
+    .alert-container.fade-out {
+      animation: fade-out 0.5s ease-out forwards;
+    }
+  </style>
+</head>
+<body>
+  <div class="alert-container">
+    <!-- Train track -->
+    <div class="train-track"></div>
+
+    <!-- Hype train -->
+    <div class="hype-train">
+      <!-- Train cars (emotes) -->
+      <div class="train-car">
+        💜
+        <div class="wheel"></div>
+        <div class="wheel"></div>
+      </div>
+      <div class="train-car">
+        🎉
+        <div class="wheel"></div>
+        <div class="wheel"></div>
+      </div>
+      <div class="train-car">
+        ⭐
+        <div class="wheel"></div>
+        <div class="wheel"></div>
+      </div>
+
+      <!-- Locomotive -->
+      <div class="locomotive">
+        <div class="smokestack">
+          <div class="steam">💨</div>
+          <div class="steam">💨</div>
+          <div class="steam">💨</div>
+        </div>
+        <div class="wheel"></div>
+        <div class="wheel"></div>
+        <div class="wheel"></div>
+      </div>
+    </div>
+
+    <!-- Level badge -->
+    <div class="level-badge">
+      <div class="level-title">Hype Train</div>
+      <div class="level-number" id="level-number">1</div>
+      <div class="level-label">Level Up!</div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="progress-text"><span id="progress-percent">0</span>% to next level</div>
+    </div>
+
+    <!-- Sparkles -->
+    <div class="sparkle" style="top: 20%; left: 15%; animation-delay: 1.4s;">✨</div>
+    <div class="sparkle" style="top: 25%; right: 20%; animation-delay: 1.5s;">⭐</div>
+    <div class="sparkle" style="top: 45%; left: 10%; animation-delay: 1.6s;">🌟</div>
+    <div class="sparkle" style="top: 50%; right: 15%; animation-delay: 1.7s;">✨</div>
+    <div class="sparkle" style="top: 35%; left: 25%; animation-delay: 1.8s;">💫</div>
+    <div class="sparkle" style="top: 40%; right: 25%; animation-delay: 1.9s;">⭐</div>
+
+    <!-- Confetti -->
+    <div class="confetti" style="left: 5%; background: #9146FF; animation-delay: 1.3s;"></div>
+    <div class="confetti" style="left: 15%; background: #FFD700; animation-delay: 1.4s;"></div>
+    <div class="confetti" style="left: 25%; background: #ff1493; animation-delay: 1.5s;"></div>
+    <div class="confetti" style="left: 35%; background: #9146FF; animation-delay: 1.6s;"></div>
+    <div class="confetti" style="left: 45%; background: #FFD700; animation-delay: 1.4s;"></div>
+    <div class="confetti" style="left: 55%; background: #ff1493; animation-delay: 1.5s;"></div>
+    <div class="confetti" style="left: 65%; background: #9146FF; animation-delay: 1.6s;"></div>
+    <div class="confetti" style="left: 75%; background: #FFD700; animation-delay: 1.3s;"></div>
+    <div class="confetti" style="left: 85%; background: #ff1493; animation-delay: 1.7s;"></div>
+    <div class="confetti" style="left: 95%; background: #9146FF; animation-delay: 1.4s;"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    // Level
+    const level = params.get('level') || '1';
+    document.getElementById('level-number').textContent = level;
+
+    // Progress (0-100)
+    const progress = parseInt(params.get('progress')) || 50;
+    document.getElementById('progress-fill').style.setProperty('--progress', progress + '%');
+    document.getElementById('progress-percent').textContent = progress;
+
+    // Fade out after duration
+    const duration = parseInt(params.get('duration')) || 8;
+    if (duration > 0) {
+      setTimeout(() => {
+        document.querySelector('.alert-container').classList.add('fade-out');
+      }, duration * 1000);
+    }
+  </script>
+</body>
+</html>

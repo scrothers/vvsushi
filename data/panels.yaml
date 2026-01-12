@@ -1,0 +1,106 @@
+# Twitch Panel Content
+# Edit this file to update your panel information
+
+about:
+  tagline: "Cozy Variety Streamer"
+  bio: "Hey there! I'm Sushii, your favorite cozy chaos gremlin! I love playing variety games, chatting with my amazing community, and creating a chill space for everyone!"
+  tags:
+    - "Variety"
+    - "Cozy Vibes"
+    - "Community"
+
+peripherals:
+  - category: "Mouse"
+    item: "Logitech G Pro X Superlight"
+  - category: "Keyboard"
+    item: "Wooting 60HE"
+  - category: "Headset"
+    item: "SteelSeries Arctis Nova Pro"
+  - category: "Microphone"
+    item: "Shure SM7B"
+  - category: "Camera"
+    item: "Canon EOS R100"
+  - category: "Monitor"
+    item: "LG 27GP950-B 4K 144Hz"
+
+pc_specs:
+  title: "Gaming PC"
+  specs:
+    - category: "CPU"
+      item: "AMD Ryzen 9 7950X"
+    - category: "GPU"
+      item: "NVIDIA RTX 4090"
+    - category: "RAM"
+      item: "64GB DDR5 6000MHz"
+    - category: "Storage"
+      item: "2TB NVMe SSD"
+    - category: "Case"
+      item: "Lian Li O11 Dynamic"
+
+stream_pc_specs:
+  title: "Stream PC"
+  specs:
+    - category: "CPU"
+      item: "Intel i7-13700K"
+    - category: "GPU"
+      item: "NVIDIA RTX 3070"
+    - category: "RAM"
+      item: "32GB DDR5"
+    - category: "Capture"
+      item: "Elgato 4K60 Pro"
+
+faq:
+  - question: "What games do you play?"
+    answer: "Variety! RPGs, cozy games, FPS, horror, and whatever looks fun!"
+  - question: "What's your stream schedule?"
+    answer: "Mon-Fri 11AM-4PM CT, with bonus hours on Fridays!"
+  - question: "Can I play with you?"
+    answer: "Community game days are Wed & Fri - join the Discord for announcements!"
+  - question: "How do I become a mod?"
+    answer: "Mods are chosen from active, helpful community members over time!"
+
+# Button panels - these create clickable link panels
+buttons:
+  # Social Links
+  - name: "Discord"
+    url: "https://discord.gg/skvnuS2RKs"
+    color: "#5865F2"
+    icon: "discord"
+    subtitle: "Join the community!"
+
+  - name: "YouTube"
+    url: "https://www.youtube.com/@vvSushii"
+    color: "#FF0000"
+    icon: "youtube"
+    subtitle: "VODs & Highlights"
+
+  - name: "TikTok"
+    url: "https://www.tiktok.com/@vvsushii"
+    color: "#000000"
+    icon: "tiktok"
+    subtitle: "@vvsushii"
+
+  - name: "Website"
+    url: "https://vvsushi.gg"
+    color: "#ff69b4"
+    icon: "globe"
+    subtitle: "vvsushi.gg"
+
+  # Donate/Support Links
+  - name: "Donate"
+    url: "https://streamelements.com/vvsushii/tip"
+    color: "#FF6B9D"
+    icon: "heart"
+    subtitle: "Support the stream!"
+
+  - name: "CashApp"
+    url: "https://cash.app/$SINISTERSUSHII"
+    color: "#00D632"
+    icon: "cashapp"
+    subtitle: "$SINISTERSUSHII"
+
+  - name: "Venmo"
+    url: "https://venmo.com/VVSUSHII"
+    color: "#008CFF"
+    icon: "venmo"
+    subtitle: "@VVSUSHII"

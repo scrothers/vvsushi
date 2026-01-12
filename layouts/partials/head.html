@@ -47,8 +47,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
-<!-- CSS (compiled by Tailwind) -->
-<link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+<!-- CSS (compiled by Tailwind, fingerprinted by Hugo) -->
+{{- $css := resources.Get "css/compiled.css" -}}
+{{- $css = $css | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 
 <!-- RSS -->
 {{- range .AlternativeOutputFormats -}}

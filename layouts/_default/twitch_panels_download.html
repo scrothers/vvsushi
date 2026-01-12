@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Download Twitch Panels</title>
+  {{ $css := resources.Get "css/main.css" | css.TailwindCSS }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  <style>
+    .panel-preview {
+      background: #18181b;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .panel-preview:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+    .panel-preview img {
+      width: 320px;
+      height: auto;
+      display: block;
+    }
+    .download-btn {
+      background: linear-gradient(135deg, #ff69b4 0%, #9146ff 100%);
+      transition: all 0.2s;
+    }
+    .download-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(145, 70, 255, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-[#0e0e10] min-h-screen">
+  <!-- Header -->
+  <div class="bg-gradient-to-r from-hotpink-500 via-purple-500 to-periwinkle-500 py-8">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-3xl font-display font-bold text-white mb-2">Twitch Panel Downloads</h1>
+      <p class="text-white/80">Click any panel to download it for your Twitch channel</p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-12">
+    <!-- Info Panels Section -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-display font-bold text-purple-400 mb-6 text-center flex items-center justify-center gap-3">
+        <span class="text-3xl">📋</span>
+        Info Panels
+      </h2>
+      <div class="flex flex-wrap justify-center gap-8">
+
+        <!-- About Panel -->
+        <div class="flex flex-col items-center gap-4">
+          <div class="panel-preview">
+            <img src="/images/panels/about.png" alt="About Me Panel" onerror="this.parentElement.innerHTML='<div class=\'w-80 h-48 flex items-center justify-center text-gray-500\'>Not yet rendered</div>'">
+          </div>
+          <a href="/images/panels/about.png" download="about.png" class="download-btn text-white font-display font-bold px-6 py-2 rounded-full flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download About
+          </a>
+        </div>
+
+        <!-- Peripherals Panel -->
+        <div class="flex flex-col items-center gap-4">
+          <div class="panel-preview">
+            <img src="/images/panels/peripherals.png" alt="Peripherals Panel" onerror="this.parentElement.innerHTML='<div class=\'w-80 h-48 flex items-center justify-center text-gray-500\'>Not yet rendered</div>'">
+          </div>
+          <a href="/images/panels/peripherals.png" download="peripherals.png" class="download-btn text-white font-display font-bold px-6 py-2 rounded-full flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download Peripherals
+          </a>
+        </div>
+
+        <!-- PC Specs Panel -->
+        <div class="flex flex-col items-center gap-4">
+          <div class="panel-preview">
+            <img src="/images/panels/pc_specs.png" alt="PC Specs Panel" onerror="this.parentElement.innerHTML='<div class=\'w-80 h-48 flex items-center justify-center text-gray-500\'>Not yet rendered</div>'">
+          </div>
+          <a href="/images/panels/pc_specs.png" download="pc_specs.png" class="download-btn text-white font-display font-bold px-6 py-2 rounded-full flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download PC Specs
+          </a>
+        </div>
+
+        <!-- Stream PC Panel -->
+        <div class="flex flex-col items-center gap-4">
+          <div class="panel-preview">
+            <img src="/images/panels/stream_pc.png" alt="Stream PC Panel" onerror="this.parentElement.innerHTML='<div class=\'w-80 h-48 flex items-center justify-center text-gray-500\'>Not yet rendered</div>'">
+          </div>
+          <a href="/images/panels/stream_pc.png" download="stream_pc.png" class="download-btn text-white font-display font-bold px-6 py-2 rounded-full flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download Stream PC
+          </a>
+        </div>
+
+        <!-- FAQ Panel -->
+        <div class="flex flex-col items-center gap-4">
+          <div class="panel-preview">
+            <img src="/images/panels/faq.png" alt="FAQ Panel" onerror="this.parentElement.innerHTML='<div class=\'w-80 h-48 flex items-center justify-center text-gray-500\'>Not yet rendered</div>'">
+          </div>
+          <a href="/images/panels/faq.png" download="faq.png" class="download-btn text-white font-display font-bold px-6 py-2 rounded-full flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download FAQ
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Social Buttons Section -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-display font-bold text-hotpink-400 mb-6 text-center flex items-center justify-center gap-3">
+        <span class="text-3xl">🔗</span>
+        Social Link Buttons
+      </h2>
+      <div class="flex flex-wrap justify-center gap-8">
+
+        {{ range site.Data.panels.buttons }}
+        <div class="flex flex-col items-center gap-4">
+          <div class="panel-preview">
+            <img src="/images/panels/{{ .name | lower | replaceRE ` ` `_` }}_btn.png" alt="{{ .name }} Button" onerror="this.parentElement.innerHTML='<div class=\'w-80 h-16 flex items-center justify-center text-gray-500\'>Not yet rendered</div>'">
+          </div>
+          <a href="/images/panels/{{ .name | lower | replaceRE ` ` `_` }}_btn.png" download="{{ .name | lower | replaceRE ` ` `_` }}_btn.png" class="download-btn text-white font-display font-bold px-6 py-2 rounded-full flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download {{ .name }}
+          </a>
+        </div>
+        {{ end }}
+
+      </div>
+    </section>
+
+    <!-- Instructions -->
+    <section class="max-w-2xl mx-auto text-center">
+      <div class="bg-[#18181b] rounded-lg p-6 border border-gray-800">
+        <h3 class="text-lg font-display font-bold text-white mb-4">How to Use</h3>
+        <ol class="text-left text-gray-400 space-y-2 text-sm">
+          <li class="flex gap-3">
+            <span class="text-hotpink-400 font-bold">1.</span>
+            <span>Download the panels you want to use</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-hotpink-400 font-bold">2.</span>
+            <span>Go to your <a href="https://dashboard.twitch.tv/settings/channel" target="_blank" class="text-purple-400 hover:underline">Twitch Creator Dashboard</a></span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-hotpink-400 font-bold">3.</span>
+            <span>Scroll down to "Edit Panels" section</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-hotpink-400 font-bold">4.</span>
+            <span>Click the + to add a new panel, then upload your image</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-hotpink-400 font-bold">5.</span>
+            <span>For button panels, add the link URL in the "Image Links To" field</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Link to generator -->
+    <div class="text-center mt-8">
+      <a href="/twitch-panels/" class="text-gray-500 hover:text-gray-300 text-sm">
+        ← Back to Panel Generator (for manual screenshots)
+      </a>
+    </div>
+  </div>
+</body>
+</html>

@@ -19,7 +19,7 @@ package-lock.json.bak
 # =============================================================================
 # Build Artifacts
 # =============================================================================
-/static/css/main.css
+/assets/css/compiled.css
 *.css.map
 dist/
 build/

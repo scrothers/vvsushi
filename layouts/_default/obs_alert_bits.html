@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Bits Alert</title>
+  {{ $css := resources.Get "css/main.css" | css.TailwindCSS }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent !important;
+    }
+
+    .alert-container {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Bit gem */
+    .bit-gem {
+      width: 120px;
+      height: 120px;
+      position: relative;
+      opacity: 0;
+      transform: scale(0) rotate(-180deg);
+      animation: gem-spin-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards;
+    }
+
+    .bit-gem::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #9146FF 0%, #00C8FF 50%, #9146FF 100%);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      animation: gem-glow 1s ease-in-out infinite alternate;
+    }
+
+    .bit-gem::after {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      right: 10%;
+      bottom: 10%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    @keyframes gem-spin-in {
+      0% {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    @keyframes gem-glow {
+      0% { filter: brightness(1) drop-shadow(0 0 20px rgba(145, 70, 255, 0.8)); }
+      100% { filter: brightness(1.2) drop-shadow(0 0 40px rgba(0, 200, 255, 0.8)); }
+    }
+
+    /* Amount display */
+    .bits-amount {
+      margin-top: 20px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(145, 70, 255, 0.8), 0 4px 10px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: text-up 0.5s ease-out 0.8s forwards;
+    }
+
+    .bits-label {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: text-up 0.5s ease-out 0.6s forwards;
+    }
+
+    .bits-name {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: text-up 0.5s ease-out 1s forwards;
+    }
+
+    @keyframes text-up {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Falling coins */
+    .coin {
+      position: fixed;
+      font-size: 28px;
+      opacity: 0;
+      animation: coin-fall 2s ease-in forwards;
+    }
+
+    @keyframes coin-fall {
+      0% {
+        opacity: 0;
+        transform: translateY(-100px) rotate(0deg);
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg);
+      }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      opacity: 0;
+      animation: confetti-fall 3s ease-out forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        opacity: 1;
+        transform: translateY(-20px) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg);
+      }
+    }
+
+    /* Sparkle ring */
+    .sparkle-ring {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 3px dashed rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: ring-spin 4s linear infinite;
+      opacity: 0;
+      animation: ring-appear 0.5s ease-out 0.5s forwards, ring-spin 4s linear 0.5s infinite;
+    }
+
+    @keyframes ring-appear {
+      from { opacity: 0; transform: scale(0.5) rotate(0deg); }
+      to { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    @keyframes ring-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Fade out */
+    @keyframes fade-out {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .alert-container.fade-out {
+      animation: fade-out 0.5s ease-out forwards;
+    }
+  </style>
+</head>
+<body>
+  <div class="alert-container">
+    <!-- Sparkle ring -->
+    <div class="sparkle-ring"></div>
+
+    <!-- Bit gem -->
+    <div class="bit-gem"></div>
+
+    <!-- Text -->
+    <div class="bits-label">Cheer!</div>
+    <div class="bits-amount" id="bits-amount">100</div>
+    <div class="bits-name">from <span id="bits-name">Viewer</span></div>
+
+    <!-- Falling coins -->
+    <div class="coin" style="left: 10%; animation-delay: 0.3s;">💎</div>
+    <div class="coin" style="left: 25%; animation-delay: 0.5s;">💜</div>
+    <div class="coin" style="left: 40%; animation-delay: 0.4s;">💎</div>
+    <div class="coin" style="left: 55%; animation-delay: 0.6s;">✨</div>
+    <div class="coin" style="left: 70%; animation-delay: 0.35s;">💎</div>
+    <div class="coin" style="left: 85%; animation-delay: 0.55s;">💜</div>
+    <div class="coin" style="left: 15%; animation-delay: 0.8s;">💎</div>
+    <div class="coin" style="left: 60%; animation-delay: 0.9s;">✨</div>
+    <div class="coin" style="left: 80%; animation-delay: 0.7s;">💎</div>
+
+    <!-- Confetti -->
+    <div class="confetti" style="left: 5%; background: #9146FF; animation-delay: 0.2s;"></div>
+    <div class="confetti" style="left: 15%; background: #FF1493; animation-delay: 0.4s;"></div>
+    <div class="confetti" style="left: 25%; background: #00C8FF; animation-delay: 0.3s;"></div>
+    <div class="confetti" style="left: 35%; background: #9146FF; animation-delay: 0.5s;"></div>
+    <div class="confetti" style="left: 45%; background: #FF1493; animation-delay: 0.25s;"></div>
+    <div class="confetti" style="left: 55%; background: #00C8FF; animation-delay: 0.45s;"></div>
+    <div class="confetti" style="left: 65%; background: #9146FF; animation-delay: 0.35s;"></div>
+    <div class="confetti" style="left: 75%; background: #FF1493; animation-delay: 0.55s;"></div>
+    <div class="confetti" style="left: 85%; background: #00C8FF; animation-delay: 0.15s;"></div>
+    <div class="confetti" style="left: 95%; background: #9146FF; animation-delay: 0.6s;"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    // Bits amount
+    const amount = params.get('amount') || '100';
+    document.getElementById('bits-amount').textContent = amount;
+
+    // Cheerer name
+    const name = params.get('name') || 'Anonymous';
+    document.getElementById('bits-name').textContent = name;
+
+    // Fade out after duration
+    const duration = parseInt(params.get('duration')) || 5;
+    if (duration > 0) {
+      setTimeout(() => {
+        document.querySelector('.alert-container').classList.add('fade-out');
+      }, duration * 1000);
+    }
+  </script>
+</body>
+</html>

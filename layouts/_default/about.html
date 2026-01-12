@@ -36,7 +36,7 @@
 
         <!-- Quick tags -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-2">
-          {{ $tags := slice "Variety Streamer" "Gamer Girl" "Chaos Goblin" "Cozy Vibes" }}
+          {{ $tags := slice "Variety Streamer" "FPS Main" "Cozy Gamer" "Arkansas" }}
           {{ range $tags }}
           <span class="bg-white border-2 border-alt-900 px-3 py-1 text-sm font-display font-bold text-alt-700">
             {{ . }}
@@ -75,10 +75,10 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {{ $facts := slice
-            (dict "icon" "cozy1" "title" "Plushie Hoarder" "desc" "My room is 90% plushies, 10% gaming setup")
-            (dict "icon" "sip" "title" "Coffee Dependent" "desc" "Morning streams require at least 2 cups")
-            (dict "icon" "gaming" "title" "RGB Everything" "desc" "If it doesn't glow, does it even game?")
-            (dict "icon" "sad1" "title" "Emotional Gamer" "desc" "I WILL cry at sad game moments")
+            (dict "icon" "cozy1" "title" "Pet Parent" "desc" "Two dogs & two cats = chaotic household")
+            (dict "icon" "sip" "title" "Lego Builder" "desc" "Building sets is my zen mode")
+            (dict "icon" "gaming" "title" "Tattoo Collector" "desc" "Always planning the next piece")
+            (dict "icon" "sad1" "title" "Art Lover" "desc" "Love creating and collecting art")
           }}
           {{ range $facts }}
           {{ $fact := . }}
@@ -112,10 +112,10 @@
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {{ $genres := slice
-            (dict "name" "RPGs" "desc" "Story is life")
+            (dict "name" "FPS / Hero Shooters" "desc" "My main genre")
             (dict "name" "Cozy Games" "desc" "Peak comfort")
-            (dict "name" "Horror" "desc" "Scaredy-cat")
-            (dict "name" "Whatever Chat Picks" "desc" "Pure chaos")
+            (dict "name" "RPGs" "desc" "Story is life")
+            (dict "name" "Variety" "desc" "Whatever sounds fun")
           }}
           {{ range $genres }}
           <div class="bg-gradient-to-br from-periwinkle-50 to-hotpink-50 border-2 border-alt-900 p-4 text-center">

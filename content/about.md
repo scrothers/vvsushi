@@ -1,13 +1,11 @@
 ---
 title: "About Me"
-description: "Gamer, streamer, and professional chaos goblin. Welcome to my cozy corner of the internet!"
+description: "25-year-old variety streamer from Arkansas who loves gaming, art, Legos, tattoos & laughs!"
 layout: "about"
 ---
 
-Welcome to my little slice of the internet! I'm a variety streamer who plays everything from cozy farming sims to heart-pounding horror games (even though I'm a total scaredy-cat).
+Hi, I'm Sushii! I'm a variety streamer who loves gaming, art, Legos, tattoos & laughs! I have a happy little family of a husband, two dogs & two cats. I'm an introvert IRL but I absolutely love my online friends!
 
-Streaming started as a way to share my love of gaming, but it became so much more - it's where I found my people. The community we've built together is honestly the best part of all of this.
+I started streaming because I wanted to make more friends and build a community and safe space for everyone to be themselves and never feel judged.
 
-When I'm not live, you can usually find me playing games off-stream, collecting way too many plushies, or plotting chaos with my Discord fam.
-
-Whether you're here for the gameplay, the vibes, or just to hang out - I'm so glad you're here!
+Whether you're here for competitive FPS chaos (Top 0.01% Healer/Strategist in Marvel Rivals!), cozy gaming vibes, or just to hang out - I'm so glad you're here!

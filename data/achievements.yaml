@@ -1,37 +1,39 @@
 # Gaming achievements and milestones
-# Add your gaming achievements and streaming milestones here
 
 streaming:
   - title: "First Stream"
     description: "Started my streaming journey!"
-    date: "2024-01-01"
+    date: "2024-05-02"
     icon: "🎬"
 
   - title: "Affiliate"
     description: "Reached Twitch Affiliate status"
-    date: "2024-03-15"
+    date: "2024-05-10"
     icon: "💜"
 
-  - title: "100 Followers"
-    description: "First 100 followers milestone"
-    date: "2024-02-01"
-    icon: "🎉"
+  - title: "Married"
+    description: "Said I do! 03/16/25"
+    date: "2025-03-16"
+    icon: "💍"
 
 gaming:
-  - title: "Platinum Trophy"
-    game: "Final Fantasy XVI"
-    description: "100% completion"
-    date: "2024-06-01"
+  - title: "Top 0.01%"
+    game: "Marvel Rivals"
+    description: "Healer/Strategist ranking"
     icon: "🏆"
 
-  - title: "Diamond Rank"
-    game: "Valorant"
-    description: "Reached Diamond rank"
-    date: "2024-04-01"
-    icon: "💎"
+  - title: "1,000+ Hours"
+    game: "Marvel Rivals"
+    description: "Main game addiction"
+    icon: "🎮"
+
+  - title: "2,000+ Hours"
+    game: "Apex Legends"
+    description: "Movement shooter queen"
+    icon: "👑"
 
 stats:
-  hours_streamed: "500+"
-  games_completed: "25"
-  favorite_genre: "RPG"
-  setup: "PC + PS5"
+  hours_streamed: "1,900+"
+  games_completed: "25+"
+  favorite_genre: "FPS"
+  setup: "Dual PC"

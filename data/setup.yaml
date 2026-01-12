@@ -1,0 +1,103 @@
+# Streaming setup - peripherals and PC specs
+
+peripherals:
+  - category: "Capture"
+    items:
+      - name: "Elgato 4K X"
+        type: "Capture Card"
+
+  - category: "Input"
+    items:
+      - name: "Higround Summit 65 - Wraith Edition"
+        type: "Keyboard"
+      - name: "Logitech G Pro X Superlight 2 - White"
+        type: "Mouse"
+      - name: "Atom Gaming Glass 400mm"
+        type: "Mouse Pad"
+
+  - category: "Audio"
+    items:
+      - name: "Elgato Wave 3 - White"
+        type: "Microphone"
+      - name: "Sony Gaming Earbuds"
+        type: "Earbuds"
+
+  - category: "Video"
+    items:
+      - name: "Canon Rebel"
+        type: "Desk Camera"
+      - name: "Elgato 4K Cam"
+        type: "Face Camera"
+
+  - category: "Monitors"
+    items:
+      - name: "Alienware 28in 360Hz"
+        type: "Main Monitor"
+      - name: "Alienware 32in 240Hz OLED"
+        type: "Secondary Monitor"
+      - name: "MSI 28in 165Hz"
+        type: "Third Monitor"
+
+  - category: "Extras"
+    items:
+      - name: "Elgato Key Light"
+        type: "Lighting"
+      - name: "Elgato Stream Deck"
+        type: "Stream Controller"
+
+pcs:
+  - name: "Main Gaming/Streaming PC"
+    type: "Self-built"
+    primary: true
+    specs:
+      - label: "CPU"
+        value: "AMD Ryzen 9 7900X3D"
+      - label: "GPU"
+        value: "NVIDIA GeForce RTX 4070 Ti Super"
+      - label: "Motherboard"
+        value: "ASRock A620M PRO RS WiFi AM5"
+      - label: "RAM"
+        value: "64GB RGB DDR5"
+      - label: "Cooling"
+        value: "ARGB Water Cooler"
+      - label: "Storage"
+        value: "2TB M.2 NVMe"
+      - label: "PSU"
+        value: "750W 80 Plus Gold"
+
+  - name: "Streaming PC"
+    type: "Pre-built"
+    primary: false
+    specs:
+      - label: "CPU"
+        value: "Intel Core i7-14700K"
+      - label: "GPU"
+        value: "NVIDIA RTX 4080"
+      - label: "RAM"
+        value: "16GB DDR5"
+      - label: "Storage"
+        value: "1TB SSD"
+
+faq:
+  - question: "Do you play with viewers?"
+    answer: "I do play with viewers once you become a supporter."
+
+  - question: "Where are you from?"
+    answer: "Arkansas"
+
+  - question: "Are you in a relationship?"
+    answer: "Yes, very happily taken. Married 03/16/25!"
+
+  - question: "How old are you?"
+    answer: "25"
+
+  - question: "Why do I have to watch ads?"
+    answer: "Watching ads is the best FREE way to support your favorite streamers if you don't have the ability to sub."
+
+donations:
+  - name: "CashApp"
+    handle: "SINISTERSUSHII"
+  - name: "Venmo"
+    handle: "VVSUSHII"
+  - name: "SoundAlerts"
+    url: "https://streamelements.com/vvsushii/tip"

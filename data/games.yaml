@@ -3,104 +3,263 @@
 
 # Featured games (shown prominently)
 featured:
-  - app_id: 1245620
-    name: "Elden Ring"
-    status: "currently_playing"
-    rating: 5
-    hours: 200
-    review: "Pain and suffering but I love it"
-    tags: ["RPG", "Souls-like", "Open World"]
-
-  - app_id: 1817070
+  - app_id: 2767030
     name: "Marvel Rivals"
     status: "currently_playing"
     rating: 5
-    hours: 150
-    review: "My competitive addiction"
+    hours: 1000
+    review: "Top 0.01% Healer/Strategist - my competitive addiction"
     tags: ["Hero Shooter", "Multiplayer", "Team-based"]
 
-# Full game library
-games:
-  # Horror
   - app_id: 1172470
     name: "Apex Legends"
-    status: "played"
-    rating: 4
-    hours: 500
+    status: "currently_playing"
+    rating: 5
+    hours: 2000
     review: "Movement shooter queen"
     tags: ["Battle Royale", "FPS", "Multiplayer"]
 
-  - app_id: 1203220
-    name: "Naraka: Bladepoint"
-    status: "played"
-    rating: 4
-    hours: 100
-    review: "Satisfying melee combat"
-    tags: ["Battle Royale", "Action", "Multiplayer"]
+# Full game library
+games:
+  # Hero Shooters / FPS
+  - app_id: 2767030
+    name: "Marvel Rivals"
+    status: "currently_playing"
+    rating: 5
+    hours: 1000
+    review: "Top 0.01% Healer/Strategist"
+    tags: ["Hero Shooter", "FPS", "Multiplayer"]
 
-  - app_id: 578080
-    name: "PUBG: Battlegrounds"
+  - app_id: 1172470
+    name: "Apex Legends"
     status: "played"
-    rating: 3
-    hours: 200
-    review: "The OG battle royale"
-    tags: ["Battle Royale", "FPS", "Survival"]
-
-  - app_id: 381210
-    name: "Dead by Daylight"
-    status: "played"
-    rating: 4
-    hours: 300
-    review: "Screaming simulator"
-    tags: ["Horror", "Multiplayer", "Asymmetric"]
-
-  - app_id: 1938090
-    name: "Call of Duty: Warzone"
-    status: "played"
-    rating: 3
-    hours: 150
-    review: "Casual fun with friends"
+    rating: 5
+    hours: 2000
+    review: "Movement shooter queen"
     tags: ["Battle Royale", "FPS", "Multiplayer"]
 
-  - app_id: 1599340
-    name: "Lost Ark"
+  - app_id: 0
+    name: "Peak"
     status: "played"
     rating: 4
-    hours: 200
-    review: "Beautiful MMO chaos"
-    tags: ["MMO", "Action RPG", "Free to Play"]
+    hours: 0
+    review: "New extraction shooter"
+    tags: ["FPS", "Extraction", "Multiplayer"]
 
-  - app_id: 892970
-    name: "Valheim"
-    status: "played"
-    rating: 5
-    hours: 100
-    review: "Cozy Viking survival"
-    tags: ["Survival", "Co-op", "Open World"]
-
-  - app_id: 1966720
-    name: "Lethal Company"
-    status: "played"
-    rating: 5
-    hours: 50
-    review: "BEES! BEES EVERYWHERE!"
-    tags: ["Horror", "Co-op", "Comedy"]
-
-  - app_id: 2881650
-    name: "Delta Force"
+  - app_id: 0
+    name: "ARC Raiders"
     status: "played"
     rating: 4
-    hours: 30
-    review: "Tactical shooter vibes"
-    tags: ["FPS", "Tactical", "Multiplayer"]
+    hours: 0
+    review: "Co-op shooter fun"
+    tags: ["FPS", "Co-op", "Sci-Fi"]
 
-  - app_id: 1517290
-    name: "Battlefield 2042"
+  - app_id: 0
+    name: "Lockdown Protocol"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Tactical extraction"
+    tags: ["FPS", "Extraction", "Tactical"]
+
+  # RPGs
+  - app_id: 1086940
+    name: "Baldur's Gate 3"
+    status: "played"
+    rating: 5
+    hours: 0
+    review: "Epic D&D adventure"
+    tags: ["RPG", "Turn-based", "Story Rich"]
+
+  - app_id: 2909400
+    name: "Final Fantasy VII Rebirth"
+    status: "played"
+    rating: 5
+    hours: 0
+    review: "Beautiful remake"
+    tags: ["RPG", "Action", "Story Rich"]
+
+  - app_id: 990080
+    name: "Hogwarts Legacy"
+    status: "played"
+    rating: 5
+    hours: 0
+    review: "Wizarding world dreams"
+    tags: ["RPG", "Open World", "Magic"]
+
+  # Assassin's Creed Series
+  - app_id: 2208920
+    name: "Assassin's Creed Mirage"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Back to the roots"
+    tags: ["Action", "Stealth", "Open World"]
+
+  - app_id: 812140
+    name: "Assassin's Creed Odyssey"
+    status: "played"
+    rating: 5
+    hours: 0
+    review: "Greek mythology epic"
+    tags: ["RPG", "Action", "Open World"]
+
+  - app_id: 582160
+    name: "Assassin's Creed Origins"
+    status: "played"
+    rating: 5
+    hours: 0
+    review: "Ancient Egypt vibes"
+    tags: ["RPG", "Action", "Open World"]
+
+  - app_id: 2378870
+    name: "Assassin's Creed Valhalla"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Viking adventures"
+    tags: ["RPG", "Action", "Open World"]
+
+  # Cozy Games
+  - app_id: 413150
+    name: "Stardew Valley"
+    status: "played"
+    rating: 5
+    hours: 0
+    review: "The OG cozy farm game"
+    tags: ["Farming", "Cozy", "Indie"]
+
+  - app_id: 1623730
+    name: "Palworld"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Pokemon with guns vibes"
+    tags: ["Survival", "Creature Collector", "Open World"]
+
+  - app_id: 1401590
+    name: "Disney Dreamlight Valley"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Disney cozy sim"
+    tags: ["Life Sim", "Cozy", "Disney"]
+
+  - app_id: 2707930
+    name: "Palia"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Cozy MMO vibes"
+    tags: ["MMO", "Cozy", "Life Sim"]
+
+  - app_id: 1062520
+    name: "Dinkum"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Australian Animal Crossing"
+    tags: ["Farming", "Cozy", "Indie"]
+
+  - app_id: 0
+    name: "Sugardew Island"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Sweet farming fun"
+    tags: ["Farming", "Cozy", "Indie"]
+
+  - app_id: 0
+    name: "Tales of the Shire"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Hobbit life sim"
+    tags: ["Life Sim", "Cozy", "LOTR"]
+
+  # Simulation Games
+  - app_id: 0
+    name: "The Sims 4"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Life simulator chaos"
+    tags: ["Life Sim", "Sandbox", "Building"]
+
+  - app_id: 3070070
+    name: "TCG Card Shop Simulator"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Card shop dreams"
+    tags: ["Simulation", "Management", "TCG"]
+
+  - app_id: 0
+    name: "Tiny Bookshop"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Cozy book vibes"
+    tags: ["Simulation", "Cozy", "Management"]
+
+  - app_id: 0
+    name: "Bookshop Simulator"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Running a bookstore"
+    tags: ["Simulation", "Management", "Cozy"]
+
+  - app_id: 0
+    name: "Waterpark Simulator"
     status: "played"
     rating: 3
-    hours: 80
-    review: "Big battles, big explosions"
-    tags: ["FPS", "Multiplayer", "Action"]
+    hours: 0
+    review: "Splash zone management"
+    tags: ["Simulation", "Management", "Building"]
+
+  - app_id: 0
+    name: "Schedule 1"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Business sim fun"
+    tags: ["Simulation", "Management", "Indie"]
+
+  # Survival / Sandbox
+  - app_id: 0
+    name: "Minecraft"
+    status: "played"
+    rating: 5
+    hours: 0
+    review: "The classic block game"
+    tags: ["Sandbox", "Survival", "Building"]
+
+  - app_id: 2379780
+    name: "REPO"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Extraction horror fun"
+    tags: ["Horror", "Co-op", "Extraction"]
+
+  # Stream Games
+  - app_id: 1170970
+    name: "Marbles on Stream"
+    status: "played"
+    rating: 5
+    hours: 0
+    review: "Chat chaos marble races"
+    tags: ["Stream Game", "Casual", "Multiplayer"]
+
+  # Harry Potter
+  - app_id: 1879310
+    name: "Lego Harry Potter Collection"
+    status: "played"
+    rating: 4
+    hours: 0
+    review: "Nostalgic Lego magic"
+    tags: ["Lego", "Adventure", "Harry Potter"]
 
 # Status options: currently_playing, played, backlog, dropped
 # Rating: 1-5 stars

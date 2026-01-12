@@ -15,6 +15,69 @@
       height: 100%;
       overflow: hidden;
     }
+
+    /* Floating animation for stars */
+    @keyframes float-star {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-8px) rotate(5deg); }
+      50% { transform: translateY(-4px) rotate(-3deg); }
+      75% { transform: translateY(-12px) rotate(3deg); }
+    }
+
+    /* Twinkle animation for stars */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Combined float and twinkle for stars */
+    .star-animate {
+      animation: float-star 6s ease-in-out infinite, twinkle 3s ease-in-out infinite;
+    }
+
+    /* Combined float and pulse animation for hearts */
+    @keyframes heart-float-pulse {
+      0% { transform: translateY(0) rotate(-45deg) scale(1); opacity: 0.4; }
+      12.5% { transform: translateY(-4px) rotate(-47deg) scale(1.08); opacity: 0.5; }
+      25% { transform: translateY(-8px) rotate(-45deg) scale(1); opacity: 0.4; }
+      37.5% { transform: translateY(-6px) rotate(-43deg) scale(1.08); opacity: 0.5; }
+      50% { transform: translateY(-3px) rotate(-45deg) scale(1); opacity: 0.4; }
+      62.5% { transform: translateY(-7px) rotate(-47deg) scale(1.08); opacity: 0.5; }
+      75% { transform: translateY(-10px) rotate(-45deg) scale(1); opacity: 0.4; }
+      87.5% { transform: translateY(-5px) rotate(-43deg) scale(1.08); opacity: 0.5; }
+      100% { transform: translateY(0) rotate(-45deg) scale(1); opacity: 0.4; }
+    }
+
+    .heart-animate {
+      animation: heart-float-pulse 6s ease-in-out infinite;
+    }
+
+    /* Fix heart scaling - make pseudo-elements match parent size */
+    .heart-alt::before,
+    .heart-alt::after {
+      width: inherit;
+      height: inherit;
+    }
+
+    .heart-alt::before {
+      top: -50%;
+      left: 0;
+    }
+
+    .heart-alt::after {
+      top: 0;
+      left: 50%;
+    }
+
+    /* Floating X marks */
+    @keyframes float-x {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(10deg); }
+    }
+
+    .x-animate {
+      animation: float-x 4s ease-in-out infinite;
+    }
   </style>
 </head>
 <body>
@@ -40,38 +103,46 @@
     <div class="cloud cloud-3" style="left: 20%; animation-delay: -25s;"></div>
     <div class="cloud cloud-3" style="left: 60%; animation-delay: -12s;"></div>
 
-    <!-- Alt decorative elements - Stars -->
-    <div class="star-alt" style="top: 15%; left: 8%;"></div>
-    <div class="star-alt star-alt-pink" style="top: 25%; left: 92%; width: 8px; height: 8px;"></div>
-    <div class="star-alt" style="top: 45%; left: 5%; width: 10px; height: 10px;"></div>
-    <div class="star-alt star-alt-pink" style="top: 65%; left: 88%;"></div>
-    <div class="star-alt" style="top: 80%; left: 12%; width: 8px; height: 8px;"></div>
-    <div class="star-alt star-alt-pink" style="top: 35%; left: 95%; width: 14px; height: 14px;"></div>
-    <!-- Extra stars for OBS -->
-    <div class="star-alt" style="top: 10%; left: 45%; width: 10px; height: 10px;"></div>
-    <div class="star-alt star-alt-pink" style="top: 55%; left: 75%; width: 12px; height: 12px;"></div>
-    <div class="star-alt" style="top: 70%; left: 30%;"></div>
-    <div class="star-alt star-alt-pink" style="top: 90%; left: 60%; width: 8px; height: 8px;"></div>
+    <!-- Alt decorative elements - Animated Stars -->
+    <div class="star-alt star-animate" style="top: 15%; left: 8%; animation-delay: 0s, 0s;"></div>
+    <div class="star-alt star-alt-pink star-animate" style="top: 25%; left: 92%; width: 8px; height: 8px; animation-delay: -1s, -0.5s;"></div>
+    <div class="star-alt star-animate" style="top: 45%; left: 5%; width: 10px; height: 10px; animation-delay: -2s, -1s;"></div>
+    <div class="star-alt star-alt-pink star-animate" style="top: 65%; left: 88%; animation-delay: -3s, -1.5s;"></div>
+    <div class="star-alt star-animate" style="top: 80%; left: 12%; width: 8px; height: 8px; animation-delay: -4s, -2s;"></div>
+    <div class="star-alt star-alt-pink star-animate" style="top: 35%; left: 95%; width: 14px; height: 14px; animation-delay: -1.5s, -0.8s;"></div>
+    <!-- Extra animated stars -->
+    <div class="star-alt star-animate" style="top: 10%; left: 45%; width: 10px; height: 10px; animation-delay: -2.5s, -1.2s;"></div>
+    <div class="star-alt star-alt-pink star-animate" style="top: 55%; left: 75%; width: 12px; height: 12px; animation-delay: -3.5s, -1.8s;"></div>
+    <div class="star-alt star-animate" style="top: 70%; left: 30%; animation-delay: -0.5s, -0.3s;"></div>
+    <div class="star-alt star-alt-pink star-animate" style="top: 90%; left: 60%; width: 8px; height: 8px; animation-delay: -4.5s, -2.2s;"></div>
+    <div class="star-alt star-animate" style="top: 5%; left: 70%; width: 11px; height: 11px; animation-delay: -1.8s, -0.9s;"></div>
+    <div class="star-alt star-alt-pink star-animate" style="top: 38%; left: 52%; width: 9px; height: 9px; animation-delay: -2.8s, -1.4s;"></div>
+    <div class="star-alt star-animate" style="top: 72%; left: 15%; width: 13px; height: 13px; animation-delay: -3.8s, -1.9s;"></div>
+    <div class="star-alt star-alt-pink star-animate" style="top: 18%; left: 28%; width: 10px; height: 10px; animation-delay: -0.8s, -0.4s;"></div>
 
-    <!-- X marks scattered -->
-    <div class="x-mark" style="top: 20%; left: 85%;">✖</div>
-    <div class="x-mark" style="top: 55%; left: 3%; font-size: 18px;">✖</div>
-    <div class="x-mark" style="top: 75%; left: 90%; font-size: 32px;">✖</div>
-    <div class="x-mark" style="top: 40%; left: 7%; font-size: 20px;">✖</div>
-    <!-- Extra X marks for OBS -->
-    <div class="x-mark" style="top: 8%; left: 55%; font-size: 16px;">✖</div>
-    <div class="x-mark" style="top: 85%; left: 40%; font-size: 28px;">✖</div>
-    <div class="x-mark" style="top: 30%; left: 70%; font-size: 22px;">✖</div>
+    <!-- Animated X marks -->
+    <div class="x-mark x-animate" style="top: 20%; left: 85%; animation-delay: 0s;">✖</div>
+    <div class="x-mark x-animate" style="top: 55%; left: 3%; font-size: 18px; animation-delay: -1s;">✖</div>
+    <div class="x-mark x-animate" style="top: 75%; left: 90%; font-size: 32px; animation-delay: -2s;">✖</div>
+    <div class="x-mark x-animate" style="top: 40%; left: 7%; font-size: 20px; animation-delay: -1.5s;">✖</div>
+    <div class="x-mark x-animate" style="top: 8%; left: 55%; font-size: 16px; animation-delay: -2.5s;">✖</div>
+    <div class="x-mark x-animate" style="top: 85%; left: 40%; font-size: 28px; animation-delay: -0.5s;">✖</div>
+    <div class="x-mark x-animate" style="top: 30%; left: 70%; font-size: 22px; animation-delay: -3s;">✖</div>
+    <div class="x-mark x-animate" style="top: 62%; left: 48%; font-size: 19px; animation-delay: -1.8s;">✖</div>
+    <div class="x-mark x-animate" style="top: 48%; left: 25%; font-size: 24px; animation-delay: -2.3s;">✖</div>
 
-    <!-- Hearts -->
-    <div class="heart-alt" style="top: 12%; left: 78%; opacity: 0.4;"></div>
-    <div class="heart-alt" style="top: 58%; left: 94%; opacity: 0.3; width: 12px; height: 12px;"></div>
-    <div class="heart-alt" style="top: 85%; left: 6%; opacity: 0.5;"></div>
-    <!-- Extra hearts for OBS -->
-    <div class="heart-alt" style="top: 22%; left: 35%; opacity: 0.35; width: 14px; height: 14px;"></div>
-    <div class="heart-alt" style="top: 68%; left: 55%; opacity: 0.4; width: 10px; height: 10px;"></div>
-    <div class="heart-alt" style="top: 42%; left: 82%; opacity: 0.45;"></div>
-    <div class="heart-alt" style="top: 92%; left: 25%; opacity: 0.3; width: 12px; height: 12px;"></div>
+    <!-- Animated Hearts -->
+    <div class="heart-alt heart-animate" style="top: 12%; left: 78%;"></div>
+    <div class="heart-alt heart-animate" style="top: 58%; left: 94%; width: 12px; height: 12px; animation-delay: -1.5s;"></div>
+    <div class="heart-alt heart-animate" style="top: 85%; left: 6%; animation-delay: -2.5s;"></div>
+    <div class="heart-alt heart-animate" style="top: 22%; left: 35%; width: 14px; height: 14px; animation-delay: -0.8s;"></div>
+    <div class="heart-alt heart-animate" style="top: 68%; left: 55%; width: 10px; height: 10px; animation-delay: -3s;"></div>
+    <div class="heart-alt heart-animate" style="top: 42%; left: 82%; animation-delay: -1.2s;"></div>
+    <div class="heart-alt heart-animate" style="top: 92%; left: 25%; width: 12px; height: 12px; animation-delay: -2s;"></div>
+    <div class="heart-alt heart-animate" style="top: 8%; left: 18%; width: 11px; height: 11px; animation-delay: -3.5s;"></div>
+    <div class="heart-alt heart-animate" style="top: 52%; left: 38%; width: 13px; height: 13px; animation-delay: -0.5s;"></div>
+    <div class="heart-alt heart-animate" style="top: 78%; left: 68%; width: 15px; height: 15px; animation-delay: -2.8s;"></div>
+    <div class="heart-alt heart-animate" style="top: 33%; left: 12%; width: 10px; height: 10px; animation-delay: -1.8s;"></div>
 
     <!-- Small sparkle dots -->
     <div class="absolute top-[18%] left-[15%] w-1.5 h-1.5 bg-hotpink-400 rounded-full opacity-60 animate-pulse-soft"></div>
@@ -79,7 +150,6 @@
     <div class="absolute top-[48%] left-[4%] w-1 h-1 bg-hotpink-500 rounded-full opacity-40 animate-pulse-soft" style="animation-delay: 1s;"></div>
     <div class="absolute top-[62%] left-[91%] w-1.5 h-1.5 bg-periwinkle-500 rounded-full opacity-50 animate-pulse-soft" style="animation-delay: 1.5s;"></div>
     <div class="absolute top-[78%] left-[18%] w-2 h-2 bg-hotpink-400 rounded-full opacity-45 animate-pulse-soft" style="animation-delay: 2s;"></div>
-    <!-- Extra sparkles for OBS -->
     <div class="absolute top-[8%] left-[42%] w-1.5 h-1.5 bg-purple-400 rounded-full opacity-55 animate-pulse-soft" style="animation-delay: 0.3s;"></div>
     <div class="absolute top-[25%] left-[58%] w-2 h-2 bg-hotpink-400 rounded-full opacity-45 animate-pulse-soft" style="animation-delay: 0.8s;"></div>
     <div class="absolute top-[38%] left-[25%] w-1 h-1 bg-periwinkle-500 rounded-full opacity-50 animate-pulse-soft" style="animation-delay: 1.3s;"></div>

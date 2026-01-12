@@ -1,0 +1,28 @@
+{{/* Twitch embed shortcode
+    Usage: twitch-embed channel="vvSushii"
+    or:    twitch-embed clip="ClipSlug"
+*/}}
+
+{{ $channel := .Get "channel" }}
+{{ $clip := .Get "clip" }}
+{{ $parent := site.BaseURL | replaceRE "https?://" "" | replaceRE "/.*" "" }}
+
+<div class="aspect-video rounded-2xl overflow-hidden shadow-cute my-8">
+  {{ if $clip }}
+  <iframe
+    src="https://clips.twitch.tv/embed?clip={{ $clip }}&parent={{ $parent }}"
+    height="100%"
+    width="100%"
+    allowfullscreen
+    class="w-full h-full">
+  </iframe>
+  {{ else if $channel }}
+  <iframe
+    src="https://player.twitch.tv/?channel={{ $channel }}&parent={{ $parent }}"
+    height="100%"
+    width="100%"
+    allowfullscreen
+    class="w-full h-full">
+  </iframe>
+  {{ end }}
+</div>

@@ -1,0 +1,131 @@
+{{ define "main" }}
+<article class="py-16 px-4">
+  <div class="container mx-auto max-w-4xl">
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Cover Image -->
+        <div class="w-full md:w-1/3 flex-shrink-0">
+          {{ with .Params.cover }}
+          <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-cute-lg">
+            <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-full object-cover">
+          </div>
+          {{ else }}
+          <div class="aspect-[3/4] rounded-2xl bg-gradient-to-br from-periwinkle-200 to-hotpink-200 flex items-center justify-center shadow-cute-lg">
+            <span class="text-6xl">🎮</span>
+          </div>
+          {{ end }}
+        </div>
+
+        <!-- Game Info -->
+        <div class="flex-1">
+          <h1 class="font-display font-bold text-3xl sm:text-4xl text-periwinkle-800 mb-4">
+            {{ .Title }}
+          </h1>
+
+          <!-- Rating -->
+          {{ with .Params.rating }}
+          <div class="flex items-center gap-2 mb-4">
+            <div class="flex items-center gap-1">
+              {{ range seq . }}
+              <span class="text-hotpink-400 text-2xl">★</span>
+              {{ end }}
+              {{ range seq (sub 5 .) }}
+              <span class="text-periwinkle-200 text-2xl">★</span>
+              {{ end }}
+            </div>
+            <span class="text-periwinkle-600 font-semibold">{{ . }}/5</span>
+          </div>
+          {{ end }}
+
+          <!-- Meta Info -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            {{ with .Params.platform }}
+            <div>
+              <span class="text-periwinkle-500 text-sm">Platform</span>
+              <p class="font-semibold text-periwinkle-800">{{ . }}</p>
+            </div>
+            {{ end }}
+            {{ with .Params.hours }}
+            <div>
+              <span class="text-periwinkle-500 text-sm">Hours Played</span>
+              <p class="font-semibold text-periwinkle-800">{{ . }}h</p>
+            </div>
+            {{ end }}
+            {{ with .Params.genre }}
+            <div>
+              <span class="text-periwinkle-500 text-sm">Genre</span>
+              <p class="font-semibold text-periwinkle-800">{{ . }}</p>
+            </div>
+            {{ end }}
+            {{ with .Params.status }}
+            <div>
+              <span class="text-periwinkle-500 text-sm">Status</span>
+              <p class="font-semibold
+                {{ if eq . "playing" }}text-green-600
+                {{ else if eq . "completed" }}text-blue-600
+                {{ else if eq . "dropped" }}text-red-600
+                {{ else }}text-periwinkle-800{{ end }}">
+                {{ . | title }}
+              </p>
+            </div>
+            {{ end }}
+          </div>
+
+          <!-- Tags -->
+          {{ with .Params.tags }}
+          <div class="flex flex-wrap gap-2">
+            {{ range . }}
+            <span class="px-3 py-1 text-sm rounded-full bg-periwinkle-100 text-periwinkle-700">
+              {{ . }}
+            </span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </header>
+
+    <!-- Review Content -->
+    <div class="prose prose-lg prose-periwinkle mx-auto mb-12">
+      {{ .Content }}
+    </div>
+
+    <!-- Related Clips -->
+    {{ $game := .Title }}
+    {{ $clips := where (where site.RegularPages "Section" "clips") ".Params.game" $game }}
+    {{ if $clips }}
+    <section class="mb-12">
+      <h2 class="font-display font-bold text-2xl text-periwinkle-800 mb-6">
+        Clips from {{ .Title }}
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {{ range $clips | first 4 }}
+        <a href="{{ .Permalink }}" class="card-cute group">
+          <div class="aspect-video rounded-xl overflow-hidden mb-3 bg-periwinkle-100">
+            {{ with .Params.thumbnail }}
+            <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            {{ else }}
+            <div class="w-full h-full bg-gradient-to-br from-periwinkle-200 to-hotpink-200 flex items-center justify-center">
+              <span class="text-4xl">🎬</span>
+            </div>
+            {{ end }}
+          </div>
+          <h3 class="font-display font-semibold text-periwinkle-800 group-hover:text-hotpink-500 transition-colors">
+            {{ .Title }}
+          </h3>
+        </a>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+
+    <!-- Navigation -->
+    <nav class="pt-8 border-t border-periwinkle-100 flex items-center justify-between">
+      <a href="{{ "games" | relURL }}" class="btn-cute-outline">
+        ← Back to Games
+      </a>
+    </nav>
+  </div>
+</article>
+{{ end }}

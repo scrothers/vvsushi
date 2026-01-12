@@ -1,0 +1,22 @@
+{{/* Inline Steam Game Link
+     Usage: {{< steam id="1245620" >}} or {{< steam id="1245620" name="Elden Ring" >}}
+
+     Creates a small inline game badge with icon and link to Steam.
+*/}}
+{{ $id := .Get "id" }}
+{{ $name := .Get "name" }}
+
+{{/* Try to find name from data file */}}
+{{ if not $name }}
+  {{ range site.Data.games.featured }}
+    {{ if eq (string .app_id) $id }}{{ $name = .name }}{{ end }}
+  {{ end }}
+  {{ range site.Data.games.games }}
+    {{ if eq (string .app_id) $id }}{{ $name = .name }}{{ end }}
+  {{ end }}
+{{ end }}
+
+<a href="https://store.steampowered.com/app/{{ $id }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-alt-100 hover:bg-periwinkle-100 border border-alt-300 rounded px-2 py-0.5 text-sm font-medium text-alt-700 hover:text-hotpink-500 transition-colors no-underline">
+  <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ $id }}/capsule_sm_120.jpg" alt="" class="w-5 h-5 rounded object-cover">
+  <span>{{ $name | default "Steam Game" }}</span>
+</a>

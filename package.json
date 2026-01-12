@@ -1,0 +1,19 @@
+{
+  "name": "vvsushii-website",
+  "version": "1.0.0",
+  "description": "vvSushii gaming and streaming website",
+  "scripts": {
+    "dev": "concurrently --kill-others \"npm run css:watch\" \"hugo server\"",
+    "build": "npm run css:build && hugo --minify",
+    "css:watch": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --watch",
+    "css:build": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/cli": "^4.1.0",
+    "concurrently": "^9.1.0"
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.0"
+  }
+}

@@ -1,0 +1,39 @@
+{{/* YouTube Video/Short Embed
+     Usage: {{< youtube id="VIDEO_ID" >}}
+     For shorts: {{< youtube id="SHORT_ID" short="true" >}}
+     Example: {{< youtube id="dQw4w9WgXcQ" >}}
+*/}}
+{{ $id := .Get "id" }}
+{{ $short := .Get "short" | default false }}
+{{ $title := .Get "title" | default "YouTube video" }}
+<div class="clip-embed my-6">
+  <div class="relative border-2 border-alt-900 shadow-hard bg-white p-2">
+    {{ if $short }}
+    {{/* YouTube Short - vertical aspect ratio */}}
+    <div class="aspect-[9/16] max-w-[360px] mx-auto">
+      <iframe
+        src="https://www.youtube.com/embed/{{ $id }}"
+        title="{{ $title }}"
+        class="w-full h-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    {{ else }}
+    {{/* Regular YouTube video - 16:9 */}}
+    <div class="aspect-video">
+      <iframe
+        src="https://www.youtube.com/embed/{{ $id }}"
+        title="{{ $title }}"
+        class="w-full h-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    {{ end }}
+    <div class="flex items-center justify-between mt-2 px-1">
+      <span class="text-xs text-alt-500 uppercase tracking-wide font-display">{{ if $short }}YouTube Short{{ else }}YouTube{{ end }}</span>
+      <a href="https://youtube.com/watch?v={{ $id }}" target="_blank" rel="noopener" class="text-xs text-red-500 hover:text-red-700 font-bold">Watch on YouTube →</a>
+    </div>
+  </div>
+</div>

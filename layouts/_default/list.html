@@ -1,0 +1,73 @@
+{{ define "main" }}
+<section class="py-16 px-4">
+  <div class="container mx-auto max-w-6xl">
+    <!-- Page Header -->
+    <header class="text-center mb-12">
+      <h1 class="font-display font-bold text-4xl sm:text-5xl gradient-text mb-4">
+        {{ .Title }}
+      </h1>
+      {{ with .Description }}
+      <p class="text-periwinkle-600 max-w-2xl mx-auto text-lg">
+        {{ . }}
+      </p>
+      {{ end }}
+    </header>
+
+    <!-- Content -->
+    {{ .Content }}
+
+    <!-- List of pages -->
+    {{ if .Pages }}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      {{ range .Pages.ByDate.Reverse }}
+      <article class="card-cute group">
+        {{ with .Params.image }}
+        <div class="aspect-video rounded-xl overflow-hidden mb-4 bg-periwinkle-100">
+          <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        </div>
+        {{ else }}
+        <div class="aspect-video rounded-xl mb-4 bg-gradient-to-br from-periwinkle-100 to-hotpink-100 flex items-center justify-center">
+          <span class="text-4xl">{{ $.Params.emoji | default "✨" }}</span>
+        </div>
+        {{ end }}
+
+        <div class="space-y-2">
+          {{ with .Params.categories }}
+          <div class="flex flex-wrap gap-2">
+            {{ range . }}
+            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-hotpink-100 text-hotpink-600">
+              {{ . }}
+            </span>
+            {{ end }}
+          </div>
+          {{ end }}
+
+          <h2 class="font-display font-bold text-xl text-periwinkle-800 group-hover:text-hotpink-500 transition-colors">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h2>
+
+          {{ with .Summary }}
+          <p class="text-periwinkle-600 text-sm line-clamp-3">
+            {{ . | plainify | truncate 150 }}
+          </p>
+          {{ end }}
+
+          <div class="flex items-center justify-between pt-2">
+            <time class="text-periwinkle-400 text-sm" datetime="{{ .Date.Format "2006-01-02" }}">
+              {{ .Date.Format "Jan 2, 2006" }}
+            </time>
+            {{ with .ReadingTime }}
+            <span class="text-periwinkle-400 text-sm">{{ . }} min read</span>
+            {{ end }}
+          </div>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+
+    <!-- Pagination -->
+    {{ template "_internal/pagination.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}

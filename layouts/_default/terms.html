@@ -1,0 +1,302 @@
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="bg-gradient-to-b from-periwinkle-100 via-white to-white border-b-2 border-alt-900">
+  <div class="container mx-auto px-4 py-12">
+    <div class="flex flex-col md:flex-row items-center gap-8">
+
+      <!-- Emote -->
+      <div class="relative">
+        <div class="w-32 h-32 sm:w-40 sm:h-40 bg-white border-4 border-alt-900 shadow-hard overflow-hidden">
+          <img id="terms-emote" src="" alt="terms" class="w-full h-full object-contain p-3">
+        </div>
+        <!-- Decorative corners -->
+        <div class="absolute -top-2 -left-2 w-5 h-5 bg-hotpink-500 border-2 border-alt-900"></div>
+        <div class="absolute -bottom-2 -right-2 w-5 h-5 bg-periwinkle-500 border-2 border-alt-900"></div>
+        <!-- Floating decoration -->
+        <div class="absolute -top-4 -right-4 text-xl text-hotpink-500 animate-pulse">♡</div>
+      </div>
+
+      <!-- Hero Text -->
+      <div class="text-center md:text-left flex-1">
+        <div class="inline-flex items-center gap-2 bg-alt-900 text-white px-3 py-1 text-xs font-display uppercase tracking-widest mb-4">
+          <span class="text-hotpink-400">✦</span>
+          <span>Legal</span>
+          <span class="text-hotpink-400">✦</span>
+        </div>
+
+        <h1 class="font-display font-black text-4xl sm:text-5xl text-alt-900 mb-3">
+          {{ .Title }}
+        </h1>
+
+        <p class="text-lg text-alt-600 max-w-xl">
+          {{ .Description }}
+        </p>
+
+        <p class="text-sm text-alt-400 mt-4">
+          Last updated: January 2025
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Content -->
+<section class="container mx-auto px-4 py-12">
+  <div class="max-w-3xl mx-auto space-y-6">
+
+    <!-- Overview Card -->
+    <div class="bg-gradient-to-br from-periwinkle-50 to-hotpink-50 border-2 border-alt-900 p-6">
+      <div class="flex items-start gap-3">
+        <span class="text-2xl">📜</span>
+        <div>
+          <h2 class="font-display font-bold text-alt-900 mb-1">The Short Version</h2>
+          <p class="text-alt-600 text-sm">
+            Be cool, don't steal stuff, respect others, and we'll all have a good time. By using this site, you agree to play nice!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="bg-white border-2 border-alt-900">
+      <div class="bg-alt-900 text-white px-4 py-2 flex items-center gap-2">
+        <span class="text-hotpink-400">01</span>
+        <span class="font-display font-bold text-sm uppercase tracking-wide">Acceptance of Terms</span>
+      </div>
+      <div class="p-6 space-y-4">
+        <p class="text-alt-700 leading-relaxed">
+          By accessing and using <strong class="text-alt-900">vvsushii.com</strong> (the "Website"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please discontinue use of the Website immediately.
+        </p>
+        <p class="text-alt-700 leading-relaxed">
+          We reserve the right to modify these Terms at any time. Continued use of the Website after any modifications constitutes your acceptance of the revised Terms.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="bg-white border-2 border-alt-900">
+      <div class="bg-alt-900 text-white px-4 py-2 flex items-center gap-2">
+        <span class="text-hotpink-400">02</span>
+        <span class="font-display font-bold text-sm uppercase tracking-wide">Permitted Use</span>
+      </div>
+      <div class="p-6 space-y-4">
+        <p class="text-alt-700 leading-relaxed">
+          You are granted a limited, non-exclusive, non-transferable license to access and use this Website for personal, non-commercial purposes only.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-green-50 border border-green-200 p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-green-500">✓</span>
+              <span class="font-display font-bold text-sm text-alt-900">You May</span>
+            </div>
+            <ul class="text-sm text-alt-600 space-y-1">
+              <li>• Browse and enjoy our content</li>
+              <li>• Share links to our pages</li>
+              <li>• Embed our public streams</li>
+              <li>• Participate in our community</li>
+            </ul>
+          </div>
+          <div class="bg-red-50 border border-red-200 p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-red-500">✗</span>
+              <span class="font-display font-bold text-sm text-alt-900">You May Not</span>
+            </div>
+            <ul class="text-sm text-alt-600 space-y-1">
+              <li>• Copy or redistribute our content</li>
+              <li>• Use content for commercial gain</li>
+              <li>• Attempt to harm or disrupt the site</li>
+              <li>• Impersonate or misrepresent affiliation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="bg-white border-2 border-alt-900">
+      <div class="bg-alt-900 text-white px-4 py-2 flex items-center gap-2">
+        <span class="text-hotpink-400">03</span>
+        <span class="font-display font-bold text-sm uppercase tracking-wide">Intellectual Property</span>
+      </div>
+      <div class="p-6 space-y-4">
+        <p class="text-alt-700 leading-relaxed">
+          All content on this Website, unless otherwise noted, is the exclusive property of vvSushii and is protected by applicable copyright, trademark, and intellectual property laws.
+        </p>
+        <div class="bg-alt-50 border border-alt-200 p-4">
+          <p class="font-display font-bold text-alt-900 mb-3">Protected content includes:</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
+            <div class="flex items-center gap-2 text-alt-600">
+              <span class="text-hotpink-500">★</span> Emotes & artwork
+            </div>
+            <div class="flex items-center gap-2 text-alt-600">
+              <span class="text-hotpink-500">★</span> Logos & branding
+            </div>
+            <div class="flex items-center gap-2 text-alt-600">
+              <span class="text-hotpink-500">★</span> Stream content
+            </div>
+            <div class="flex items-center gap-2 text-alt-600">
+              <span class="text-hotpink-500">★</span> Website design
+            </div>
+          </div>
+        </div>
+        <p class="text-alt-700 leading-relaxed">
+          Unauthorized use, reproduction, or distribution of any content may result in legal action. If you wish to use any content, please contact us for permission at <a href="mailto:contact@vvsushi.gg" class="text-hotpink-500 hover:underline font-medium">contact@vvsushi.gg</a>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="bg-white border-2 border-alt-900">
+      <div class="bg-alt-900 text-white px-4 py-2 flex items-center gap-2">
+        <span class="text-hotpink-400">04</span>
+        <span class="font-display font-bold text-sm uppercase tracking-wide">Third-Party Links & Services</span>
+      </div>
+      <div class="p-6 space-y-4">
+        <p class="text-alt-700 leading-relaxed">
+          This Website contains links to third-party websites and embeds content from external platforms. We are not responsible for the content, policies, or practices of these third-party sites.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-[#9146FF]/10 text-[#9146FF] border border-[#9146FF]/30 px-3 py-1 text-sm font-medium">Twitch</span>
+          <span class="bg-[#FF0000]/10 text-[#FF0000] border border-[#FF0000]/30 px-3 py-1 text-sm font-medium">YouTube</span>
+          <span class="bg-[#5865F2]/10 text-[#5865F2] border border-[#5865F2]/30 px-3 py-1 text-sm font-medium">Discord</span>
+          <span class="bg-black/10 text-black border border-black/30 px-3 py-1 text-sm font-medium">TikTok</span>
+          <span class="bg-[#1b2838]/10 text-[#1b2838] border border-[#1b2838]/30 px-3 py-1 text-sm font-medium">Steam</span>
+        </div>
+        <p class="text-sm text-alt-600">
+          Your use of third-party services is governed by their respective terms of service and privacy policies. We encourage you to review them before use.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="bg-white border-2 border-alt-900">
+      <div class="bg-alt-900 text-white px-4 py-2 flex items-center gap-2">
+        <span class="text-hotpink-400">05</span>
+        <span class="font-display font-bold text-sm uppercase tracking-wide">Disclaimers</span>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="border-l-4 border-hotpink-500 pl-4">
+          <p class="text-alt-700 leading-relaxed">
+            This Website and all content are provided <strong class="text-alt-900">"AS IS"</strong> and <strong class="text-alt-900">"AS AVAILABLE"</strong> without warranties of any kind, either express or implied.
+          </p>
+        </div>
+        <p class="text-alt-700 leading-relaxed">
+          We do not warrant that:
+        </p>
+        <ul class="space-y-2">
+          <li class="flex items-start gap-3">
+            <span class="text-alt-400 mt-1">—</span>
+            <span class="text-alt-700">The Website will be available at all times or without interruption</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-alt-400 mt-1">—</span>
+            <span class="text-alt-700">The content will be accurate, complete, or current</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-alt-400 mt-1">—</span>
+            <span class="text-alt-700">The Website will be free from errors, viruses, or other harmful components</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-alt-400 mt-1">—</span>
+            <span class="text-alt-700">Any defects will be corrected in a timely manner</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="bg-white border-2 border-alt-900">
+      <div class="bg-alt-900 text-white px-4 py-2 flex items-center gap-2">
+        <span class="text-hotpink-400">06</span>
+        <span class="font-display font-bold text-sm uppercase tracking-wide">Limitation of Liability</span>
+      </div>
+      <div class="p-6 space-y-4">
+        <p class="text-alt-700 leading-relaxed">
+          To the fullest extent permitted by applicable law, vvSushii shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:
+        </p>
+        <ul class="space-y-2">
+          <li class="flex items-start gap-3">
+            <span class="text-periwinkle-500 mt-1">✦</span>
+            <span class="text-alt-700">Loss of profits, data, or goodwill</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-periwinkle-500 mt-1">✦</span>
+            <span class="text-alt-700">Service interruption or computer damage</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-periwinkle-500 mt-1">✦</span>
+            <span class="text-alt-700">Unauthorized access to your transmissions or data</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-periwinkle-500 mt-1">✦</span>
+            <span class="text-alt-700">Any other intangible losses resulting from Website use</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Section 7 -->
+    <div class="bg-white border-2 border-alt-900">
+      <div class="bg-alt-900 text-white px-4 py-2 flex items-center gap-2">
+        <span class="text-hotpink-400">07</span>
+        <span class="font-display font-bold text-sm uppercase tracking-wide">Governing Law</span>
+      </div>
+      <div class="p-6 space-y-4">
+        <p class="text-alt-700 leading-relaxed">
+          These Terms shall be governed by and construed in accordance with the laws of the United States, without regard to its conflict of law provisions. Any disputes arising from these Terms or your use of the Website shall be resolved in the appropriate courts of the United States.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 8 -->
+    <div class="bg-white border-2 border-alt-900">
+      <div class="bg-alt-900 text-white px-4 py-2 flex items-center gap-2">
+        <span class="text-hotpink-400">08</span>
+        <span class="font-display font-bold text-sm uppercase tracking-wide">Contact Information</span>
+      </div>
+      <div class="p-6 space-y-4">
+        <p class="text-alt-700 leading-relaxed">
+          For any questions, concerns, or requests regarding these Terms of Service, please contact us:
+        </p>
+        <div class="bg-alt-50 border border-alt-200 p-4">
+          <p class="font-display font-bold text-alt-900">Email</p>
+          <a href="mailto:contact@vvsushi.gg" class="text-hotpink-500 hover:underline">contact@vvsushi.gg</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back link -->
+    <div class="pt-6 flex items-center justify-between">
+      <a href="{{ "/" | relURL }}" class="inline-flex items-center gap-2 text-alt-500 hover:text-hotpink-500 transition-colors font-display text-sm uppercase tracking-wide">
+        <span>←</span>
+        Back to Home
+      </a>
+      <a href="/privacy/" class="inline-flex items-center gap-2 text-alt-500 hover:text-hotpink-500 transition-colors font-display text-sm uppercase tracking-wide">
+        Privacy Policy
+        <span>→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Emote randomizer -->
+<script>
+(function() {
+  const emotes = [
+    {{- $names := slice "seriousface" "biz" "ackshully" "smart" "judgy" "noted1" }}
+    {{- $first := true }}
+    {{- range site.Data.emotes.emotes }}
+      {{- if in $names .name }}
+        {{- if not $first }},{{ end }}"/images/emotes/{{ .file }}"
+        {{- $first = false }}
+      {{- end }}
+    {{- end }}
+  ];
+  const img = document.getElementById('terms-emote');
+  if (img && emotes.length > 0) {
+    img.src = emotes[Math.floor(Math.random() * emotes.length)];
+  }
+})();
+</script>
+{{ end }}

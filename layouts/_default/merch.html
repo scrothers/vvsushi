@@ -1,0 +1,191 @@
+{{ define "main" }}
+<!-- Merch Hero -->
+<section class="relative py-12 px-4 overflow-hidden bg-gradient-to-b from-hotpink-100 via-white to-white">
+  <!-- Scattered decorations -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-4 left-8 text-5xl opacity-20 rotate-12">★</div>
+    <div class="absolute top-12 right-12 text-3xl opacity-30 -rotate-6 text-hotpink-400">♡</div>
+    <div class="absolute bottom-8 left-12 text-2xl opacity-25 rotate-45">✖</div>
+    <div class="absolute bottom-4 right-8 text-4xl opacity-20 -rotate-12">★</div>
+    <div class="absolute top-1/2 left-4 text-xl opacity-30 text-purple-400">✦</div>
+  </div>
+
+  <div class="container mx-auto max-w-6xl relative">
+    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+
+      <!-- Left: Stacked product preview cards -->
+      <div class="relative w-64 h-64 sm:w-80 sm:h-80 flex-shrink-0">
+        <!-- Back card -->
+        <div class="absolute top-4 left-4 w-48 h-48 sm:w-56 sm:h-56 bg-purple-400 border-2 border-alt-900 rotate-[-8deg]"></div>
+        <!-- Middle card -->
+        <div class="absolute top-2 left-2 w-48 h-48 sm:w-56 sm:h-56 bg-hotpink-400 border-2 border-alt-900 rotate-[-4deg]"></div>
+        <!-- Front card with emote -->
+        <div class="absolute top-0 left-0 w-48 h-48 sm:w-56 sm:h-56 bg-white border-2 border-alt-900 shadow-hard flex items-center justify-center">
+          <img id="merch-hero-emote" src="" alt="emote" class="w-32 h-32 sm:w-40 sm:h-40 object-contain">
+        </div>
+        <!-- Sale sticker -->
+        <div class="absolute -top-3 -right-2 sm:-right-4 bg-yellow-300 text-alt-900 px-3 py-2 text-sm font-black border-2 border-alt-900 rotate-12 uppercase z-10">
+          Shop Now!
+        </div>
+        <!-- Heart sticker -->
+        <div class="absolute -bottom-2 -left-2 text-3xl rotate-[-15deg]">💖</div>
+      </div>
+
+      <!-- Right: Text content -->
+      <div class="text-center lg:text-left flex-1">
+        <!-- Tag -->
+        <div class="inline-block bg-alt-900 text-white px-4 py-1 font-display text-sm uppercase tracking-widest rotate-[-1deg] mb-4">
+          ★ Official vvSushii Merch ★
+        </div>
+
+        <!-- Title -->
+        <h1 class="font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-none mb-4">
+          <span class="block text-alt-900">GET THE</span>
+          <span class="block gradient-text" style="text-shadow: 3px 3px 0 rgba(0,0,0,0.1);">DRIP</span>
+        </h1>
+
+        <!-- Decorative symbols -->
+        <div class="flex items-center justify-center lg:justify-start gap-2 text-2xl mb-4">
+          <span class="text-hotpink-400">♡</span>
+          <span class="text-purple-400">★</span>
+          <span class="text-periwinkle-400">♡</span>
+          <span class="text-alt-400">✖</span>
+          <span class="text-hotpink-400">★</span>
+        </div>
+
+        <!-- Description -->
+        <div class="bg-hotpink-100 border-2 border-alt-900 px-4 py-3 rotate-[1deg] inline-block mb-6">
+          <p class="text-alt-700 font-medium text-lg">
+            Rep the crew with exclusive tees, hoodies, stickers & more!
+          </p>
+        </div>
+
+        <!-- Stats/badges row -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+          <div class="bg-white border-2 border-alt-900 px-4 py-2 shadow-hard">
+            <span class="font-display font-bold text-alt-800">💜 Supports the stream</span>
+          </div>
+          <div class="bg-white border-2 border-alt-900 px-4 py-2 shadow-hard">
+            <span class="font-display font-bold text-alt-800">✨ Exclusive designs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="mt-12 flex items-center justify-center gap-4">
+      <div class="h-0.5 flex-1 bg-alt-900"></div>
+      <div class="flex items-center gap-3 text-alt-400">
+        <span>✖</span>
+        <span class="text-hotpink-400">♡</span>
+        <span class="font-display font-bold text-alt-600 uppercase tracking-wide">Shop Below</span>
+        <span class="text-hotpink-400">♡</span>
+        <span>✖</span>
+      </div>
+      <div class="h-0.5 flex-1 bg-alt-900"></div>
+    </div>
+  </div>
+
+  <!-- Random emote script for hero -->
+  <script>
+    (function() {
+      const emotes = [
+        {{- range $i, $e := site.Data.emotes.emotes }}{{ if $i }},{{ end }}"/images/emotes/{{ $e.file }}"{{ end }}
+      ];
+      const img = document.getElementById('merch-hero-emote');
+      if (img) img.src = emotes[Math.floor(Math.random() * emotes.length)];
+    })();
+  </script>
+</section>
+
+<!-- Products Section -->
+<section class="py-12 px-4">
+  <div class="container mx-auto max-w-6xl">
+
+    <!-- Loading State -->
+    <div id="merch-loading" class="text-center py-12">
+      <div class="inline-block animate-spin text-4xl mb-4">✦</div>
+      <p class="text-alt-500 font-display">Loading merch...</p>
+    </div>
+
+    <!-- Products Grid (populated by JS) -->
+    <div id="merch-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 hidden"></div>
+
+    <!-- Error State -->
+    <div id="merch-error" class="text-center py-12 hidden">
+      <p class="text-alt-600 mb-4">Couldn't load products right now.</p>
+      <a href="https://vvsushii-shop.fourthwall.com" target="_blank" rel="noopener" class="btn-cute">
+        Visit Store Directly
+      </a>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <a href="https://vvsushii-shop.fourthwall.com" target="_blank" rel="noopener"
+         class="inline-block bg-hotpink-500 text-white px-8 py-4 font-display font-bold uppercase tracking-wide border-2 border-alt-900 shadow-hard hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+        Visit Full Store →
+      </a>
+      <p class="text-alt-500 text-sm mt-4">
+        All purchases support the stream! Thank you! <span class="text-hotpink-400">♡</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const SHOP_URL = 'https://vvsushii-shop.fourthwall.com';
+  const API_URL = SHOP_URL + '/collections/all.json';
+
+  const grid = document.getElementById('merch-grid');
+  const loading = document.getElementById('merch-loading');
+  const error = document.getElementById('merch-error');
+
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(data => {
+      const products = data.products || [];
+
+      if (products.length === 0) {
+        throw new Error('No products');
+      }
+
+      grid.innerHTML = products.map(product => {
+        const price = product.price ? parseFloat(product.price).toFixed(2) : '0.00';
+        const imageUrl = product.image || '';
+        const productUrl = SHOP_URL + product.url;
+
+        return `
+          <a href="${productUrl}" target="_blank" rel="noopener"
+             class="group bg-white border-2 border-alt-900 p-4 hover:shadow-hard transition-all duration-200">
+            <!-- Product Image -->
+            <div class="aspect-square overflow-hidden mb-4 bg-gradient-to-br from-periwinkle-100 to-hotpink-100 border-2 border-alt-900">
+              ${imageUrl
+                ? `<img src="${imageUrl}" alt="${product.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">`
+                : `<div class="w-full h-full flex items-center justify-center"><span class="text-5xl">🛍️</span></div>`
+              }
+            </div>
+
+            <!-- Product Info -->
+            <h3 class="font-display font-bold text-base text-alt-800 group-hover:text-hotpink-500 transition-colors mb-2 line-clamp-2">
+              ${product.title}
+            </h3>
+            <p class="text-hotpink-500 font-bold text-lg">
+              $${price}
+            </p>
+            ${!product.available ? '<p class="text-alt-400 text-sm mt-1">Sold Out</p>' : ''}
+          </a>
+        `;
+      }).join('');
+
+      loading.classList.add('hidden');
+      grid.classList.remove('hidden');
+    })
+    .catch(err => {
+      console.error('Failed to load merch:', err);
+      loading.classList.add('hidden');
+      error.classList.remove('hidden');
+    });
+})();
+</script>
+{{ end }}

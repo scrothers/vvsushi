@@ -1,0 +1,23 @@
+{{/* Achievement badge shortcode
+    Usage: achievement title="First Stream" icon="emoji" description="Started streaming!"
+*/}}
+
+{{ $title := .Get "title" }}
+{{ $icon := .Get "icon" | default "🏆" }}
+{{ $description := .Get "description" }}
+{{ $date := .Get "date" }}
+
+<div class="inline-flex items-center gap-3 card-cute p-3 my-2">
+  <div class="w-12 h-12 rounded-full bg-gradient-to-br from-periwinkle-200 to-hotpink-200 flex items-center justify-center flex-shrink-0">
+    <span class="text-2xl">{{ $icon }}</span>
+  </div>
+  <div>
+    <h4 class="font-display font-bold text-periwinkle-800">{{ $title }}</h4>
+    {{ with $description }}
+    <p class="text-periwinkle-600 text-sm">{{ . }}</p>
+    {{ end }}
+    {{ with $date }}
+    <time class="text-periwinkle-400 text-xs">{{ . }}</time>
+    {{ end }}
+  </div>
+</div>

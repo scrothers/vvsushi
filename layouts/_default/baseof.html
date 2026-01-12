@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}" class="scroll-smooth">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body class="min-h-screen bg-lavender-50 font-body text-alt-800 antialiased overflow-x-hidden">
+  {{- partial "cloud-bg.html" . -}}
+
+  <!-- Fixed-width content container -->
+  <div class="relative z-10 max-w-5xl mx-auto min-h-screen flex flex-col shadow-2xl">
+    <!-- Content wrapper with solid background -->
+    <div class="bg-white/95 backdrop-blur-sm border-x-2 border-alt-900 flex flex-col min-h-screen">
+      {{- partial "header.html" . -}}
+
+      <main class="flex-1">
+        {{- block "main" . }}{{- end }}
+      </main>
+
+      {{- partial "footer.html" . -}}
+    </div>
+  </div>
+
+  {{- partial "scripts.html" . -}}
+</body>
+</html>

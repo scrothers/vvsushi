@@ -1,0 +1,509 @@
+@import "tailwindcss";
+
+/* vvSushii Custom Theme - Pastel Goth / Alt Kawaii */
+@theme {
+  /* Periwinkle Blue - Primary (keeping the happy vibes) */
+  --color-periwinkle-50: #f5f5ff;
+  --color-periwinkle-100: #ebebff;
+  --color-periwinkle-200: #d6d6ff;
+  --color-periwinkle-300: #b8b8e8;
+  --color-periwinkle-400: #a5a5d9;
+  --color-periwinkle-500: #8b8bb8;
+  --color-periwinkle-600: #7070a0;
+  --color-periwinkle-700: #5a5a80;
+  --color-periwinkle-800: #454560;
+  --color-periwinkle-900: #303045;
+
+  /* Hot Pink - Accent (neon pop) */
+  --color-hotpink-50: #fff0f7;
+  --color-hotpink-100: #ffe0ef;
+  --color-hotpink-200: #ffb8d9;
+  --color-hotpink-300: #ff8fc2;
+  --color-hotpink-400: #ff69b4;
+  --color-hotpink-500: #ff1493;
+  --color-hotpink-600: #db117d;
+  --color-hotpink-700: #b70e67;
+  --color-hotpink-800: #930b52;
+  --color-hotpink-900: #6f083e;
+
+  /* Alt Black - Hot Topic edge */
+  --color-alt-50: #f5f5f5;
+  --color-alt-100: #e0e0e0;
+  --color-alt-200: #b0b0b0;
+  --color-alt-300: #808080;
+  --color-alt-400: #505050;
+  --color-alt-500: #2a2a2a;
+  --color-alt-600: #1a1a1a;
+  --color-alt-700: #121212;
+  --color-alt-800: #0a0a0a;
+  --color-alt-900: #000000;
+
+  /* Deep Purple - Emo accent */
+  --color-purple-50: #faf5ff;
+  --color-purple-100: #f3e8ff;
+  --color-purple-200: #e9d5ff;
+  --color-purple-300: #d8b4fe;
+  --color-purple-400: #a855f7;
+  --color-purple-500: #9333ea;
+  --color-purple-600: #7c22ce;
+  --color-purple-700: #6b21a8;
+  --color-purple-800: #581c87;
+  --color-purple-900: #3b0764;
+
+  /* Sky - Soft background */
+  --color-skyblue-50: #f0f9ff;
+  --color-skyblue-100: #e0f2fe;
+  --color-skyblue-200: #bae6fd;
+  --color-skyblue-300: #87ceeb;
+
+  /* Blush - Soft accent */
+  --color-blush-100: #fff5f7;
+  --color-blush-200: #ffe4e9;
+  --color-blush-300: #ffb6c1;
+
+  /* Lavender - Background */
+  --color-lavender-50: #faf8ff;
+  --color-lavender-100: #f0f0ff;
+  --color-lavender-200: #e8e0f0;
+
+  /* Custom fonts */
+  --font-display: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Nunito", ui-sans-serif, system-ui, sans-serif;
+
+  /* Custom animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+  --animate-bounce-soft: bounce-soft 2s ease-in-out infinite;
+  --animate-drift: drift 20s linear infinite;
+  --animate-glitch: glitch 3s infinite;
+  --animate-flicker: flicker 4s infinite;
+
+  /* Shadows - With edge */
+  --shadow-cute: 0 4px 14px 0 rgba(139, 139, 184, 0.25);
+  --shadow-cute-lg: 0 10px 40px 0 rgba(139, 139, 184, 0.3);
+  --shadow-glow-pink: 0 0 20px rgba(255, 20, 147, 0.5), 0 0 40px rgba(255, 20, 147, 0.2);
+  --shadow-glow-periwinkle: 0 0 20px rgba(139, 139, 184, 0.5);
+  --shadow-glow-purple: 0 0 20px rgba(147, 51, 234, 0.5);
+  --shadow-hard: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
+  --shadow-hard-pink: 4px 4px 0 0 rgba(255, 20, 147, 0.8);
+}
+
+/* Keyframe animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes drift {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+
+@keyframes glitch {
+  0%, 90%, 100% { transform: translate(0); }
+  92% { transform: translate(-2px, 1px); }
+  94% { transform: translate(2px, -1px); }
+  96% { transform: translate(-1px, -1px); }
+  98% { transform: translate(1px, 1px); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.95; }
+  52% { opacity: 0.8; }
+  54% { opacity: 0.95; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+/* Cloud animation styles - Soft with dark edges */
+.cloud {
+  position: absolute;
+  background: linear-gradient(180deg, #ffffff 0%, #f0f0ff 100%);
+  border-radius: 9999px;
+  opacity: 0.7;
+  filter: blur(1px);
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: inherit;
+  border-radius: inherit;
+}
+
+.cloud-1 {
+  width: 200px;
+  height: 60px;
+  top: 10%;
+  animation: drift 25s linear infinite;
+}
+
+.cloud-1::before {
+  width: 100px;
+  height: 80px;
+  top: -40px;
+  left: 20px;
+}
+
+.cloud-1::after {
+  width: 120px;
+  height: 70px;
+  top: -35px;
+  right: 20px;
+}
+
+.cloud-2 {
+  width: 150px;
+  height: 45px;
+  top: 25%;
+  animation: drift 35s linear infinite;
+  animation-delay: -10s;
+  opacity: 0.5;
+}
+
+.cloud-2::before {
+  width: 70px;
+  height: 60px;
+  top: -30px;
+  left: 15px;
+}
+
+.cloud-2::after {
+  width: 80px;
+  height: 50px;
+  top: -25px;
+  right: 15px;
+}
+
+.cloud-3 {
+  width: 180px;
+  height: 55px;
+  top: 60%;
+  animation: drift 40s linear infinite;
+  animation-delay: -20s;
+  opacity: 0.4;
+}
+
+.cloud-3::before {
+  width: 90px;
+  height: 70px;
+  top: -35px;
+  left: 20px;
+}
+
+.cloud-3::after {
+  width: 100px;
+  height: 60px;
+  top: -30px;
+  right: 20px;
+}
+
+/* Alt/Emo decorative elements */
+.star-alt {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--color-alt-900);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.star-alt-pink {
+  background: var(--color-hotpink-500);
+}
+
+.x-mark {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: bold;
+  color: var(--color-alt-900);
+  opacity: 0.1;
+  font-size: 24px;
+}
+
+.heart-alt {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--color-hotpink-500);
+  transform: rotate(-45deg);
+  opacity: 0.6;
+}
+
+.heart-alt::before,
+.heart-alt::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.heart-alt::before {
+  top: -8px;
+  left: 0;
+}
+
+.heart-alt::after {
+  top: 0;
+  left: 8px;
+}
+
+/* Cute button styles - With edge */
+.btn-cute {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-display font-bold transition-all duration-300;
+  @apply bg-gradient-to-r from-hotpink-400 to-hotpink-500 text-white;
+  @apply hover:from-hotpink-500 hover:to-hotpink-600 hover:shadow-glow-pink hover:-translate-y-0.5;
+  @apply active:translate-y-0;
+  border: 2px solid var(--color-alt-900);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-cute-secondary {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-display font-bold transition-all duration-300;
+  @apply bg-gradient-to-r from-periwinkle-400 to-purple-400 text-white;
+  @apply hover:from-periwinkle-500 hover:to-purple-500 hover:shadow-glow-purple hover:-translate-y-0.5;
+  @apply active:translate-y-0;
+  border: 2px solid var(--color-alt-900);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-cute-outline {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-display font-bold transition-all duration-300;
+  @apply border-2 border-alt-900 text-alt-900 bg-white;
+  @apply hover:bg-alt-900 hover:text-hotpink-400 hover:-translate-y-0.5;
+  @apply active:translate-y-0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Alt style buttons */
+.btn-alt {
+  @apply inline-flex items-center justify-center px-6 py-3 font-display font-bold transition-all duration-200;
+  @apply bg-alt-900 text-hotpink-400;
+  box-shadow: var(--shadow-hard-pink);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.btn-alt:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 rgba(255, 20, 147, 0.8);
+}
+
+.btn-alt:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+/* Card styles - Cute with edge */
+.card-cute {
+  @apply bg-white rounded-2xl p-6 transition-all duration-300;
+  border: 2px solid var(--color-alt-900);
+  box-shadow: var(--shadow-hard);
+}
+
+.card-cute:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 0.9);
+}
+
+/* Alt card - More edgy */
+.card-alt {
+  @apply bg-white p-6 transition-all duration-200;
+  border: 3px solid var(--color-alt-900);
+  box-shadow: var(--shadow-hard);
+}
+
+.card-alt:hover {
+  box-shadow: var(--shadow-hard-pink);
+  border-color: var(--color-hotpink-500);
+}
+
+/* Live indicator */
+.live-indicator {
+  @apply inline-flex items-center gap-2 px-3 py-1 text-sm font-bold uppercase tracking-wider;
+  @apply bg-red-500 text-white;
+  border: 2px solid var(--color-alt-900);
+  animation: flicker 2s infinite;
+}
+
+.live-indicator::before {
+  content: '';
+  @apply w-2 h-2 rounded-full bg-white;
+  animation: pulse-soft 1s ease-in-out infinite;
+}
+
+/* Navigation active state */
+.nav-link-active {
+  @apply text-hotpink-500 relative font-bold;
+}
+
+.nav-link-active::after {
+  content: '✖';
+  @apply absolute -bottom-1 left-1/2 -translate-x-1/2 text-xs;
+  color: var(--color-alt-900);
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r from-periwinkle-500 via-hotpink-500 to-purple-500 bg-clip-text text-transparent;
+  background-size: 200% auto;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+/* Alt heading style */
+.heading-alt {
+  @apply font-display font-bold;
+  text-shadow: 3px 3px 0 var(--color-alt-900);
+}
+
+/* Strikethrough decorative */
+.strike-deco {
+  position: relative;
+}
+
+.strike-deco::after {
+  content: '';
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  top: 50%;
+  height: 3px;
+  background: var(--color-hotpink-500);
+  transform: rotate(-2deg);
+}
+
+/* Tape/sticker effect */
+.tape {
+  position: relative;
+}
+
+.tape::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 60px;
+  height: 20px;
+  background: rgba(255, 105, 180, 0.3);
+  border: 1px solid var(--color-alt-200);
+}
+
+/* Chain link decoration */
+.chain-link {
+  display: inline-block;
+  width: 20px;
+  height: 10px;
+  border: 2px solid var(--color-alt-400);
+  border-radius: 5px;
+  margin: 0 -2px;
+}
+
+/* Safety pin decoration */
+.safety-pin {
+  position: relative;
+  width: 30px;
+  height: 15px;
+  border: 2px solid var(--color-alt-400);
+  border-radius: 0 10px 10px 0;
+  border-left: none;
+}
+
+.safety-pin::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--color-alt-400);
+  border-radius: 50%;
+}
+
+/* Scrollbar styling - Alt */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-lavender-100);
+  border-left: 2px solid var(--color-alt-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-hotpink-400), var(--color-purple-400));
+  border: 2px solid var(--color-alt-900);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-hotpink-500), var(--color-purple-500));
+}
+
+/* Selection color */
+::selection {
+  background: var(--color-hotpink-400);
+  color: var(--color-alt-900);
+}
+
+/* Checkered pattern overlay */
+.checker-overlay {
+  background-image:
+    linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0,0,0,0.03) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.03) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.03) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* Torn edge effect */
+.torn-edge {
+  clip-path: polygon(
+    0% 0%, 5% 2%, 10% 0%, 15% 1%, 20% 0%, 25% 2%, 30% 0%, 35% 1%, 40% 0%, 45% 2%, 50% 0%, 55% 1%, 60% 0%, 65% 2%, 70% 0%, 75% 1%, 80% 0%, 85% 2%, 90% 0%, 95% 1%, 100% 0%,
+    100% 100%, 95% 98%, 90% 100%, 85% 99%, 80% 100%, 75% 98%, 70% 100%, 65% 99%, 60% 100%, 55% 98%, 50% 100%, 45% 99%, 40% 100%, 35% 98%, 30% 100%, 25% 99%, 20% 100%, 15% 98%, 10% 100%, 5% 99%, 0% 100%
+  );
+}
+
+/* Band sticker style tag */
+.tag-band {
+  @apply inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest;
+  @apply bg-alt-900 text-white;
+  transform: rotate(-2deg);
+}
+
+/* Drip effect */
+.drip {
+  position: relative;
+}
+
+.drip::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 20%;
+  width: 8px;
+  height: 12px;
+  background: inherit;
+  border-radius: 0 0 50% 50%;
+}

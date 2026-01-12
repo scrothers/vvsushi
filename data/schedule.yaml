@@ -1,0 +1,93 @@
+# vvSushii Weekly Stream Schedule
+# All times in Central Time (CT)
+
+timezone: "America/Chicago"
+timezone_label: "CT"
+
+# Weekly schedule - Sunday through Saturday
+week:
+  sunday:
+    live: false
+    title: "Day Off"
+    description: "Resting and recharging for the week ahead!"
+    emote: "eepy1"
+
+  monday:
+    live: true
+    title: "Monday Vibes"
+    time: "11:00 AM"
+    end_time: "4:00 PM"
+    description: "Watch stream for some good vibes, laughs, and fun gaming! Chill & chat with your favorite Sushii."
+    game: "Variety"
+    emote: "happy"
+    platform: "twitch"
+
+  tuesday:
+    live: true
+    title: "Chill Tuesday"
+    time: "11:00 AM"
+    end_time: "4:00 PM"
+    description: "Watch stream for some good vibes, laughs, and fun gaming! Chill & chat with your favorite Sushii."
+    game: "Variety"
+    emote: "cozy1"
+    platform: "twitch"
+
+  wednesday:
+    live: true
+    title: "Community Day"
+    time: "11:00 AM"
+    end_time: "4:00 PM"
+    description: "Community games day! Join Sushii for some fun & interactive community games!"
+    game: "Community Games"
+    emote: "gaming"
+    platform: "twitch"
+
+  thursday:
+    live: true
+    title: "Thursday Hangout"
+    time: "11:00 AM"
+    end_time: "4:00 PM"
+    description: "Watch stream for some good vibes, laughs, and fun gaming! Chill & chat with your favorite Sushii."
+    game: "Variety"
+    emote: "giggle"
+    platform: "twitch"
+
+  friday:
+    live: true
+    title: "Super Friday"
+    time: "11:00 AM"
+    end_time: "8:00 PM"
+    description: "Community games day! ★ Extra long stream! ★ Join Sushii for some fun & interactive community games!"
+    game: "Community Games"
+    emote: "hype1"
+    platform: "twitch"
+
+  saturday:
+    live: false
+    title: "Day Off"
+    description: "Resting and recharging for the week ahead!"
+    emote: "cozy2"
+
+# Special recurring events
+events:
+  - name: "Sub Sunday"
+    description: "Monthly subscriber appreciation stream with games picked by subs!"
+    when: "Last Sunday of each month"
+    time: "3:00 PM"
+    emoji: "💜"
+
+  - name: "New Game Tuesday"
+    description: "First look at new releases when something exciting drops!"
+    when: "On new release days"
+    emoji: "🆕"
+
+  - name: "Collab Streams"
+    description: "Playing with friends and other streamers!"
+    when: "Announced on socials"
+    emoji: "👯"
+
+# Notes shown on schedule page
+notes:
+  - "Schedule may change for special events - follow socials for updates!"
+  - "All times shown in Central Time (CT)"
+  - "VODs available on YouTube after stream"

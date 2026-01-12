@@ -1,0 +1,90 @@
+baseURL = "https://vvsushii.com/"
+languageCode = "en-us"
+title = "vvSushii"
+
+# Build settings
+enableRobotsTXT = true
+enableGitInfo = false
+
+[params]
+  description = "Welcome to vvSushii's cozy corner of the internet! Gaming, streaming, and good vibes."
+  author = "vvSushii"
+
+  # Social handles
+  twitch = "vvSushii"
+  youtube = "@vvSushii"
+  tiktok = "@vvsushii"
+
+  # Colors (for meta tags)
+  themeColor = "#8B8BB8"
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  game = "games"
+
+# Main navigation menu
+[[menus.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[menus.main]]
+  name = "About"
+  url = "/about/"
+  weight = 2
+
+[[menus.main]]
+  name = "Schedule"
+  url = "/schedule/"
+  weight = 3
+
+[[menus.main]]
+  name = "Games"
+  url = "/games/"
+  weight = 4
+
+[[menus.main]]
+  name = "Clips"
+  url = "/clips/"
+  weight = 5
+
+[[menus.main]]
+  name = "Merch"
+  url = "/merch/"
+  weight = 6
+
+[[menus.main]]
+  name = "Contact"
+  url = "/contact/"
+  weight = 7
+
+# Footer menu
+[[menus.footer]]
+  name = "Privacy"
+  url = "/privacy/"
+  weight = 1
+
+[[menus.footer]]
+  name = "Terms"
+  url = "/terms/"
+  weight = 2
+
+# Markup settings
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "dracula"
+
+# Output formats
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+
+# Build processing
+[build]
+  [build.buildStats]
+    enable = true

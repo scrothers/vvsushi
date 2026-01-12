@@ -1,0 +1,81 @@
+{{/* Steam Game Card Shortcode
+     Usage: {{< game-card id="1245620" >}}
+     Or with custom data: {{< game-card id="1245620" name="Elden Ring" rating="5" hours="200" review="Pain and suffering" >}}
+
+     The Steam App ID is used to fetch the header image from Steam CDN.
+     Find App IDs at: https://steamdb.info/
+*/}}
+{{ $id := .Get "id" }}
+{{ $name := .Get "name" }}
+{{ $rating := .Get "rating" | default 0 }}
+{{ $hours := .Get "hours" }}
+{{ $review := .Get "review" }}
+{{ $status := .Get "status" }}
+
+{{/* Try to find game in data file if no name provided */}}
+{{ if not $name }}
+  {{ range site.Data.games.featured }}
+    {{ if eq (string .app_id) $id }}
+      {{ $name = .name }}
+      {{ $rating = .rating }}
+      {{ $hours = .hours }}
+      {{ $review = .review }}
+      {{ $status = .status }}
+    {{ end }}
+  {{ end }}
+  {{ range site.Data.games.games }}
+    {{ if eq (string .app_id) $id }}
+      {{ $name = .name }}
+      {{ $rating = .rating }}
+      {{ $hours = .hours }}
+      {{ $review = .review }}
+      {{ $status = .status }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<div class="game-card-embed my-6 max-w-md mx-auto">
+  <div class="bg-white border-2 border-alt-900 shadow-hard overflow-hidden">
+    <!-- Game header image from Steam -->
+    <div class="relative aspect-[460/215] overflow-hidden">
+      <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ $id }}/header.jpg"
+           alt="{{ $name }}"
+           class="w-full h-full object-cover">
+      {{ if $rating }}
+      <div class="absolute top-2 right-2 bg-alt-900/80 text-yellow-400 px-2 py-1 text-sm font-bold">
+        {{ range seq (int $rating) }}★{{ end }}{{ range seq (sub 5 (int $rating)) }}☆{{ end }}
+      </div>
+      {{ end }}
+      {{ with $status }}
+      <div class="absolute top-2 left-2 px-2 py-1 text-xs font-bold uppercase
+        {{ if eq . "currently_playing" }}bg-hotpink-500 text-white
+        {{ else if eq . "played" }}bg-periwinkle-500 text-white
+        {{ else if eq . "backlog" }}bg-alt-400 text-white
+        {{ else }}bg-alt-900 text-white{{ end }}">
+        {{ if eq . "currently_playing" }}Now Playing{{ else }}{{ . | humanize }}{{ end }}
+      </div>
+      {{ end }}
+    </div>
+
+    <!-- Game info -->
+    <div class="p-4">
+      <h3 class="font-display font-black text-lg text-alt-800 mb-2">{{ $name | default "Unknown Game" }}</h3>
+
+      {{ with $review }}
+      <p class="text-alt-600 text-sm italic mb-3">"{{ . }}"</p>
+      {{ end }}
+
+      <div class="flex items-center justify-between text-xs text-alt-500">
+        {{ with $hours }}
+        <div class="flex items-center gap-1">
+          <span>⏱️</span>
+          <span class="font-bold">{{ . }}+ hours</span>
+        </div>
+        {{ end }}
+        <a href="https://store.steampowered.com/app/{{ $id }}" target="_blank" rel="noopener" class="text-periwinkle-500 hover:text-hotpink-500 font-bold">
+          View on Steam →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

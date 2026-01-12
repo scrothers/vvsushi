@@ -1,0 +1,29 @@
+# Merch items
+# Link to your Fourthwall or other merch store
+
+store_url: "https://vvsushii.fourthwall.com"
+
+featured:
+  - name: "vvSushii Logo Tee"
+    description: "Classic logo tee in soft cotton"
+    price: "$25"
+    image: "/images/merch/logo-tee.png"
+    url: "https://vvsushii.fourthwall.com/products/logo-tee"
+
+  - name: "Cozy Hoodie"
+    description: "Super soft hoodie for gaming sessions"
+    price: "$45"
+    image: "/images/merch/hoodie.png"
+    url: "https://vvsushii.fourthwall.com/products/hoodie"
+
+  - name: "Chibi Sticker Pack"
+    description: "Cute stickers for your setup"
+    price: "$10"
+    image: "/images/merch/stickers.png"
+    url: "https://vvsushii.fourthwall.com/products/stickers"
+
+  - name: "Gaming Mousepad"
+    description: "XL desk mat with cute design"
+    price: "$30"
+    image: "/images/merch/mousepad.png"
+    url: "https://vvsushii.fourthwall.com/products/mousepad"

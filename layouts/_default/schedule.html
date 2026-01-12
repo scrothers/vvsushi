@@ -1,0 +1,268 @@
+{{ define "main" }}
+<!-- Schedule Hero -->
+<section class="relative py-12 px-4 overflow-hidden bg-gradient-to-b from-periwinkle-200 via-hotpink-50 to-white">
+  <!-- Scattered decorations -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-6 left-[5%] text-6xl opacity-20 rotate-12">★</div>
+    <div class="absolute top-16 right-[8%] text-4xl opacity-25 -rotate-6 text-hotpink-400">♡</div>
+    <div class="absolute bottom-12 left-[10%] text-3xl opacity-20 rotate-45">✖</div>
+    <div class="absolute bottom-8 right-[5%] text-5xl opacity-15 -rotate-12 text-purple-400">★</div>
+    <div class="absolute top-1/3 left-[3%] text-2xl opacity-30 text-periwinkle-400">✦</div>
+  </div>
+
+  <div class="container mx-auto max-w-6xl relative">
+    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+
+      <!-- Left: Calendar icon stack -->
+      <div class="relative w-64 h-72 flex-shrink-0">
+        <!-- Back calendar -->
+        <div class="absolute top-4 left-4 w-44 h-52 bg-purple-400 border-2 border-alt-900 rounded-lg rotate-[-8deg] shadow-hard"></div>
+        <!-- Middle calendar -->
+        <div class="absolute top-2 left-2 w-44 h-52 bg-hotpink-400 border-2 border-alt-900 rounded-lg rotate-[-4deg] shadow-hard"></div>
+        <!-- Front calendar -->
+        <div class="absolute top-0 left-0 w-44 h-52 bg-white border-2 border-alt-900 rounded-lg shadow-hard overflow-hidden flex flex-col">
+          <!-- Calendar header -->
+          <div class="h-10 bg-alt-900 flex items-center justify-center">
+            <span class="text-white font-display font-bold uppercase tracking-wider text-sm">Live Days</span>
+          </div>
+          <!-- Calendar grid preview -->
+          <div class="flex-1 p-2 grid grid-cols-7 gap-1">
+            {{ range $i, $day := slice "S" "M" "T" "W" "T" "F" "S" }}
+            <div class="aspect-square flex items-center justify-center text-xs font-bold {{ if or (eq $i 1) (eq $i 2) (eq $i 3) (eq $i 4) (eq $i 5) }}bg-hotpink-400 text-white{{ else }}bg-alt-100 text-alt-400{{ end }} rounded">
+              {{ $day }}
+            </div>
+            {{ end }}
+          </div>
+          <!-- Random emote -->
+          <div class="h-20 flex items-center justify-center bg-gradient-to-t from-periwinkle-50">
+            <img id="schedule-hero-emote" src="" alt="emote" class="w-14 h-14 object-contain">
+          </div>
+        </div>
+
+        <!-- Clock sticker -->
+        <div class="absolute -top-2 -right-2 w-12 h-12 bg-yellow-300 border-2 border-alt-900 rounded-full flex items-center justify-center shadow-hard rotate-12 z-10">
+          <span class="text-xl">⏰</span>
+        </div>
+
+        <!-- Heart sticker -->
+        <div class="absolute bottom-4 -left-2 text-3xl rotate-[-15deg]">💜</div>
+      </div>
+
+      <!-- Right: Text content -->
+      <div class="text-center lg:text-left flex-1">
+        <!-- Tag -->
+        <div class="inline-block bg-alt-900 text-white px-4 py-1 font-display text-sm uppercase tracking-widest rotate-[-1deg] mb-4">
+          ✦ When To Watch ✦
+        </div>
+
+        <!-- Title -->
+        <h1 class="font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-none mb-4">
+          <span class="block text-alt-900">STREAM</span>
+          <span class="block gradient-text" style="text-shadow: 4px 4px 0 rgba(0,0,0,0.1);">SCHEDULE</span>
+        </h1>
+
+        <!-- Decorative symbols -->
+        <div class="flex items-center justify-center lg:justify-start gap-3 text-2xl mb-4">
+          <span class="text-periwinkle-400">📅</span>
+          <span class="text-hotpink-400">♡</span>
+          <span class="text-purple-400">★</span>
+          <span class="text-alt-400">✖</span>
+          <span class="text-hotpink-400">♡</span>
+        </div>
+
+        <!-- Description -->
+        <div class="bg-periwinkle-100 border-2 border-alt-900 px-4 py-3 rotate-[1deg] inline-block mb-6">
+          <p class="text-alt-700 font-medium text-lg">
+            5 days a week of chaos, cozy vibes, and questionable gameplay!
+          </p>
+        </div>
+
+        <!-- Timezone badge -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+          <div class="bg-white border-2 border-alt-900 px-4 py-2 shadow-hard flex items-center gap-2">
+            <span class="text-lg">🌎</span>
+            <span class="font-display font-bold text-alt-800">All times in {{ site.Data.schedule.timezone_label | default "PT" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="mt-12 flex items-center justify-center gap-4">
+      <div class="h-0.5 flex-1 bg-alt-900"></div>
+      <div class="flex items-center gap-3 text-alt-400">
+        <span>✖</span>
+        <span class="text-hotpink-400">♡</span>
+        <span class="font-display font-bold text-alt-600 uppercase tracking-wide">Weekly Calendar</span>
+        <span class="text-hotpink-400">♡</span>
+        <span>✖</span>
+      </div>
+      <div class="h-0.5 flex-1 bg-alt-900"></div>
+    </div>
+  </div>
+
+  <!-- Random emote script -->
+  <script>
+    (function() {
+      const emotes = [
+        {{- range $i, $e := site.Data.emotes.emotes }}{{ if $i }},{{ end }}"/images/emotes/{{ $e.file }}"{{ end }}
+      ];
+      const img = document.getElementById('schedule-hero-emote');
+      if (img) img.src = emotes[Math.floor(Math.random() * emotes.length)];
+    })();
+  </script>
+</section>
+
+<!-- Weekly Calendar -->
+<section class="py-12 px-4">
+  <div class="container mx-auto max-w-6xl">
+    {{ with site.Data.schedule.week }}
+    {{ $week := . }}
+    <!-- Calendar Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-3 mb-12">
+      {{/* Define day order */}}
+      {{ $days := slice "sunday" "monday" "tuesday" "wednesday" "thursday" "friday" "saturday" }}
+      {{ $dayLabels := slice "SUN" "MON" "TUE" "WED" "THU" "FRI" "SAT" }}
+
+      {{ range $i, $dayKey := $days }}
+      {{ $day := index $week $dayKey }}
+      {{ $label := index $dayLabels $i }}
+
+      <div class="relative group">
+        <!-- Day card -->
+        <div class="border-2 border-alt-900 {{ if $day.live }}bg-white{{ else }}bg-alt-50{{ end }} overflow-hidden transition-all duration-200 {{ if $day.live }}hover:shadow-hard hover:-translate-y-1{{ end }}">
+
+          <!-- Day header -->
+          <div class="{{ if $day.live }}bg-gradient-to-r from-hotpink-500 to-purple-500{{ else }}bg-alt-300{{ end }} px-3 py-2 border-b-2 border-alt-900">
+            <span class="font-display font-black text-sm {{ if $day.live }}text-white{{ else }}text-alt-600{{ end }} tracking-wider">
+              {{ $label }}
+            </span>
+          </div>
+
+          <!-- Day content -->
+          <div class="p-3 min-h-[180px] flex flex-col">
+            <!-- Emote -->
+            <div class="w-12 h-12 mb-2">
+              {{- $emoteName := $day.emote -}}
+              {{- range site.Data.emotes.emotes -}}
+                {{- if eq .name $emoteName -}}
+                  <img src="/images/emotes/{{ .file }}" alt="{{ .name }}" class="w-full h-full object-contain">
+                {{- end -}}
+              {{- end -}}
+            </div>
+
+            <!-- Title -->
+            <h3 class="font-display font-bold text-sm {{ if $day.live }}text-alt-800{{ else }}text-alt-400{{ end }} mb-1 leading-tight">
+              {{ $day.title }}
+            </h3>
+
+            {{ if $day.live }}
+            <!-- Time -->
+            <div class="bg-alt-900 text-white px-2 py-1 text-xs font-bold inline-block mb-2 self-start">
+              {{ $day.time }}
+            </div>
+
+            <!-- Game -->
+            <p class="text-xs text-hotpink-500 font-semibold mb-2">{{ $day.game }}</p>
+
+            <!-- Description -->
+            <p class="text-xs text-alt-500 mt-auto leading-relaxed">{{ $day.description }}</p>
+
+            {{ else }}
+            <!-- Off day message -->
+            <p class="text-xs text-alt-400 mt-2 italic">{{ $day.description }}</p>
+            {{ end }}
+          </div>
+
+          {{ if $day.live }}
+          <!-- Live indicator corner -->
+          <div class="absolute top-0 right-0 w-0 h-0 border-t-[24px] border-t-hotpink-400 border-l-[24px] border-l-transparent"></div>
+          {{ end }}
+        </div>
+
+        {{ if $day.live }}
+        <!-- Random emote peeking -->
+        <img class="schedule-day-emote absolute -bottom-2 -right-2 w-10 h-10 object-contain opacity-0 group-hover:opacity-100 transition-opacity z-10" src="" alt="">
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <!-- Special Events -->
+    {{ with site.Data.schedule.events }}
+    <div class="mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="h-0.5 flex-1 bg-alt-200"></div>
+        <h2 class="font-display font-bold text-xl text-alt-800 uppercase tracking-wide flex items-center gap-2">
+          <span>✨</span> Special Events <span>✨</span>
+        </h2>
+        <div class="h-0.5 flex-1 bg-alt-200"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {{ range . }}
+        <div class="bg-white border-2 border-alt-900 p-4 shadow-hard hover:-translate-y-1 transition-transform">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">{{ .emoji }}</span>
+            <div>
+              <h3 class="font-display font-bold text-alt-800 mb-1">{{ .name }}</h3>
+              <p class="text-sm text-alt-600 mb-2">{{ .description }}</p>
+              <p class="text-xs text-hotpink-500 font-semibold">{{ .when }}</p>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    <!-- Notes -->
+    {{ with site.Data.schedule.notes }}
+    <div class="bg-alt-50 border-2 border-alt-900 p-4 mb-12">
+      <div class="flex items-start gap-3">
+        <span class="text-xl">📝</span>
+        <div class="text-sm text-alt-600 space-y-1">
+          {{ range . }}
+          <p>{{ . }}</p>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+
+    <!-- CTA -->
+    <div class="text-center">
+      <p class="text-alt-600 mb-4 font-display">Never miss a stream!</p>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        {{- with site.Params.twitch }}
+        <a href="https://twitch.tv/{{ . }}" target="_blank" rel="noopener"
+           class="bg-purple-500 text-white px-6 py-3 font-display font-bold uppercase tracking-wide border-2 border-alt-900 shadow-hard hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all flex items-center gap-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+          Follow on Twitch
+        </a>
+        {{- end }}
+        {{- with site.Params.youtube }}
+        <a href="https://youtube.com/{{ . }}?sub_confirmation=1" target="_blank" rel="noopener"
+           class="bg-white text-alt-900 px-6 py-3 font-display font-bold uppercase tracking-wide border-2 border-alt-900 shadow-hard hover:shadow-none hover:translate-x-1 hover:translate-y-1 hover:bg-red-500 hover:text-white transition-all flex items-center gap-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Subscribe on YouTube
+        </a>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Day emotes randomizer -->
+<script>
+(function() {
+  const emotes = [
+    {{- range $i, $e := site.Data.emotes.emotes }}{{ if $i }},{{ end }}"/images/emotes/{{ $e.file }}"{{ end }}
+  ];
+  document.querySelectorAll('.schedule-day-emote').forEach(img => {
+    img.src = emotes[Math.floor(Math.random() * emotes.length)];
+  });
+})();
+</script>
+{{ end }}

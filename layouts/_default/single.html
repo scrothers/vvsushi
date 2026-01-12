@@ -1,0 +1,111 @@
+{{ define "main" }}
+<article class="py-16 px-4">
+  <div class="container mx-auto max-w-4xl">
+    <!-- Article Header -->
+    <header class="text-center mb-12">
+      {{ with .Params.categories }}
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
+        {{ range . }}
+        <a href="{{ "categories" | relURL }}/{{ . | urlize }}"
+           class="px-3 py-1 text-sm font-semibold rounded-full bg-hotpink-100 text-hotpink-600 hover:bg-hotpink-200 transition-colors">
+          {{ . }}
+        </a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <h1 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-periwinkle-800 mb-4">
+        {{ .Title }}
+      </h1>
+
+      {{ with .Description }}
+      <p class="text-periwinkle-600 text-lg max-w-2xl mx-auto mb-6">
+        {{ . }}
+      </p>
+      {{ end }}
+
+      <div class="flex items-center justify-center gap-4 text-periwinkle-500 text-sm">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">
+          {{ .Date.Format "January 2, 2006" }}
+        </time>
+        {{ with .ReadingTime }}
+        <span>•</span>
+        <span>{{ . }} min read</span>
+        {{ end }}
+      </div>
+    </header>
+
+    <!-- Featured Image -->
+    {{ with .Params.image }}
+    <div class="aspect-video rounded-2xl overflow-hidden mb-12 shadow-cute-lg">
+      <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-full object-cover">
+    </div>
+    {{ end }}
+
+    <!-- Article Content -->
+    <div class="prose prose-lg prose-periwinkle mx-auto">
+      {{ .Content }}
+    </div>
+
+    <!-- Tags -->
+    {{ with .Params.tags }}
+    <div class="mt-12 pt-8 border-t border-periwinkle-100">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-periwinkle-600 font-semibold">Tags:</span>
+        {{ range . }}
+        <a href="{{ "tags" | relURL }}/{{ . | urlize }}"
+           class="px-3 py-1 text-sm rounded-full bg-periwinkle-100 text-periwinkle-700 hover:bg-periwinkle-200 transition-colors">
+          #{{ . }}
+        </a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    <!-- Share Buttons -->
+    <div class="mt-8 pt-8 border-t border-periwinkle-100">
+      <div class="flex items-center justify-center gap-4">
+        <span class="text-periwinkle-600 font-semibold">Share:</span>
+        <a href="https://twitter.com/intent/tweet?url={{ .Permalink }}&text={{ .Title | urlquery }}"
+           target="_blank" rel="noopener"
+           class="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center hover:scale-110 transition-transform"
+           aria-label="Share on Twitter">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <button onclick="navigator.clipboard.writeText('{{ .Permalink }}')"
+                class="w-10 h-10 rounded-full bg-periwinkle-500 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                aria-label="Copy link">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="mt-12 pt-8 border-t border-periwinkle-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {{ with .PrevInSection }}
+      <a href="{{ .Permalink }}" class="card-cute flex items-center gap-4 group">
+        <div class="w-10 h-10 rounded-full bg-periwinkle-100 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-periwinkle-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </div>
+        <div>
+          <span class="text-periwinkle-500 text-sm">Previous</span>
+          <p class="font-display font-semibold text-periwinkle-800 group-hover:text-hotpink-500 transition-colors line-clamp-1">{{ .Title }}</p>
+        </div>
+      </a>
+      {{ end }}
+
+      {{ with .NextInSection }}
+      <a href="{{ .Permalink }}" class="card-cute flex items-center gap-4 group sm:flex-row-reverse sm:text-right">
+        <div class="w-10 h-10 rounded-full bg-periwinkle-100 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-periwinkle-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </div>
+        <div>
+          <span class="text-periwinkle-500 text-sm">Next</span>
+          <p class="font-display font-semibold text-periwinkle-800 group-hover:text-hotpink-500 transition-colors line-clamp-1">{{ .Title }}</p>
+        </div>
+      </a>
+      {{ end }}
+    </nav>
+  </div>
+</article>
+{{ end }}

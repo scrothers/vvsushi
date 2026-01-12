@@ -1,0 +1,12 @@
+{
+  "title": "{{ .Site.Title }}",
+  "description": "{{ .Site.Params.description }}",
+  "url": "{{ .Permalink }}",
+  "socials": {
+    "twitch": "{{ .Site.Params.twitch }}",
+    "youtube": "{{ .Site.Params.youtube }}",
+    "tiktok": "{{ .Site.Params.tiktok }}",
+    "twitter": "{{ .Site.Params.twitter }}"
+  },
+  "schedule": {{ site.Data.schedule | jsonify }}
+}

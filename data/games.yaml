@@ -1,0 +1,106 @@
+# vvSushii Game Library
+# Steam App IDs used to fetch images from Steam CDN
+
+# Featured games (shown prominently)
+featured:
+  - app_id: 1245620
+    name: "Elden Ring"
+    status: "currently_playing"
+    rating: 5
+    hours: 200
+    review: "Pain and suffering but I love it"
+    tags: ["RPG", "Souls-like", "Open World"]
+
+  - app_id: 1817070
+    name: "Marvel Rivals"
+    status: "currently_playing"
+    rating: 5
+    hours: 150
+    review: "My competitive addiction"
+    tags: ["Hero Shooter", "Multiplayer", "Team-based"]
+
+# Full game library
+games:
+  # Horror
+  - app_id: 1172470
+    name: "Apex Legends"
+    status: "played"
+    rating: 4
+    hours: 500
+    review: "Movement shooter queen"
+    tags: ["Battle Royale", "FPS", "Multiplayer"]
+
+  - app_id: 1203220
+    name: "Naraka: Bladepoint"
+    status: "played"
+    rating: 4
+    hours: 100
+    review: "Satisfying melee combat"
+    tags: ["Battle Royale", "Action", "Multiplayer"]
+
+  - app_id: 578080
+    name: "PUBG: Battlegrounds"
+    status: "played"
+    rating: 3
+    hours: 200
+    review: "The OG battle royale"
+    tags: ["Battle Royale", "FPS", "Survival"]
+
+  - app_id: 381210
+    name: "Dead by Daylight"
+    status: "played"
+    rating: 4
+    hours: 300
+    review: "Screaming simulator"
+    tags: ["Horror", "Multiplayer", "Asymmetric"]
+
+  - app_id: 1938090
+    name: "Call of Duty: Warzone"
+    status: "played"
+    rating: 3
+    hours: 150
+    review: "Casual fun with friends"
+    tags: ["Battle Royale", "FPS", "Multiplayer"]
+
+  - app_id: 1599340
+    name: "Lost Ark"
+    status: "played"
+    rating: 4
+    hours: 200
+    review: "Beautiful MMO chaos"
+    tags: ["MMO", "Action RPG", "Free to Play"]
+
+  - app_id: 892970
+    name: "Valheim"
+    status: "played"
+    rating: 5
+    hours: 100
+    review: "Cozy Viking survival"
+    tags: ["Survival", "Co-op", "Open World"]
+
+  - app_id: 1966720
+    name: "Lethal Company"
+    status: "played"
+    rating: 5
+    hours: 50
+    review: "BEES! BEES EVERYWHERE!"
+    tags: ["Horror", "Co-op", "Comedy"]
+
+  - app_id: 2881650
+    name: "Delta Force"
+    status: "played"
+    rating: 4
+    hours: 30
+    review: "Tactical shooter vibes"
+    tags: ["FPS", "Tactical", "Multiplayer"]
+
+  - app_id: 1517290
+    name: "Battlefield 2042"
+    status: "played"
+    rating: 3
+    hours: 80
+    review: "Big battles, big explosions"
+    tags: ["FPS", "Multiplayer", "Action"]
+
+# Status options: currently_playing, played, backlog, dropped
+# Rating: 1-5 stars

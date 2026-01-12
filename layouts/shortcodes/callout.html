@@ -1,0 +1,41 @@
+{{/* Callout/alert box shortcode
+    Usage: callout type="info" - Content here - /callout
+    Types: info, warning, success, tip
+*/}}
+
+{{ $type := .Get "type" | default "info" }}
+{{ $title := .Get "title" }}
+
+{{ $bgColor := "bg-periwinkle-100" }}
+{{ $borderColor := "border-periwinkle-300" }}
+{{ $textColor := "text-periwinkle-800" }}
+{{ $icon := "ℹ️" }}
+
+{{ if eq $type "warning" }}
+  {{ $bgColor = "bg-amber-50" }}
+  {{ $borderColor = "border-amber-300" }}
+  {{ $textColor = "text-amber-800" }}
+  {{ $icon = "⚠️" }}
+{{ else if eq $type "success" }}
+  {{ $bgColor = "bg-green-50" }}
+  {{ $borderColor = "border-green-300" }}
+  {{ $textColor = "text-green-800" }}
+  {{ $icon = "✅" }}
+{{ else if eq $type "tip" }}
+  {{ $bgColor = "bg-hotpink-50" }}
+  {{ $borderColor = "border-hotpink-300" }}
+  {{ $textColor = "text-hotpink-800" }}
+  {{ $icon = "💡" }}
+{{ end }}
+
+<div class="my-6 p-4 rounded-xl border-l-4 {{ $bgColor }} {{ $borderColor }}">
+  <div class="flex gap-3">
+    <span class="text-xl flex-shrink-0">{{ $icon }}</span>
+    <div class="{{ $textColor }}">
+      {{ with $title }}
+      <p class="font-display font-bold mb-1">{{ . }}</p>
+      {{ end }}
+      <div class="prose prose-sm">{{ .Inner | markdownify }}</div>
+    </div>
+  </div>
+</div>

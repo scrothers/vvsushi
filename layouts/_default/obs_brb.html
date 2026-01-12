@@ -137,106 +137,106 @@
     <div class="cloud cloud-3" style="left: 20%; animation-delay: -25s;"></div>
     <div class="cloud cloud-3" style="left: 60%; animation-delay: -12s;"></div>
 
-    <!-- Stars -->
-    <div class="star-alt star-animate" style="top: 10%; left: 5%;"></div>
-    <div class="star-alt star-alt-pink star-animate" style="top: 15%; left: 92%; width: 14px; height: 14px; animation-delay: -1s, -0.5s;"></div>
-    <div class="star-alt star-animate" style="top: 75%; left: 8%; width: 10px; height: 10px; animation-delay: -2s, -1s;"></div>
-    <div class="star-alt star-alt-pink star-animate" style="top: 85%; left: 90%; animation-delay: -3s, -1.5s;"></div>
+    <!-- Stars - hide ALL on mobile -->
+    <div class="star-alt star-animate hidden sm:block" style="top: 10%; left: 5%;"></div>
+    <div class="star-alt star-alt-pink star-animate hidden sm:block" style="top: 15%; left: 92%; width: 14px; height: 14px; animation-delay: -1s, -0.5s;"></div>
+    <div class="star-alt star-animate hidden sm:block" style="top: 75%; left: 8%; width: 10px; height: 10px; animation-delay: -2s, -1s;"></div>
+    <div class="star-alt star-alt-pink star-animate hidden sm:block" style="top: 85%; left: 90%; animation-delay: -3s, -1.5s;"></div>
 
-    <!-- X marks -->
-    <div class="x-mark x-animate" style="top: 20%; left: 8%; font-size: 28px;">✖</div>
-    <div class="x-mark x-animate" style="top: 70%; left: 92%; font-size: 24px; animation-delay: -1s;">✖</div>
+    <!-- X marks - hide ALL on mobile -->
+    <div class="x-mark x-animate hidden sm:block" style="top: 20%; left: 8%; font-size: 28px;">✖</div>
+    <div class="x-mark x-animate hidden sm:block" style="top: 70%; left: 92%; font-size: 24px; animation-delay: -1s;">✖</div>
 
-    <!-- Hearts -->
-    <div class="heart-alt heart-animate" style="top: 25%; left: 6%; width: 16px; height: 16px;"></div>
-    <div class="heart-alt heart-animate" style="top: 80%; left: 93%; width: 15px; height: 15px; animation-delay: -3s;"></div>
+    <!-- Hearts - hide ALL on mobile -->
+    <div class="heart-alt heart-animate hidden sm:block" style="top: 25%; left: 6%; width: 16px; height: 16px;"></div>
+    <div class="heart-alt heart-animate hidden sm:block" style="top: 80%; left: 93%; width: 15px; height: 15px; animation-delay: -3s;"></div>
 
-    <!-- Sparkles -->
-    <div class="absolute top-[30%] left-[4%] w-2 h-2 bg-hotpink-400 rounded-full opacity-60 animate-pulse-soft"></div>
-    <div class="absolute top-[50%] left-[96%] w-2 h-2 bg-purple-400 rounded-full opacity-50 animate-pulse-soft" style="animation-delay: 0.5s;"></div>
+    <!-- Sparkles - hide ALL on mobile -->
+    <div class="absolute top-[30%] left-[4%] w-2 h-2 bg-hotpink-400 rounded-full opacity-60 animate-pulse-soft hidden sm:block"></div>
+    <div class="absolute top-[50%] left-[96%] w-2 h-2 bg-purple-400 rounded-full opacity-50 animate-pulse-soft hidden sm:block" style="animation-delay: 0.5s;"></div>
   </div>
 
   <!-- Main Hero Content -->
   <div class="fixed inset-0 z-10 flex flex-col items-center justify-center">
-    <!-- Floating emotes -->
-    <div class="absolute top-[18%] left-[18%] float-emote" style="animation-delay: -0.5s;">
-      <img src="{{ (printf "images/emotes/%s" (index site.Data.emotes.emotes 0).file) | relURL }}" class="w-16 h-16 object-contain opacity-60" alt="">
+    <!-- Floating emotes - smaller on mobile, hide some -->
+    <div class="absolute top-[18%] left-[18%] float-emote hidden sm:block" style="animation-delay: -0.5s;">
+      <img src="{{ (printf "images/emotes/%s" (index site.Data.emotes.emotes 0).file) | relURL }}" class="w-10 sm:w-16 h-10 sm:h-16 object-contain opacity-60" alt="">
     </div>
     <div class="absolute top-[22%] right-[18%] float-emote" style="animation-delay: -1.5s;">
-      <img src="{{ (printf "images/emotes/%s" (index site.Data.emotes.emotes 1).file) | relURL }}" class="w-14 h-14 object-contain opacity-60" alt="">
+      <img src="{{ (printf "images/emotes/%s" (index site.Data.emotes.emotes 1).file) | relURL }}" class="w-8 sm:w-14 h-8 sm:h-14 object-contain opacity-60" alt="">
     </div>
-    <div class="absolute bottom-[22%] left-[15%] float-emote" style="animation-delay: -2s;">
-      <img src="{{ (printf "images/emotes/%s" (index site.Data.emotes.emotes 2).file) | relURL }}" class="w-16 h-16 object-contain opacity-60" alt="">
+    <div class="absolute bottom-[22%] left-[15%] float-emote hidden sm:block" style="animation-delay: -2s;">
+      <img src="{{ (printf "images/emotes/%s" (index site.Data.emotes.emotes 2).file) | relURL }}" class="w-10 sm:w-16 h-10 sm:h-16 object-contain opacity-60" alt="">
     </div>
     <div class="absolute bottom-[18%] right-[15%] float-emote" style="animation-delay: -2.5s;">
-      <img src="{{ (printf "images/emotes/%s" (index site.Data.emotes.emotes 3).file) | relURL }}" class="w-14 h-14 object-contain opacity-60" alt="">
+      <img src="{{ (printf "images/emotes/%s" (index site.Data.emotes.emotes 3).file) | relURL }}" class="w-8 sm:w-14 h-8 sm:h-14 object-contain opacity-60" alt="">
     </div>
 
     <!-- Central hero -->
-    <div class="text-center relative">
+    <div class="text-center relative px-4 sm:px-0">
       <!-- Cozy frame -->
-      <div class="bg-white/80 backdrop-blur-sm border-4 border-alt-900 p-12 shadow-hard relative">
+      <div class="bg-white/80 backdrop-blur-sm border-4 border-alt-900 p-6 sm:p-12 shadow-hard relative">
         <!-- Tape pieces -->
-        <div class="absolute -top-3 left-8 w-16 h-6 bg-hotpink-200/60 border border-hotpink-300/40" style="transform: rotate(-12deg);"></div>
-        <div class="absolute -top-3 right-8 w-16 h-6 bg-purple-200/60 border border-purple-300/40" style="transform: rotate(8deg);"></div>
+        <div class="absolute -top-3 left-4 sm:left-8 w-12 sm:w-16 h-5 sm:h-6 bg-hotpink-200/60 border border-hotpink-300/40" style="transform: rotate(-12deg);"></div>
+        <div class="absolute -top-3 right-4 sm:right-8 w-12 sm:w-16 h-5 sm:h-6 bg-purple-200/60 border border-purple-300/40" style="transform: rotate(8deg);"></div>
 
         <!-- Big emote with ZZZs -->
-        <div class="relative mb-8 sleepy-float">
-          <img id="hero-emote" src="" class="w-40 h-40 object-contain mx-auto" alt="">
+        <div class="relative mb-4 sm:mb-8 sleepy-float">
+          <img id="hero-emote" src="" class="w-24 sm:w-40 h-24 sm:h-40 object-contain mx-auto" alt="">
           <!-- ZZZ bubbles -->
           <div class="absolute -top-2 -right-4">
-            <span class="text-3xl text-purple-400 zzz inline-block">z</span>
-            <span class="text-4xl text-purple-500 zzz inline-block" style="animation-delay: 0.3s;">Z</span>
-            <span class="text-5xl text-purple-600 zzz inline-block" style="animation-delay: 0.6s;">Z</span>
+            <span class="text-xl sm:text-3xl text-purple-400 zzz inline-block">z</span>
+            <span class="text-2xl sm:text-4xl text-purple-500 zzz inline-block" style="animation-delay: 0.3s;">Z</span>
+            <span class="text-3xl sm:text-5xl text-purple-600 zzz inline-block" style="animation-delay: 0.6s;">Z</span>
           </div>
         </div>
 
         <!-- Main text -->
-        <h1 class="font-display font-black text-6xl md:text-7xl text-alt-900 mb-4" style="text-shadow: 4px 4px 0 rgba(147,51,234,0.2);">
+        <h1 class="font-display font-black text-3xl sm:text-5xl md:text-7xl text-alt-900 mb-2 sm:mb-4" style="text-shadow: 4px 4px 0 rgba(147,51,234,0.2);">
           BE RIGHT BACK
         </h1>
 
-        <div class="bg-purple-400 text-white px-6 py-2 inline-block border-2 border-alt-900 shadow-hard mb-6">
-          <p class="font-display font-bold text-xl tracking-widest uppercase loading-dots">
+        <div class="bg-purple-400 text-white px-4 sm:px-6 py-1.5 sm:py-2 inline-block border-2 border-alt-900 shadow-hard mb-4 sm:mb-6 w-[230px] sm:w-auto">
+          <p class="font-display font-bold text-sm sm:text-xl tracking-widest uppercase loading-dots text-center sm:text-left">
             Taking a quick break
           </p>
         </div>
 
         <!-- Cute message -->
-        <p class="font-body text-alt-600 text-lg">
+        <p class="font-body text-alt-600 text-sm sm:text-lg">
           Don't go anywhere~ <span class="text-hotpink-500">♡</span>
         </p>
 
-        <!-- Decorative row -->
-        <div class="flex items-center justify-center gap-3 mt-6 text-2xl text-alt-300">
+        <!-- Decorative row - fewer items on mobile -->
+        <div class="flex items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-6 text-lg sm:text-2xl text-alt-300">
           <span>♡</span>
-          <span>·</span>
-          <span>☆</span>
+          <span class="hidden sm:inline">·</span>
+          <span class="hidden sm:inline">☆</span>
           <span>·</span>
           <span>♡</span>
-          <span>·</span>
-          <span>☆</span>
+          <span class="hidden sm:inline">·</span>
+          <span class="hidden sm:inline">☆</span>
           <span>·</span>
           <span>♡</span>
         </div>
       </div>
     </div>
 
-    <!-- Bottom socials -->
-    <div class="absolute bottom-12 left-0 right-0 flex items-center justify-center gap-3">
-      <div class="flex items-center gap-2 bg-[#9146FF] text-white px-4 py-1.5 rounded-full border-2 border-alt-900 shadow-hard">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
-        <span class="font-display font-bold text-sm tracking-wide">@vvSushii</span>
+    <!-- Bottom socials - vertical on mobile, horizontal on desktop -->
+    <div class="absolute bottom-4 sm:bottom-12 left-0 right-0 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 px-4">
+      <div class="flex items-center justify-center gap-2 sm:gap-2 bg-[#9146FF] text-white px-6 sm:px-4 py-2 sm:py-1.5 rounded-full border-2 border-alt-900 shadow-hard min-w-[160px] sm:min-w-0">
+        <svg class="w-5 h-5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+        <span class="font-display font-bold text-sm sm:text-sm tracking-wide">@vvSushii</span>
       </div>
-      <span class="text-hotpink-400 text-lg">♡</span>
-      <div class="flex items-center gap-2 bg-[#FF0000] text-white px-4 py-1.5 rounded-full border-2 border-alt-900 shadow-hard">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        <span class="font-display font-bold text-sm tracking-wide">@vvSushii</span>
+      <span class="text-hotpink-400 text-lg hidden sm:inline">♡</span>
+      <div class="flex items-center justify-center gap-2 sm:gap-2 bg-[#FF0000] text-white px-6 sm:px-4 py-2 sm:py-1.5 rounded-full border-2 border-alt-900 shadow-hard min-w-[160px] sm:min-w-0">
+        <svg class="w-5 h-5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <span class="font-display font-bold text-sm sm:text-sm tracking-wide">@vvSushii</span>
       </div>
-      <span class="text-hotpink-400 text-lg">♡</span>
-      <div class="flex items-center gap-2 bg-alt-900 text-white px-4 py-1.5 rounded-full border-2 border-alt-900 shadow-hard">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-        <span class="font-display font-bold text-sm tracking-wide">@vvSushii</span>
+      <span class="text-hotpink-400 text-lg hidden sm:inline">♡</span>
+      <div class="flex items-center justify-center gap-2 sm:gap-2 bg-alt-900 text-white px-6 sm:px-4 py-2 sm:py-1.5 rounded-full border-2 border-alt-900 shadow-hard min-w-[160px] sm:min-w-0">
+        <svg class="w-5 h-5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        <span class="font-display font-bold text-sm sm:text-sm tracking-wide">@vvSushii</span>
       </div>
     </div>
   </div>

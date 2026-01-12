@@ -81,7 +81,7 @@
     {{- $first := true }}
     {{- range site.Data.emotes.emotes }}
       {{- if in $sadNames .name }}
-        {{- if not $first }},{{ end }}"/images/emotes/{{ .file }}"
+        {{- if not $first }},{{ end }}""{{ (printf "images/emotes/%s" .file) | relURL }}""
         {{- $first = false }}
       {{- end }}
     {{- end }}

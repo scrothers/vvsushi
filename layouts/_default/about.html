@@ -91,7 +91,7 @@
                     {{ $emoteFile = .file }}
                   {{ end }}
                 {{ end }}
-                <img src="/images/emotes/{{ $emoteFile }}" alt="{{ $fact.icon }}" class="w-8 h-8 object-contain">
+                <img src="{{ (printf "images/emotes/%s" $emoteFile) | relURL }}" alt="{{ $fact.icon }}" class="w-8 h-8 object-contain">
               </div>
               <div>
                 <h3 class="font-display font-bold text-alt-900">{{ $fact.title }}</h3>
@@ -240,7 +240,7 @@
 <script>
 (function() {
   const emotes = [
-    {{- range $i, $e := site.Data.emotes.emotes }}{{ if $i }},{{ end }}"/images/emotes/{{ $e.file }}"{{ end }}
+    {{- range $i, $e := site.Data.emotes.emotes }}{{ if $i }},{{ end }}"{{ (printf "images/emotes/%s" $e.file) | relURL }}"{{ end }}
   ];
   const img = document.getElementById('about-emote');
   if (img) img.src = emotes[Math.floor(Math.random() * emotes.length)];

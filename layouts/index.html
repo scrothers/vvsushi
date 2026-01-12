@@ -289,7 +289,7 @@
 <script>
 (function() {
   const emotes = [
-    {{- range $i, $e := site.Data.emotes.emotes }}{{ if $i }},{{ end }}""{{ (printf "images/emotes/%s" $e.file) | relURL }}""{{ end }}
+    {{- range $i, $e := site.Data.emotes.emotes }}{{ if $i }},{{ end }}"{{ (printf "images/emotes/%s" $e.file) | relURL }}"{{ end }}
   ];
   const img = document.getElementById('cta-emote');
   if (img) img.src = emotes[Math.floor(Math.random() * emotes.length)];

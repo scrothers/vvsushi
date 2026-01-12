@@ -105,7 +105,7 @@
   <script>
     (function() {
       const emotes = [
-        {{- range $i, $e := site.Data.emotes.emotes }}{{ if $i }},{{ end }}""{{ (printf "images/emotes/%s" $e.file) | relURL }}""{{ end }}
+        {{- range $i, $e := site.Data.emotes.emotes }}{{ if $i }},{{ end }}"{{ (printf "images/emotes/%s" $e.file) | relURL }}"{{ end }}
       ];
       const img = document.getElementById('schedule-hero-emote');
       if (img) img.src = emotes[Math.floor(Math.random() * emotes.length)];
@@ -258,7 +258,7 @@
 <script>
 (function() {
   const emotes = [
-    {{- range $i, $e := site.Data.emotes.emotes }}{{ if $i }},{{ end }}""{{ (printf "images/emotes/%s" $e.file) | relURL }}""{{ end }}
+    {{- range $i, $e := site.Data.emotes.emotes }}{{ if $i }},{{ end }}"{{ (printf "images/emotes/%s" $e.file) | relURL }}"{{ end }}
   ];
   document.querySelectorAll('.schedule-day-emote').forEach(img => {
     img.src = emotes[Math.floor(Math.random() * emotes.length)];

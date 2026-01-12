@@ -138,10 +138,6 @@
           <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ .app_id }}/header.jpg"
                alt="{{ .name }}"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-          <!-- Rating stars -->
-          <div class="absolute top-2 right-2 bg-alt-900/80 text-yellow-400 px-2 py-1 text-sm font-bold">
-            {{ range seq .rating }}★{{ end }}{{ range seq (sub 5 .rating) }}☆{{ end }}
-          </div>
         </div>
 
         <!-- Game info -->
@@ -156,13 +152,7 @@
           </div>
 
           <!-- Review -->
-          <p class="text-alt-600 text-sm italic mb-3">"{{ .review }}"</p>
-
-          <!-- Hours -->
-          <div class="flex items-center gap-2 text-xs text-alt-500">
-            <span>⏱️</span>
-            <span class="font-bold">{{ .hours }}+ hours</span>
-          </div>
+          <p class="text-alt-600 text-sm italic">"{{ .review }}"</p>
         </div>
       </div>
       {{ end }}
@@ -190,10 +180,6 @@
                alt="{{ .name }}"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                loading="lazy">
-          <!-- Rating -->
-          <div class="absolute top-2 right-2 bg-alt-900/80 text-yellow-400 px-2 py-1 text-xs font-bold">
-            {{ range seq .rating }}★{{ end }}
-          </div>
         </div>
 
         <!-- Game info -->
@@ -208,12 +194,7 @@
           </div>
 
           <!-- Review -->
-          <p class="text-alt-500 text-xs italic mb-2 line-clamp-1">"{{ .review }}"</p>
-
-          <!-- Hours -->
-          <div class="text-[10px] text-alt-400 font-medium">
-            {{ .hours }}+ hours played
-          </div>
+          <p class="text-alt-500 text-xs italic line-clamp-1">"{{ .review }}"</p>
         </div>
       </div>
       {{ end }}

@@ -20,25 +20,31 @@
 
       <!-- Hero Text -->
       <div class="text-center lg:text-left flex-1">
-        <div class="inline-flex items-center gap-2 bg-alt-900 text-white px-3 py-1 text-xs font-display uppercase tracking-widest mb-4">
-          <span class="text-hotpink-400">✦</span>
-          <span>About Me</span>
-          <span class="text-hotpink-400">✦</span>
+        <!-- Name & Role Badge - Always visible -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 mb-4">
+          <div class="bg-gradient-to-r from-hotpink-500 via-purple-500 to-periwinkle-500 text-white px-4 py-1.5 font-display font-black text-lg uppercase tracking-wide border-2 border-alt-900 shadow-hard rotate-[-1deg]">
+            vvSushii
+          </div>
+          <div class="bg-alt-900 text-white px-3 py-1 text-xs font-display uppercase tracking-widest flex items-center gap-2 rotate-[1deg]">
+            <span class="text-hotpink-400">✦</span>
+            <span>Variety Streamer</span>
+            <span class="text-hotpink-400">✦</span>
+          </div>
         </div>
 
-        <h1 class="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-alt-900 mb-4">
-          Hey, I'm <span class="text-hotpink-500">vvSushii</span>!
+        <h1 class="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-alt-900 mb-4">
+          Hey, I'm <span class="text-hotpink-500">Sushii</span>! 👋
         </h1>
 
-        <p class="text-lg text-alt-600 max-w-xl mb-6">
+        <p class="text-base sm:text-lg text-alt-600 max-w-xl mx-auto lg:mx-0 mb-6">
           {{ .Description }}
         </p>
 
         <!-- Quick tags -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-2">
-          {{ $tags := slice "Variety Streamer" "FPS Main" "Cozy Gamer" "Arkansas" }}
+          {{ $tags := slice "FPS Main" "Cozy Gamer" "Missouri" "Married 💍" }}
           {{ range $tags }}
-          <span class="bg-white border-2 border-alt-900 px-3 py-1 text-sm font-display font-bold text-alt-700">
+          <span class="bg-white border-2 border-alt-900 px-3 py-1 text-sm font-display font-bold text-alt-700 shadow-hard">
             {{ . }}
           </span>
           {{ end }}
@@ -55,72 +61,160 @@
     <!-- Left Column: Story -->
     <div class="lg:col-span-2 space-y-8">
 
-      <!-- The Story -->
-      <div class="bg-white border-2 border-alt-900 shadow-hard">
-        <div class="bg-alt-900 text-white px-4 py-2 flex items-center gap-2">
-          <span class="text-hotpink-400">★</span>
-          <span class="font-display font-bold text-sm uppercase tracking-wide">My Story</span>
+      <!-- The Story - Jazzed Up! -->
+      <div class="relative">
+        <!-- Background decoration -->
+        <div class="absolute -top-4 -right-4 text-6xl opacity-10 text-hotpink-400 rotate-12 pointer-events-none">✦</div>
+        <div class="absolute -bottom-4 -left-4 text-5xl opacity-10 text-periwinkle-400 -rotate-12 pointer-events-none">★</div>
+
+        <!-- Header -->
+        <div class="flex items-center gap-3 mb-6">
+          <div class="bg-gradient-to-r from-hotpink-500 via-purple-500 to-periwinkle-500 text-white px-4 py-2 font-display font-bold text-sm uppercase tracking-wide border-2 border-alt-900 shadow-hard">
+            ✨ My Story ✨
+          </div>
+          <div class="h-0.5 flex-1 bg-gradient-to-r from-alt-300 to-transparent"></div>
         </div>
-        <div class="p-6 prose prose-alt max-w-none">
-          {{ .Content }}
+
+        <!-- Story Cards -->
+        <div class="space-y-4">
+          <!-- Intro Card -->
+          <div class="group relative bg-gradient-to-br from-hotpink-50 to-purple-50 border-2 border-alt-900 rounded-2xl p-5 hover:shadow-hard hover:-translate-y-1 transition-all">
+            <div class="absolute top-3 right-3 text-2xl">👋</div>
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-hotpink-400 rounded-xl border-2 border-alt-900 flex items-center justify-center text-white text-xl shadow-hard">
+                ♡
+              </div>
+              <div>
+                <h3 class="font-display font-black text-lg text-alt-900 mb-2">Hi, I'm Sushii!</h3>
+                <p class="text-alt-600 leading-relaxed">
+                  A <span class="font-bold text-hotpink-500">variety streamer</span> who loves gaming, art, Legos, tattoos & laughs! I have a happy little family of a <span class="bg-hotpink-100 px-1.5 py-0.5 rounded font-medium">husband</span>, <span class="bg-purple-100 px-1.5 py-0.5 rounded font-medium">two dogs</span> & <span class="bg-periwinkle-100 px-1.5 py-0.5 rounded font-medium">two cats</span>.
+                </p>
+              </div>
+            </div>
+            <!-- Decorative dots -->
+            <div class="absolute bottom-2 right-4 flex gap-1">
+              <div class="w-1.5 h-1.5 rounded-full bg-hotpink-300"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-purple-300"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-periwinkle-300"></div>
+            </div>
+          </div>
+
+          <!-- Personality Card -->
+          <div class="group relative bg-gradient-to-br from-periwinkle-50 to-blue-50 border-2 border-alt-900 rounded-2xl p-5 hover:shadow-hard hover:-translate-y-1 transition-all">
+            <div class="absolute top-3 right-3 text-2xl">💜</div>
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-periwinkle-400 rounded-xl border-2 border-alt-900 flex items-center justify-center text-white text-xl shadow-hard">
+                ✦
+              </div>
+              <div>
+                <h3 class="font-display font-black text-lg text-alt-900 mb-2">Introvert IRL, Extrovert Online!</h3>
+                <p class="text-alt-600 leading-relaxed">
+                  I'm an introvert in real life but I <span class="font-bold text-periwinkle-500">absolutely love</span> my online friends! The stream is where I come alive and get to be my true chaotic self.
+                </p>
+              </div>
+            </div>
+            <!-- Decorative dots -->
+            <div class="absolute bottom-2 right-4 flex gap-1">
+              <div class="w-1.5 h-1.5 rounded-full bg-periwinkle-300"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-blue-300"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-purple-300"></div>
+            </div>
+          </div>
+
+          <!-- Why I Stream Card -->
+          <div class="group relative bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-alt-900 rounded-2xl p-5 hover:shadow-hard hover:-translate-y-1 transition-all">
+            <div class="absolute top-3 right-3 text-2xl">🌟</div>
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-purple-400 rounded-xl border-2 border-alt-900 flex items-center justify-center text-white text-xl shadow-hard">
+                ★
+              </div>
+              <div>
+                <h3 class="font-display font-black text-lg text-alt-900 mb-2">Why I Started Streaming</h3>
+                <p class="text-alt-600 leading-relaxed">
+                  I wanted to <span class="font-bold text-purple-500">make more friends</span> and build a community - a <span class="bg-purple-100 px-1.5 py-0.5 rounded font-medium">safe space</span> for everyone to be themselves and never feel judged.
+                </p>
+              </div>
+            </div>
+            <!-- Decorative dots -->
+            <div class="absolute bottom-2 right-4 flex gap-1">
+              <div class="w-1.5 h-1.5 rounded-full bg-purple-300"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-pink-300"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-hotpink-300"></div>
+            </div>
+          </div>
+
+          <!-- Welcome Card -->
+          <div class="group relative bg-gradient-to-r from-hotpink-100 via-purple-100 to-periwinkle-100 border-2 border-alt-900 rounded-2xl p-5 hover:shadow-hard hover:-translate-y-1 transition-all overflow-hidden">
+            <!-- Rainbow shimmer effect -->
+            <div class="absolute inset-0 bg-gradient-to-r from-hotpink-200/0 via-white/50 to-periwinkle-200/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+
+            <div class="relative flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-hotpink-400 via-purple-400 to-periwinkle-400 rounded-xl border-2 border-alt-900 flex items-center justify-center text-white text-xl shadow-hard">
+                🎮
+              </div>
+              <div>
+                <h3 class="font-display font-black text-lg text-alt-900 mb-2">What You'll Find Here</h3>
+                <p class="text-alt-600 leading-relaxed mb-3">
+                  Whether you're here for <span class="font-bold text-hotpink-500">competitive FPS chaos</span>, <span class="font-bold text-purple-500">cozy gaming vibes</span>, or just to hang out...
+                </p>
+                <div class="inline-flex items-center gap-2 bg-white border-2 border-alt-900 px-4 py-2 rounded-full shadow-hard">
+                  <span class="text-lg">💖</span>
+                  <span class="font-display font-black text-alt-900">I'm so glad you're here!</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Achievement badge -->
+            <div class="absolute -bottom-1 -right-1 bg-hotpink-500 text-white px-3 py-1 text-[10px] font-display font-bold uppercase tracking-wider border-2 border-alt-900 rotate-[-3deg] shadow-hard">
+              Top 0.01% Healer ✨
+            </div>
+          </div>
         </div>
+
       </div>
 
       <!-- Fun Facts Grid -->
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <span class="text-hotpink-500 text-xl">♡</span>
-          <h2 class="font-display font-black text-2xl text-alt-900 uppercase tracking-wide">Fun Facts</h2>
+      <div class="relative">
+        <!-- Header -->
+        <div class="flex items-center gap-3 mb-6">
+          <div class="bg-hotpink-500 text-white px-4 py-2 font-display font-bold text-sm uppercase tracking-wide border-2 border-alt-900 shadow-hard">
+            ♡ Fun Facts ♡
+          </div>
+          <div class="h-0.5 flex-1 bg-gradient-to-r from-alt-300 to-transparent"></div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {{ $facts := slice
-            (dict "icon" "cozy1" "title" "Pet Parent" "desc" "Two dogs & two cats = chaotic household")
-            (dict "icon" "sip" "title" "Lego Builder" "desc" "Building sets is my zen mode")
-            (dict "icon" "gaming" "title" "Tattoo Collector" "desc" "Always planning the next piece")
-            (dict "icon" "sad1" "title" "Art Lover" "desc" "Love creating and collecting art")
+            (dict "icon" "cozy1" "title" "Pet Parent" "desc" "Two dogs & two cats = chaotic household" "color" "hotpink" "emoji" "🐾" "tilt" "rotate-[-1deg]")
+            (dict "icon" "sip" "title" "Lego Builder" "desc" "Building sets is my zen mode" "color" "purple" "emoji" "🧱" "tilt" "rotate-[1deg]")
+            (dict "icon" "gaming" "title" "Tattoo Collector" "desc" "Always planning the next piece" "color" "periwinkle" "emoji" "🎨" "tilt" "rotate-[1deg]")
+            (dict "icon" "sad1" "title" "Art Lover" "desc" "Love creating and collecting art" "color" "pink" "emoji" "✨" "tilt" "rotate-[-1deg]")
           }}
-          {{ range $facts }}
-          {{ $fact := . }}
-          <div class="bg-white border-2 border-alt-900 p-4 hover:shadow-hard hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
-            <div class="flex items-start gap-3">
-              <div class="w-12 h-12 bg-alt-50 border-2 border-alt-900 flex items-center justify-center flex-shrink-0">
-                {{ $emoteFile := "" }}
-                {{ range site.Data.emotes.emotes }}
-                  {{ if eq .name $fact.icon }}
-                    {{ $emoteFile = .file }}
+          {{ range $i, $fact := $facts }}
+          <div class="group relative {{ $fact.tilt }} hover:rotate-0 transition-all duration-300">
+            <div class="bg-white border-2 border-alt-900 shadow-hard group-hover:shadow-none group-hover:translate-x-1 group-hover:translate-y-1 transition-all p-4 overflow-hidden">
+              <!-- Colored top bar -->
+              <div class="absolute top-0 left-0 right-0 h-1.5 {{ if eq $fact.color "hotpink" }}bg-gradient-to-r from-hotpink-400 to-pink-400{{ else if eq $fact.color "purple" }}bg-gradient-to-r from-purple-400 to-violet-400{{ else if eq $fact.color "periwinkle" }}bg-gradient-to-r from-periwinkle-400 to-blue-400{{ else }}bg-gradient-to-r from-pink-400 to-hotpink-400{{ end }}"></div>
+
+              <!-- Corner emoji -->
+              <div class="absolute top-3 right-3 text-xl opacity-20 group-hover:opacity-50 transition-opacity">{{ $fact.emoji }}</div>
+
+              <div class="flex items-start gap-4 pt-2">
+                <div class="w-14 h-14 {{ if eq $fact.color "hotpink" }}bg-hotpink-100{{ else if eq $fact.color "purple" }}bg-purple-100{{ else if eq $fact.color "periwinkle" }}bg-periwinkle-100{{ else }}bg-pink-100{{ end }} border-2 border-alt-900 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                  {{ $emoteFile := "" }}
+                  {{ range site.Data.emotes.emotes }}
+                    {{ if eq .name $fact.icon }}
+                      {{ $emoteFile = .file }}
+                    {{ end }}
                   {{ end }}
-                {{ end }}
-                <img src="{{ (printf "images/emotes/%s" $emoteFile) | relURL }}" alt="{{ $fact.icon }}" class="w-8 h-8 object-contain">
-              </div>
-              <div>
-                <h3 class="font-display font-bold text-alt-900">{{ $fact.title }}</h3>
-                <p class="text-sm text-alt-500">{{ $fact.desc }}</p>
+                  <img src="{{ (printf "images/emotes/%s" $emoteFile) | relURL }}" alt="{{ $fact.icon }}" class="w-10 h-10 object-contain">
+                </div>
+                <div class="flex-1 pt-1">
+                  <h3 class="font-display font-black text-alt-900 text-lg mb-1">{{ $fact.title }}</h3>
+                  <p class="text-sm text-alt-600">{{ $fact.desc }}</p>
+                </div>
               </div>
             </div>
-          </div>
-          {{ end }}
-        </div>
-      </div>
-
-      <!-- What I Play -->
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <span class="text-purple-500 text-xl">★</span>
-          <h2 class="font-display font-black text-2xl text-alt-900 uppercase tracking-wide">What I Play</h2>
-        </div>
-
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {{ $genres := slice
-            (dict "name" "FPS / Hero Shooters" "desc" "My main genre")
-            (dict "name" "Cozy Games" "desc" "Peak comfort")
-            (dict "name" "RPGs" "desc" "Story is life")
-            (dict "name" "Variety" "desc" "Whatever sounds fun")
-          }}
-          {{ range $genres }}
-          <div class="bg-gradient-to-br from-periwinkle-50 to-hotpink-50 border-2 border-alt-900 p-4 text-center">
-            <div class="font-display font-bold text-alt-900 text-sm uppercase">{{ .name }}</div>
-            <div class="text-xs text-alt-500 mt-1">{{ .desc }}</div>
           </div>
           {{ end }}
         </div>
@@ -132,27 +226,57 @@
 
       <!-- Stats Card -->
       {{ with site.Data.achievements.stats }}
-      <div class="bg-white border-2 border-alt-900 shadow-hard">
-        <div class="bg-hotpink-500 text-white px-4 py-2 flex items-center gap-2">
-          <span>✦</span>
-          <span class="font-display font-bold text-sm uppercase tracking-wide">Stats</span>
-        </div>
-        <div class="p-4 space-y-4">
-          <div class="flex items-center justify-between border-b border-alt-100 pb-3">
-            <span class="text-alt-500 text-sm uppercase tracking-wide">Hours Streamed</span>
-            <span class="font-display font-black text-2xl text-alt-900">{{ .hours_streamed }}</span>
+      <div class="group relative rotate-[1deg] hover:rotate-0 transition-all duration-300">
+        <!-- Glow effect -->
+        <div class="absolute -inset-3 bg-gradient-to-r from-hotpink-400 via-purple-400 to-periwinkle-400 opacity-0 group-hover:opacity-50 blur-xl transition-all duration-300"></div>
+
+        <div class="relative bg-white border-2 border-alt-900 overflow-hidden shadow-hard group-hover:shadow-none group-hover:translate-x-1 group-hover:translate-y-1 transition-all">
+          <div class="bg-gradient-to-r from-hotpink-500 via-purple-500 to-periwinkle-500 text-white px-4 py-3 flex items-center gap-2">
+            <span class="text-xl">📊</span>
+            <span class="font-display font-bold text-sm uppercase tracking-wide">Stream Stats</span>
+            <span class="ml-auto text-xs opacity-75">✦</span>
           </div>
-          <div class="flex items-center justify-between border-b border-alt-100 pb-3">
-            <span class="text-alt-500 text-sm uppercase tracking-wide">Games Beat</span>
-            <span class="font-display font-black text-2xl text-alt-900">{{ .games_completed }}</span>
-          </div>
-          <div class="flex items-center justify-between border-b border-alt-100 pb-3">
-            <span class="text-alt-500 text-sm uppercase tracking-wide">Fave Genre</span>
-            <span class="font-display font-black text-2xl text-hotpink-500">{{ .favorite_genre }}</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-alt-500 text-sm uppercase tracking-wide">Setup</span>
-            <span class="font-display font-black text-xl text-alt-900">{{ .setup }}</span>
+          <div class="p-4 space-y-0">
+            <!-- Hours Streamed -->
+            <div class="group/stat flex items-center justify-between py-3 border-b border-alt-100 hover:bg-hotpink-50/50 px-2 -mx-2 transition-colors">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-hotpink-100 border border-alt-200 flex items-center justify-center">
+                  <span class="text-base">⏱️</span>
+                </div>
+                <span class="text-alt-600 text-sm font-medium">Hours Streamed</span>
+              </div>
+              <span class="font-display font-black text-2xl bg-gradient-to-r from-hotpink-500 to-purple-500 bg-clip-text text-transparent">{{ .hours_streamed }}</span>
+            </div>
+            <!-- Games Beat -->
+            <div class="group/stat flex items-center justify-between py-3 border-b border-alt-100 hover:bg-purple-50/50 px-2 -mx-2 transition-colors">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-purple-100 border border-alt-200 flex items-center justify-center">
+                  <span class="text-base">🏆</span>
+                </div>
+                <span class="text-alt-600 text-sm font-medium">Games Beat</span>
+              </div>
+              <span class="font-display font-black text-2xl bg-gradient-to-r from-purple-500 to-periwinkle-500 bg-clip-text text-transparent">{{ .games_completed }}</span>
+            </div>
+            <!-- Fave Genre -->
+            <div class="group/stat flex items-center justify-between py-3 border-b border-alt-100 hover:bg-periwinkle-50/50 px-2 -mx-2 transition-colors">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-periwinkle-100 border border-alt-200 flex items-center justify-center">
+                  <span class="text-base">💖</span>
+                </div>
+                <span class="text-alt-600 text-sm font-medium">Fave Genre</span>
+              </div>
+              <span class="font-display font-black text-lg text-hotpink-500">{{ .favorite_genre }}</span>
+            </div>
+            <!-- Setup -->
+            <div class="group/stat flex items-center justify-between py-3 hover:bg-pink-50/50 px-2 -mx-2 transition-colors">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-pink-100 border border-alt-200 flex items-center justify-center">
+                  <span class="text-base">🖥️</span>
+                </div>
+                <span class="text-alt-600 text-sm font-medium">Setup</span>
+              </div>
+              <span class="font-display font-black text-lg text-alt-900">{{ .setup }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -160,47 +284,54 @@
 
       <!-- Streaming Milestones -->
       {{ with site.Data.achievements.streaming }}
-      <div class="bg-white border-2 border-alt-900">
-        <div class="bg-purple-500 text-white px-4 py-2 flex items-center gap-2">
-          <span>★</span>
-          <span class="font-display font-bold text-sm uppercase tracking-wide">Milestones</span>
-        </div>
-        <div class="divide-y divide-alt-100">
-          {{ range . }}
-          <div class="p-4 flex items-start gap-3">
-            <div class="w-10 h-10 bg-alt-50 border-2 border-alt-900 flex items-center justify-center flex-shrink-0 text-lg">
-              {{ .icon }}
-            </div>
-            <div class="flex-1">
-              <div class="font-display font-bold text-alt-900 text-sm">{{ .title }}</div>
-              <div class="text-xs text-alt-500">{{ .description }}</div>
-            </div>
+      <div class="relative rotate-[-1deg] hover:rotate-0 transition-all duration-300">
+        <div class="bg-white border-2 border-alt-900 overflow-hidden shadow-hard hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+          <div class="bg-gradient-to-r from-purple-500 to-violet-500 text-white px-4 py-3 flex items-center gap-2">
+            <span class="text-xl">🚀</span>
+            <span class="font-display font-bold text-sm uppercase tracking-wide">Milestones</span>
+            <span class="ml-auto text-xs opacity-75">★</span>
           </div>
-          {{ end }}
+          <div class="divide-y divide-alt-100">
+            {{ range $i, $milestone := . }}
+            <div class="group p-4 flex items-start gap-3 hover:bg-purple-50/50 transition-colors">
+              <div class="w-12 h-12 bg-purple-100 border-2 border-alt-900 flex items-center justify-center flex-shrink-0 text-xl group-hover:scale-110 transition-transform">
+                {{ .icon }}
+              </div>
+              <div class="flex-1 pt-1">
+                <div class="font-display font-black text-alt-900">{{ .title }}</div>
+                <div class="text-sm text-alt-500">{{ .description }}</div>
+              </div>
+              <div class="text-purple-300 opacity-0 group-hover:opacity-100 transition-opacity">✦</div>
+            </div>
+            {{ end }}
+          </div>
         </div>
       </div>
       {{ end }}
 
       <!-- Gaming Achievements -->
       {{ with site.Data.achievements.gaming }}
-      <div class="bg-white border-2 border-alt-900">
-        <div class="bg-periwinkle-500 text-white px-4 py-2 flex items-center gap-2">
-          <span>♡</span>
-          <span class="font-display font-bold text-sm uppercase tracking-wide">Gaming Wins</span>
-        </div>
-        <div class="divide-y divide-alt-100">
-          {{ range . }}
-          <div class="p-4 flex items-start gap-3">
-            <div class="w-10 h-10 bg-alt-50 border-2 border-alt-900 flex items-center justify-center flex-shrink-0 text-lg">
-              {{ .icon }}
-            </div>
-            <div class="flex-1">
-              <div class="font-display font-bold text-alt-900 text-sm">{{ .title }}</div>
-              <div class="text-xs text-hotpink-500 font-medium">{{ .game }}</div>
-              <div class="text-xs text-alt-500">{{ .description }}</div>
-            </div>
+      <div class="relative rotate-[1deg] hover:rotate-0 transition-all duration-300">
+        <div class="bg-white border-2 border-alt-900 overflow-hidden shadow-hard hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+          <div class="bg-gradient-to-r from-periwinkle-500 to-blue-500 text-white px-4 py-3 flex items-center gap-2">
+            <span class="text-xl">🎮</span>
+            <span class="font-display font-bold text-sm uppercase tracking-wide">Gaming Wins</span>
+            <span class="ml-auto text-xs opacity-75">♡</span>
           </div>
-          {{ end }}
+          <div class="divide-y divide-alt-100">
+            {{ range . }}
+            <div class="group p-4 flex items-start gap-3 hover:bg-periwinkle-50/50 transition-colors">
+              <div class="w-12 h-12 bg-periwinkle-100 border-2 border-alt-900 flex items-center justify-center flex-shrink-0 text-xl group-hover:scale-110 transition-transform">
+                {{ .icon }}
+              </div>
+              <div class="flex-1 pt-1">
+                <div class="font-display font-black text-alt-900">{{ .title }}</div>
+                <div class="inline-block px-2 py-0.5 bg-hotpink-100 text-hotpink-600 text-xs font-bold mb-1">{{ .game }}</div>
+                <div class="text-sm text-alt-500">{{ .description }}</div>
+              </div>
+              <div class="text-periwinkle-300 opacity-0 group-hover:opacity-100 transition-opacity">♡</div>
+            </div>
+            {{ end }}
         </div>
       </div>
       {{ end }}
@@ -209,74 +340,202 @@
   </div>
 </section>
 
-<!-- Setup & Specs Section -->
-{{ with site.Data.setup }}
-<section class="bg-gradient-to-b from-white via-periwinkle-50 to-white border-y-2 border-alt-900">
-  <div class="container mx-auto px-4 py-12">
-    <!-- Section Header -->
-    <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 bg-alt-900 text-white px-4 py-2 text-xs font-display uppercase tracking-widest mb-4">
-        <span class="text-hotpink-400">⚡</span>
-        <span>The Setup</span>
-        <span class="text-hotpink-400">⚡</span>
+<!-- What I Play - Full Width -->
+<section class="bg-gradient-to-b from-white via-purple-50/50 to-white py-12 px-4">
+  <div class="container mx-auto max-w-6xl">
+    <!-- Header -->
+    <div class="flex items-center justify-center gap-4 mb-10">
+      <div class="h-0.5 flex-1 max-w-24 bg-gradient-to-r from-transparent to-purple-300"></div>
+      <div class="bg-gradient-to-r from-purple-500 via-hotpink-500 to-periwinkle-500 text-white px-6 py-2 font-display font-bold text-sm uppercase tracking-wide border-2 border-alt-900 shadow-hard rotate-[-1deg]">
+        🎮 What I Play 🎮
       </div>
-      <h2 class="font-display font-black text-3xl sm:text-4xl text-alt-900">
-        Dual PC <span class="text-hotpink-500">Streaming</span> Setup
-      </h2>
+      <div class="h-0.5 flex-1 max-w-24 bg-gradient-to-l from-transparent to-purple-300"></div>
     </div>
 
-    <!-- PC Specs Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
-      {{ range .pcs }}
-      <div class="bg-white border-2 border-alt-900 {{ if .primary }}shadow-hard{{ end }}">
-        <div class="flex items-center gap-2 px-4 py-3 {{ if .primary }}bg-gradient-to-r from-hotpink-500 to-purple-500{{ else }}bg-alt-900{{ end }} text-white">
-          <span class="text-xl">{{ if .primary }}🎮{{ else }}📹{{ end }}</span>
-          <div>
-            <span class="font-display font-bold text-sm uppercase tracking-wide">{{ .name }}</span>
-            <span class="text-xs opacity-75 ml-2">({{ .type }})</span>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+      {{ $genres := slice
+        (dict "name" "FPS / Hero Shooters" "desc" "My main genre" "icon" "🎯" "color" "hotpink" "tilt" "rotate-[-2deg]")
+        (dict "name" "Cozy Games" "desc" "Peak comfort" "icon" "🌸" "color" "pink" "tilt" "rotate-[1deg]")
+        (dict "name" "RPGs" "desc" "Story is life" "icon" "⚔️" "color" "purple" "tilt" "rotate-[-1deg]")
+        (dict "name" "Survival" "desc" "Crafting chaos" "icon" "🏕️" "color" "green" "tilt" "rotate-[2deg]")
+        (dict "name" "Variety" "desc" "Whatever sounds fun" "icon" "✨" "color" "periwinkle" "tilt" "rotate-[-1deg]")
+      }}
+      {{ range $genres }}
+      <div class="group relative {{ .tilt }} hover:rotate-0 transition-all duration-300">
+        <div class="bg-white border-2 border-alt-900 shadow-hard group-hover:shadow-none group-hover:translate-x-1 group-hover:translate-y-1 transition-all p-5 text-center">
+          <!-- Colored top bar -->
+          <div class="absolute top-0 left-0 right-0 h-1.5 {{ if eq .color "hotpink" }}bg-gradient-to-r from-hotpink-400 to-pink-400{{ else if eq .color "pink" }}bg-gradient-to-r from-pink-400 to-purple-400{{ else if eq .color "purple" }}bg-gradient-to-r from-purple-400 to-violet-400{{ else if eq .color "green" }}bg-gradient-to-r from-green-400 to-emerald-400{{ else }}bg-gradient-to-r from-periwinkle-400 to-blue-400{{ end }}"></div>
+
+          <!-- Icon box -->
+          <div class="inline-flex items-center justify-center w-14 h-14 {{ if eq .color "hotpink" }}bg-hotpink-100{{ else if eq .color "pink" }}bg-pink-100{{ else if eq .color "purple" }}bg-purple-100{{ else if eq .color "green" }}bg-green-100{{ else }}bg-periwinkle-100{{ end }} border-2 border-alt-900 mb-3 group-hover:scale-110 transition-transform">
+            <span class="text-3xl">{{ .icon }}</span>
           </div>
+
+          <div class="font-display font-black text-alt-900 text-sm uppercase leading-tight mb-1">{{ .name }}</div>
+          <div class="text-xs text-alt-500">{{ .desc }}</div>
         </div>
-        <div class="p-4">
-          <div class="grid grid-cols-2 gap-3">
-            {{ range .specs }}
-            <div class="bg-alt-50 border border-alt-200 p-3">
-              <div class="text-xs text-alt-400 uppercase tracking-wide font-display">{{ .label }}</div>
-              <div class="font-display font-bold text-alt-900 text-sm mt-1">{{ .value }}</div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Setup & Specs Section -->
+{{ with site.Data.setup }}
+<section class="relative bg-gradient-to-b from-white via-periwinkle-50 to-white border-y-2 border-alt-900">
+  <!-- Soft gradient blobs -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-hotpink-200/40 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-200/40 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-periwinkle-200/30 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Floating decorations -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-10 left-[10%] text-3xl opacity-30 animate-pulse text-hotpink-400">⚡</div>
+    <div class="absolute top-20 right-[15%] text-2xl opacity-25 animate-bounce text-purple-400" style="animation-duration: 3s;">💜</div>
+    <div class="absolute bottom-20 left-[20%] text-xl opacity-30 animate-pulse text-periwinkle-400" style="animation-delay: 1s;">✦</div>
+    <div class="absolute bottom-32 right-[10%] text-3xl opacity-25 animate-bounce text-hotpink-400" style="animation-duration: 4s;">🖥️</div>
+    <div class="absolute top-1/3 right-[5%] text-2xl opacity-20 text-purple-400">★</div>
+    <div class="absolute bottom-1/3 left-[8%] text-xl opacity-25 text-periwinkle-400">♡</div>
+  </div>
+
+  <div class="container mx-auto px-4 py-16 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-3 mb-4">
+        <div class="h-0.5 w-12 bg-gradient-to-r from-transparent to-hotpink-400"></div>
+        <div class="bg-gradient-to-r from-hotpink-500 via-purple-500 to-periwinkle-500 text-white px-5 py-2 text-xs font-display uppercase tracking-widest border-2 border-alt-900 shadow-hard">
+          ⚡ The Battlestation ⚡
+        </div>
+        <div class="h-0.5 w-12 bg-gradient-to-l from-transparent to-periwinkle-400"></div>
+      </div>
+      <h2 class="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-alt-900 mb-3">
+        DUAL PC <span class="gradient-text">SETUP</span>
+      </h2>
+      <p class="text-alt-500 font-display text-sm uppercase tracking-widest">Where the magic happens ✨</p>
+    </div>
+
+    <!-- PC Cards -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto p-4">
+      {{ range .pcs }}
+      <div class="group relative">
+        <!-- Card Shadow/Glow -->
+        <div class="absolute -inset-3 bg-gradient-to-r {{ if .primary }}from-hotpink-400 via-purple-400 to-periwinkle-400{{ else }}from-periwinkle-400 via-purple-400 to-hotpink-400{{ end }} rounded-2xl opacity-0 group-hover:opacity-70 blur-xl transition-all duration-300"></div>
+
+        <!-- Main Card -->
+        <div class="relative bg-white border-2 border-alt-900 rounded-xl overflow-hidden shadow-hard group-hover:shadow-none group-hover:translate-x-1 group-hover:translate-y-1 transition-all">
+          <!-- Header -->
+          <div class="relative px-6 py-4 {{ if .primary }}bg-gradient-to-r from-hotpink-100 to-purple-100{{ else }}bg-gradient-to-r from-periwinkle-100 to-purple-100{{ end }} border-b-2 border-alt-900">
+            <div class="flex items-center gap-4">
+              <!-- PC Icon -->
+              <div class="relative">
+                <div class="w-16 h-16 {{ if .primary }}bg-gradient-to-br from-hotpink-400 to-purple-500{{ else }}bg-gradient-to-br from-periwinkle-400 to-purple-500{{ end }} rounded-xl flex items-center justify-center text-3xl border-2 border-alt-900 shadow-hard">
+                  {{ if .primary }}🎮{{ else }}📹{{ end }}
+                </div>
+                <!-- Status dot -->
+                <div class="absolute -top-1 -right-1 w-5 h-5 {{ if .primary }}bg-green-400{{ else }}bg-blue-400{{ end }} rounded-full border-2 border-alt-900 animate-pulse flex items-center justify-center">
+                  <div class="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="font-display font-black text-xl text-alt-900">{{ .name }}</div>
+                <div class="flex flex-wrap items-center gap-2 mt-1">
+                  <span class="px-2 py-0.5 text-[10px] font-display uppercase tracking-wider {{ if .primary }}bg-hotpink-200 text-hotpink-700 border border-hotpink-300{{ else }}bg-periwinkle-200 text-periwinkle-700 border border-periwinkle-300{{ end }} rounded-full">
+                    {{ .type }}
+                  </span>
+                  {{ if .primary }}
+                  <span class="px-2 py-0.5 text-[10px] font-display uppercase tracking-wider bg-green-200 text-green-700 border border-green-300 rounded-full">
+                    ● Primary
+                  </span>
+                  {{ end }}
+                </div>
+              </div>
             </div>
-            {{ end }}
           </div>
+
+          <!-- Specs Grid -->
+          <div class="p-5 bg-gradient-to-b from-white to-alt-50">
+            <div class="grid grid-cols-2 gap-3">
+              {{ range .specs }}
+              <div class="relative bg-white border-2 border-alt-200 rounded-lg p-3 hover:border-alt-400 hover:shadow-md transition-all">
+                <div class="text-[10px] text-alt-400 uppercase tracking-wider font-display mb-1 flex items-center gap-1">
+                  {{ if eq .label "CPU" }}🔲{{ end }}
+                  {{ if eq .label "GPU" }}🎴{{ end }}
+                  {{ if eq .label "RAM" }}💾{{ end }}
+                  {{ if eq .label "Storage" }}💿{{ end }}
+                  {{ if eq .label "Motherboard" }}🔌{{ end }}
+                  {{ if eq .label "Cooling" }}❄️{{ end }}
+                  {{ if eq .label "PSU" }}⚡{{ end }}
+                  {{ .label }}
+                </div>
+                <div class="font-display font-bold text-alt-800 text-sm leading-tight">{{ .value }}</div>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+
+          <!-- Bottom accent line -->
+          <div class="h-1.5 {{ if .primary }}bg-gradient-to-r from-hotpink-400 via-purple-400 to-periwinkle-400{{ else }}bg-gradient-to-r from-periwinkle-400 via-purple-400 to-hotpink-400{{ end }}"></div>
         </div>
       </div>
       {{ end }}
     </div>
 
-    <!-- Peripherals Grid -->
-    <div class="mb-10">
-      <div class="flex items-center justify-center gap-3 mb-6">
-        <span class="text-periwinkle-500 text-xl">★</span>
-        <h3 class="font-display font-black text-2xl text-alt-900 uppercase tracking-wide">Peripherals</h3>
-        <span class="text-periwinkle-500 text-xl">★</span>
+    <!-- Peripherals Section -->
+    <div class="mb-16">
+      <!-- Section Divider -->
+      <div class="flex items-center justify-center gap-4 mb-10">
+        <div class="h-0.5 flex-1 max-w-32 bg-gradient-to-r from-transparent to-alt-300"></div>
+        <div class="flex items-center gap-2 text-alt-600">
+          <span class="text-hotpink-400">♡</span>
+          <span class="font-display font-bold text-lg uppercase tracking-widest">Peripherals</span>
+          <span class="text-periwinkle-400">♡</span>
+        </div>
+        <div class="h-0.5 flex-1 max-w-32 bg-gradient-to-l from-transparent to-alt-300"></div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Peripherals Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
         {{ range .peripherals }}
-        <div class="bg-white border-2 border-alt-900 hover:shadow-hard hover:-translate-y-1 transition-all">
-          <div class="bg-periwinkle-500 text-white px-3 py-2 flex items-center gap-2">
-            <span>
+        <div class="group bg-white border-2 border-alt-900 rounded-xl p-4 hover:-translate-y-2 hover:shadow-hard transition-all duration-300">
+          <!-- Category Icon -->
+          <div class="text-center mb-3">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl border-2 border-alt-900 shadow-hard
+              {{ if eq .category "Capture" }}bg-gradient-to-br from-blue-200 to-cyan-200{{ end }}
+              {{ if eq .category "Input" }}bg-gradient-to-br from-hotpink-200 to-pink-200{{ end }}
+              {{ if eq .category "Audio" }}bg-gradient-to-br from-purple-200 to-violet-200{{ end }}
+              {{ if eq .category "Video" }}bg-gradient-to-br from-green-200 to-emerald-200{{ end }}
+              {{ if eq .category "Monitors" }}bg-gradient-to-br from-periwinkle-200 to-blue-200{{ end }}
+              {{ if eq .category "Extras" }}bg-gradient-to-br from-yellow-200 to-orange-200{{ end }}
+              text-2xl">
               {{ if eq .category "Capture" }}📸{{ end }}
               {{ if eq .category "Input" }}⌨️{{ end }}
               {{ if eq .category "Audio" }}🎤{{ end }}
               {{ if eq .category "Video" }}🎥{{ end }}
               {{ if eq .category "Monitors" }}🖥️{{ end }}
               {{ if eq .category "Extras" }}✨{{ end }}
-            </span>
-            <span class="font-display font-bold text-xs uppercase tracking-wide">{{ .category }}</span>
+            </div>
           </div>
-          <div class="p-3 space-y-2">
+
+          <!-- Category Name -->
+          <div class="text-center mb-3">
+            <span class="inline-block px-2 py-0.5 font-display font-bold text-xs uppercase tracking-wider text-alt-900
+              {{ if eq .category "Capture" }}bg-cyan-100{{ end }}
+              {{ if eq .category "Input" }}bg-hotpink-100{{ end }}
+              {{ if eq .category "Audio" }}bg-purple-100{{ end }}
+              {{ if eq .category "Video" }}bg-green-100{{ end }}
+              {{ if eq .category "Monitors" }}bg-periwinkle-100{{ end }}
+              {{ if eq .category "Extras" }}bg-yellow-100{{ end }}
+              rounded">{{ .category }}</span>
+          </div>
+
+          <!-- Items -->
+          <div class="space-y-2">
             {{ range .items }}
-            <div class="flex items-center justify-between gap-2 text-sm">
-              <span class="font-display font-bold text-alt-900 truncate">{{ .name }}</span>
-              <span class="text-xs text-alt-400 whitespace-nowrap">{{ .type }}</span>
+            <div class="text-center">
+              <div class="font-display font-bold text-alt-800 text-xs leading-tight mb-0.5">{{ .name }}</div>
+              <div class="text-[10px] text-alt-400">{{ .type }}</div>
             </div>
             {{ end }}
           </div>
@@ -288,22 +547,34 @@
     <!-- FAQ Section -->
     {{ with .faq }}
     <div>
-      <div class="flex items-center justify-center gap-3 mb-6">
-        <span class="text-hotpink-500 text-xl">♡</span>
-        <h3 class="font-display font-black text-2xl text-alt-900 uppercase tracking-wide">FAQ</h3>
-        <span class="text-hotpink-500 text-xl">♡</span>
+      <!-- Section Divider -->
+      <div class="flex items-center justify-center gap-4 mb-10">
+        <div class="h-0.5 flex-1 max-w-32 bg-gradient-to-r from-transparent to-alt-300"></div>
+        <div class="flex items-center gap-2 text-alt-600">
+          <span class="text-hotpink-400">✦</span>
+          <span class="font-display font-bold text-lg uppercase tracking-widest">FAQ</span>
+          <span class="text-periwinkle-400">✦</span>
+        </div>
+        <div class="h-0.5 flex-1 max-w-32 bg-gradient-to-l from-transparent to-alt-300"></div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+      <!-- FAQ Grid - Chat Bubble Style -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
         {{ range . }}
-        <div class="bg-white border-2 border-alt-900 p-4">
-          <div class="font-display font-bold text-alt-900 mb-2 flex items-start gap-2">
-            <span class="text-hotpink-500">Q:</span>
-            <span>{{ .question }}</span>
+        <div class="group">
+          <!-- Question Bubble -->
+          <div class="relative bg-hotpink-100 border-2 border-alt-900 rounded-2xl rounded-bl-none px-4 py-3 mb-2 shadow-hard group-hover:bg-hotpink-200 transition-colors">
+            <div class="flex items-start gap-2">
+              <span class="flex-shrink-0 w-6 h-6 bg-hotpink-400 text-white rounded-full flex items-center justify-center text-xs font-bold border border-alt-900">Q</span>
+              <span class="font-display font-bold text-alt-800 text-sm">{{ .question }}</span>
+            </div>
           </div>
-          <div class="text-alt-600 text-sm flex items-start gap-2">
-            <span class="text-periwinkle-500 font-bold">A:</span>
-            <span>{{ .answer }}</span>
+          <!-- Answer Bubble -->
+          <div class="relative bg-periwinkle-100 border-2 border-alt-900 rounded-2xl rounded-tl-none px-4 py-3 ml-6 shadow-hard group-hover:bg-periwinkle-200 transition-colors">
+            <div class="flex items-start gap-2">
+              <span class="flex-shrink-0 w-6 h-6 bg-periwinkle-400 text-white rounded-full flex items-center justify-center text-xs font-bold border border-alt-900">A</span>
+              <span class="text-alt-600 text-sm">{{ .answer }}</span>
+            </div>
           </div>
         </div>
         {{ end }}

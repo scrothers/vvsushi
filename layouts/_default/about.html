@@ -209,6 +209,112 @@
   </div>
 </section>
 
+<!-- Setup & Specs Section -->
+{{ with site.Data.setup }}
+<section class="bg-gradient-to-b from-white via-periwinkle-50 to-white border-y-2 border-alt-900">
+  <div class="container mx-auto px-4 py-12">
+    <!-- Section Header -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 bg-alt-900 text-white px-4 py-2 text-xs font-display uppercase tracking-widest mb-4">
+        <span class="text-hotpink-400">⚡</span>
+        <span>The Setup</span>
+        <span class="text-hotpink-400">⚡</span>
+      </div>
+      <h2 class="font-display font-black text-3xl sm:text-4xl text-alt-900">
+        Dual PC <span class="text-hotpink-500">Streaming</span> Setup
+      </h2>
+    </div>
+
+    <!-- PC Specs Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+      {{ range .pcs }}
+      <div class="bg-white border-2 border-alt-900 {{ if .primary }}shadow-hard{{ end }}">
+        <div class="flex items-center gap-2 px-4 py-3 {{ if .primary }}bg-gradient-to-r from-hotpink-500 to-purple-500{{ else }}bg-alt-900{{ end }} text-white">
+          <span class="text-xl">{{ if .primary }}🎮{{ else }}📹{{ end }}</span>
+          <div>
+            <span class="font-display font-bold text-sm uppercase tracking-wide">{{ .name }}</span>
+            <span class="text-xs opacity-75 ml-2">({{ .type }})</span>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="grid grid-cols-2 gap-3">
+            {{ range .specs }}
+            <div class="bg-alt-50 border border-alt-200 p-3">
+              <div class="text-xs text-alt-400 uppercase tracking-wide font-display">{{ .label }}</div>
+              <div class="font-display font-bold text-alt-900 text-sm mt-1">{{ .value }}</div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <!-- Peripherals Grid -->
+    <div class="mb-10">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <span class="text-periwinkle-500 text-xl">★</span>
+        <h3 class="font-display font-black text-2xl text-alt-900 uppercase tracking-wide">Peripherals</h3>
+        <span class="text-periwinkle-500 text-xl">★</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {{ range .peripherals }}
+        <div class="bg-white border-2 border-alt-900 hover:shadow-hard hover:-translate-y-1 transition-all">
+          <div class="bg-periwinkle-500 text-white px-3 py-2 flex items-center gap-2">
+            <span>
+              {{ if eq .category "Capture" }}📸{{ end }}
+              {{ if eq .category "Input" }}⌨️{{ end }}
+              {{ if eq .category "Audio" }}🎤{{ end }}
+              {{ if eq .category "Video" }}🎥{{ end }}
+              {{ if eq .category "Monitors" }}🖥️{{ end }}
+              {{ if eq .category "Extras" }}✨{{ end }}
+            </span>
+            <span class="font-display font-bold text-xs uppercase tracking-wide">{{ .category }}</span>
+          </div>
+          <div class="p-3 space-y-2">
+            {{ range .items }}
+            <div class="flex items-center justify-between gap-2 text-sm">
+              <span class="font-display font-bold text-alt-900 truncate">{{ .name }}</span>
+              <span class="text-xs text-alt-400 whitespace-nowrap">{{ .type }}</span>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    {{ with .faq }}
+    <div>
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <span class="text-hotpink-500 text-xl">♡</span>
+        <h3 class="font-display font-black text-2xl text-alt-900 uppercase tracking-wide">FAQ</h3>
+        <span class="text-hotpink-500 text-xl">♡</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+        {{ range . }}
+        <div class="bg-white border-2 border-alt-900 p-4">
+          <div class="font-display font-bold text-alt-900 mb-2 flex items-start gap-2">
+            <span class="text-hotpink-500">Q:</span>
+            <span>{{ .question }}</span>
+          </div>
+          <div class="text-alt-600 text-sm flex items-start gap-2">
+            <span class="text-periwinkle-500 font-bold">A:</span>
+            <span>{{ .answer }}</span>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+  </div>
+</section>
+{{ end }}
+
 <!-- Community CTA -->
 <section class="bg-alt-900 border-t-2 border-alt-900">
   <div class="h-2 bg-gradient-to-r from-hotpink-500 via-purple-500 to-periwinkle-500"></div>
